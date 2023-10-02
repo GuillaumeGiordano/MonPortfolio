@@ -1,0 +1,15 @@
+.footer {
+  height: 60px;
+  color: var(--couleur-noir);
+  background-color: var(--couleur-blanc);
+  /* box-shadow: 1px 8px 7px 2px var(--couleur-shadow);
+  transition: box-shadow 1s; */
+}
+
+.footer a {
+  color: var(--couleur-noir);
+}
+
+.shadowFooter {
+  box-shadow: 1px -8px 7px 2px #adffbd98;
+}

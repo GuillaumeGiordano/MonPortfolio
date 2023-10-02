@@ -1,95 +1,96 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import React, { useEffect, useState } from "react";
+import { useThemeContext } from "./context/theme";
+import styles from "./page.module.css";
+import Social from "./components/social/page";
+import TextSlider from "./components/textSlider/page";
 
 export default function Home() {
+  const { isLightTheme } = useThemeContext();
+  const [showButton, setShowButton] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  useEffect(() => {
+    // Fonction de gestionnaire de scroll
+    const handleScroll = () => {
+      // position actuelle de défilement
+      const scrollPosition = window.scrollY;
+
+      // hauteur à partir de laquelle vous souhaitez afficher le bouton
+      const scrollThreshold = 1;
+
+      // Vérifiez si la position de défilement a dépassé le seuil
+      if (scrollPosition > scrollThreshold) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    // Écoutez l'événement de défilement lorsque le composant est monté
+    window.addEventListener("scroll", handleScroll);
+
+    // Nettoyez l'écouteur d'événement lorsque le composant est démonté
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Fonction pour faire défiler la page vers le haut
+  const scrollToTop = () => {
+    setButtonClicked(true);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    // Réinitialisez le bouton cliqué après un court délai
+    setTimeout(() => {
+      setButtonClicked(false);
+    }, 1000);
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className={`${styles.main} ${isLightTheme ? "dark" : "light"}`}>
+      <Social />
+      <section className={`${styles.section} ${styles.head}`} id='head'>
+        {/* Faire un compenent !!! */}
+        <div className={styles.head__info}>
+          <img src='/profil_002.jpg' alt='' className={styles.head__img}></img>
+          <h1 className={styles.head__title}>
+            Salut, je suis <TextSlider />
+          </h1>
         </div>
-      </div>
+      </section>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className={styles.section} id='about'>
+        <h2>About Me</h2>
+      </section>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <section className={styles.section} id=''>
+        <h2>Competances</h2>
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+      <section className={styles.section}>
+        <h2>Portfolio</h2>
+      </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+      <section className={styles.section}>
+        <h2>Services</h2>
+      </section>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {/* Bouton pour remonter en haut */}
+      {showButton && (
+        <button
+          className={`${styles.scrollToTopButton} ${
+            buttonClicked ? styles.clickedButton : ""
+          }`}
+          onClick={() => {
+            scrollToTop();
+          }}>
+          ^
+        </button>
+      )}
     </main>
-  )
+  );
 }
