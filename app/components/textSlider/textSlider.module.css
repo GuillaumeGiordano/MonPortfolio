@@ -1,32 +1,14 @@
-.textSlider {
-  border: 1px solid black;
-  position: relative;
-  height: 35px;
-  width: 250px;
-}
-
-.text {
-  /* white-space: nowrap; */
-  /* overflow: hidden; */
-  /* border-right: 2px solid var(--couleur-noir);
-  font-size: 24px;
-  animation: typing 1s steps(1) infinite, blink 1s step-end infinite; */
+.ctn {
+  padding-left: 10px;
+  color: var(--couleur-jaune);
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
 }
 
 .cursor {
-  /* display: inline-block;
-  width: 8px;
-  animation: blink 0.5s infinite; */
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent; /* Disparaît pendant la moitié de l'animation */
-  }
+  background-color: var(--couleur-blanc);
+  width: 5px;
+  height: 100%;
+  margin-left: 5px;
 }

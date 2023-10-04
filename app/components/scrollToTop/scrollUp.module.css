@@ -1,0 +1,39 @@
+.scrollToTopButton {
+  position: fixed;
+  z-index: 1000;
+  bottom: 60px;
+  right: 20px;
+  padding: 10px;
+  padding-bottom: 6px;
+  background-color: var(--couleur-bleu);
+  color: var(--couleur-noir);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 1s ease;
+  animation: bounce_513 1s infinite;
+}
+
+.svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--couleur-blanc);
+}
+
+.scrollToTopButton:hover .svg {
+  fill: var(--couleur-jaune);
+  animation: none;
+}
+
+@keyframes bounce_513 {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}

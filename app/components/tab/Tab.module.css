@@ -1,0 +1,36 @@
+/* Style des boutons d'onglet */
+.tab__buttons {
+  display: flex;
+  gap: 16px;
+  height: 40px;
+  background-color: var(--couleur-gris);
+}
+
+.tab__buttons button {
+  padding: 8px 16px;
+  background-color: var(--couleur-bleu);
+  color: var(--couleur-blanc);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.tab__buttons button:hover {
+  background-color: var(--couleur-jaune);
+  color: var(--couleur-gris);
+}
+
+.tab__buttons button.active {
+  background-color: var(--couleur-jaune);
+  color: var(--couleur-gris);
+}
+
+/* Style du contenu de l'onglet */
+.tab__content {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

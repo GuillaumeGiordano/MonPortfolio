@@ -2,9 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+// STYLE
 import styles from "./header.module.css";
+// CONTEXTE
 import { useThemeContext } from "@/app/context/theme";
+
+// COMPONENT
 import ScrollProgressBar from "../scrollProgressBar/page";
+import Logo from "../logo/page";
 
 const Header = () => {
   const { isLightTheme } = useThemeContext();
@@ -46,7 +51,7 @@ const Header = () => {
         <ScrollProgressBar />
 
         <div className={styles.logo}>
-          <img src='/G2WebApplication.svg' className={styles.logo__img} alt='logo'></img>
+          <Logo />
           <span
             className={`${styles.logo__title} ${
               isLightTheme ? styles.logo__title__light : styles.logo__title__dark

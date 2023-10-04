@@ -1,10 +1,11 @@
 .toggle {
-  position: absolute;
+  position: fixed;
   top: 150px;
+  right: 0;
   background-color: var(--couleur-blanc);
   width: 62px;
   height: 62px;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px 0 0 5px;
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -30,7 +31,7 @@
 }
 
 .toggle:hover .icon {
-  background-color: var(--couleur-jaune);
+  background-color: var(--couleur-bleu);
 }
 
 .toggle:hover .socialSvg {
@@ -43,7 +44,7 @@
 
 @keyframes slide-in-side {
   0% {
-    transform: translateX(-50px);
+    transform: translateX(50px);
     opacity: 0;
   }
 

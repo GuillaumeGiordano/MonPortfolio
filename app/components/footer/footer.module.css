@@ -1,13 +1,13 @@
 .footer {
-  height: 60px;
-  color: var(--couleur-noir);
-  background-color: var(--couleur-blanc);
-  /* box-shadow: 1px 8px 7px 2px var(--couleur-shadow);
-  transition: box-shadow 1s; */
+  height: 100px;
+  color: var(--couleur-blanc);
+  background-color: var(--couleur-gris);
+  box-shadow: 1px -8px 7px 2px var(--couleur-shadow);
+  transition: box-shadow 1s;
 }
 
 .footer a {
-  color: var(--couleur-noir);
+  color: var(--couleur-jaune);
 }
 
 .shadowFooter {

@@ -31,20 +31,17 @@
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  /* min-height: 100vh;
+  min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto; */
+  grid-template-rows: auto 1fr auto;
 }
 
 .main {
-  /* padding-top: 60px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* position: absolute;
-  top: 0;
-  left: 0; */
+  /* position: absolute; */
 }
 
 .light {
@@ -55,5 +52,4 @@ body {
 .dark {
   background-color: var(--couleur-noir);
   color: var(--couleur-blanc);
-  /* color: rgba(211, 208, 203, 0.9) !important; */
 }

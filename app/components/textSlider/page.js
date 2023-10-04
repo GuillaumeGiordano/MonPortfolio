@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
-import styles from "./textSlider.module.css";
+// STYLE
+import styles from "./TextSlider.module.css";
+// FONCTION
+import generateRandomSpeed from "@/app/util/generateRandomSpeed";
 
-export default function TypingAndErasing() {
+export default function TypingAndErasing({ wordToTypeAndErase }) {
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [cursorVisible, setCursorVisible] = useState(true);
 
-  const wordToTypeAndErase = ["Guillaume.", "Développeur.", "Entrepreneur."];
-
-  //   1
+  //   MON CURSOR
   useEffect(() => {
     const cursorInterval = setInterval(() => {
       setCursorVisible((prevCursorVisible) => !prevCursorVisible);
@@ -21,12 +22,8 @@ export default function TypingAndErasing() {
     };
   }, [cursorVisible]);
 
-  // 2
+  // WRITING
   useEffect(() => {
-    const generateRandomSpeed = () => {
-      return Math.floor(Math.random() * (800 - 100 + 1)) + 100;
-    };
-
     const typingInterval = setInterval(() => {
       const currentText = wordToTypeAndErase[currentTextIndex];
       const maxiLenght = currentText.length;
@@ -49,7 +46,7 @@ export default function TypingAndErasing() {
           setIsTyping(true);
         }
       }
-    }, generateRandomSpeed());
+    }, generateRandomSpeed(200, 800));
 
     return () => {
       clearInterval(typingInterval);
@@ -57,8 +54,8 @@ export default function TypingAndErasing() {
   }, [text, currentIndex, currentTextIndex]);
 
   return (
-    <>
-      {text} {cursorVisible && <span className={styles.cursor}>|</span>}
-    </>
+    <div className={styles.ctn}>
+      {text} {cursorVisible && <div className={styles.cursor}></div>}
+    </div>
   );
 }

@@ -1,0 +1,18 @@
+.btn {
+  background: var(--couleur-gris);
+  padding: 6px 2rem;
+  outline: 2.5px solid var(--couleur-blanc);
+  outline-offset: 3px;
+  border: 0;
+  color: var(--couleur-blanc);
+  font-size: 1rem;
+  border-radius: 100rem;
+  transition: 0.4s;
+  font-weight: 600;
+}
+
+.btn:hover {
+  outline-offset: 4.5px;
+  background: var(--couleur-jaune);
+  color: var(--couleur-gris);
+}
