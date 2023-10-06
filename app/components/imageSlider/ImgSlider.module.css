@@ -1,5 +1,4 @@
 .ctn {
-  border: 1px solid black;
   height: fit-content;
   width: fit-content;
   display: flex;
@@ -11,6 +10,6 @@
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  border: 5px solid var(--couleur-blanc);
+  border: 5px solid var(--couleur-bleu);
   object-fit: cover;
 }

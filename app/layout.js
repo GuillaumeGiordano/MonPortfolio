@@ -1,8 +1,7 @@
 import "./globals.css";
 import { ThemeContextProvider } from "./context/theme";
-import Header from "./components/header/page";
 import Footer from "./components/footer/page";
-import SwitchTheme from "./components/switchTheme/page";
+import Header from "./components/header/page";
 
 export const metadata = {
   title: "Create Next App",
@@ -15,7 +14,6 @@ export default function RootLayout({ children }) {
       <ThemeContextProvider>
         <body>
           <Header />
-          <SwitchTheme />
           {children}
           <Footer />
         </body>

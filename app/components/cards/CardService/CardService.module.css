@@ -1,0 +1,110 @@
+.card {
+  width: 280px;
+  height: 450px;
+  border-radius: 20px;
+  background: var(--couleur-bleu);
+  position: relative;
+  padding: 3.5rem 1rem 1rem 1rem;
+  border: 4px solid var(--couleur-blanc);
+  transition: 0.5s ease-out;
+  overflow: visible;
+}
+
+.cardDetails {
+  color: var(--couleur-blanc);
+  height: 100%;
+  gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardImg {
+  height: 90px;
+  border: 3px solid var(--couleur-blanc);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin: 15px;
+  background-color: white;
+  position: absolute;
+  top: -60px;
+  /* transform: translateY(-50%); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-out;
+}
+
+.img {
+  height: 60px;
+}
+
+.cardButton {
+  z-index: 999;
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+
+  outline: 2.5px solid var(--couleur-blanc);
+  border: 0;
+  border-radius: 100rem;
+  font-weight: 600;
+
+  background: var(--couleur-gris);
+  outline-offset: 3px;
+  color: var(--couleur-blanc);
+}
+
+.cardFooter {
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: space-between;
+}
+
+.cardTag {
+  border: 1px solid red;
+  height: 50px;
+  width: 50px;
+  flex-basis: 20%;
+}
+.cardButton:hover {
+  outline-offset: 4.5px;
+  background: var(--couleur-jaune);
+  color: var(--couleur-gris);
+}
+
+.textBody {
+  color: var(--couleur-blanc);
+  text-align: justify;
+}
+
+/*Text*/
+.textTitle {
+  border: 1px solid red;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/*Hover*/
+.card:hover,
+.card:hover .cardImg {
+  border-color: var(--couleur-jaune);
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+.card:hover .cardImg {
+  scale: 1.2;
+}
+.card:hover .cardButton {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+}

@@ -18,38 +18,39 @@
   width: calc(100% - 10px);
   height: calc(100% - 10px);
   z-index: 2;
-  background: rgba(255, 255, 255, 1);
+  background: var(--couleur-bleu);
   backdrop-filter: blur(24px);
   border-radius: 10px;
   overflow: hidden;
-  outline: 2px solid var(--couleur-gris);
-  padding: 0 25px;
+  outline: 2px solid var(--couleur-blanc);
+  padding: 0 5px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
 }
 
 .card__info {
   border: 1px solid black;
   height: 80%;
-  width: 100%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .card__img {
-  height: 65%;
+  width: 25%;
+  /* height: 80%; */
 }
 
 .card__score {
   font-size: 1.8rem;
-  color: var(--couleur-noir);
+  color: var(--couleur-blanc);
 }
 
 .card__libelle {
   font-size: 1rem;
-  color: var(--couleur-noir);
+  color: var(--couleur-blanc);
 }
 
 .blob1 {

@@ -1,0 +1,45 @@
+/* Stepper.module.css */
+
+/* Styles du stepper */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: 20px auto;
+}
+
+/* Styles des étapes */
+.step {
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.step.active {
+  background-color: #007bff; /* Couleur de l'étape active */
+  color: #fff;
+}
+
+/* Styles des boutons */
+.button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

@@ -6,25 +6,25 @@ import Link from "next/link";
 import styles from "./header.module.css";
 // CONTEXTE
 import { useThemeContext } from "@/app/context/theme";
-
 // COMPONENT
 import ScrollProgressBar from "../scrollProgressBar/page";
 import Logo from "../logo/page";
+import SwitchTheme from "../switchTheme/page";
+// FUNCTION
+import scrollToSection from "@/app/util/scrollToSection";
 
 const Header = () => {
   const { isLightTheme } = useThemeContext();
   const [scrolling, setScrolling] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
+  // BUTTON SCROLL UP
   useEffect(() => {
-    // Fonction de gestionnaire de scroll
-    const handleScroll = () => {
-      // Obtenez la position actuelle de défilement
+    // Gestionnaire de scroll pour le bouton Scroll Up
+    const handleScrollForScrollUpButton = () => {
       const scrollPosition = window.scrollY;
+      const scrollThreshold = 1;
 
-      // Définissez la hauteur à partir de laquelle vous souhaitez modifier le background
-      const scrollThreshold = 1; // Par exemple, changez cette valeur selon vos besoins
-
-      // Vérifiez si la position de défilement a dépassé le seuil
       if (scrollPosition > scrollThreshold) {
         setScrolling(true);
       } else {
@@ -32,12 +32,43 @@ const Header = () => {
       }
     };
 
-    // Écoutez l'événement de défilement lorsque le composant est monté
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollForScrollUpButton);
 
     // Nettoyez l'écouteur d'événement lorsque le composant est démonté
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollForScrollUpButton);
+    };
+  }, []);
+
+  // LINK ACTIVE SUIVANT SCROLL
+  useEffect(() => {
+    // Gestionnaire de scroll pour activer les liens suivant le scroll
+    const handleScrollForActiveLinks = () => {
+      const sections = document.querySelectorAll("[data-id]");
+      let active = "";
+
+      sections.forEach((section) => {
+        const offset = 60;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const scrollY = window.scrollY;
+
+        if (
+          scrollY + offset >= sectionTop &&
+          scrollY < sectionTop + sectionHeight + offset
+        ) {
+          active = section.getAttribute("data-id");
+        }
+      });
+
+      setActiveSection(active);
+    };
+
+    window.addEventListener("scroll", handleScrollForActiveLinks);
+
+    // Nettoyez l'écouteur d'événement lorsque le composant est démonté
+    return () => {
+      window.removeEventListener("scroll", handleScrollForActiveLinks);
     };
   }, []);
 
@@ -51,6 +82,7 @@ const Header = () => {
         <ScrollProgressBar />
 
         <div className={styles.logo}>
+          <SwitchTheme />
           <Logo />
           <span
             className={`${styles.logo__title} ${
@@ -62,37 +94,123 @@ const Header = () => {
         </div>
 
         <nav className={styles.nav}>
-          <Link
+          <ul className={styles.nav__ul}>
+            <li className={`${styles.nav__li}  `}>
+              <Link
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                } ${activeSection === "head" ? styles.active : ""}`}
+                href='/'>
+                Home
+              </Link>
+            </li>
+
+            <li className={`${styles.nav__li}  `}>
+              <Link
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                } ${activeSection === "about" ? styles.active : ""}`}
+                href='/#about'
+                scroll={false}
+                onClick={() => scrollToSection("about")}>
+                About
+              </Link>
+            </li>
+
+            <li className={`${styles.nav__li}  `}>
+              <Link
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                } ${activeSection === "services" ? styles.active : ""}`}
+                href='/#services'
+                scroll={false}
+                onClick={() => scrollToSection("services")}>
+                Services
+              </Link>
+            </li>
+
+            <li className={`${styles.nav__li}  `}>
+              <Link
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                } ${activeSection === "portfolio" ? styles.active : ""}`}
+                href='/#portfolio'
+                scroll={false}
+                onClick={() => scrollToSection("portfolio")}>
+                Portfolio
+              </Link>
+            </li>
+
+            <li className={`${styles.nav__li}`}>
+              <Link
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                } ${activeSection === "contact" ? styles.active : ""}`}
+                href='/#contact'
+                scroll={false}
+                onClick={() => scrollToSection("contact")}>
+                Contact
+              </Link>
+            </li>
+
+            <li className={`${styles.nav__li}  `}>
+              <Link
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                } ${activeSection === "connexion" ? styles.active : ""}`}
+                href='/'>
+                Connexion
+              </Link>
+            </li>
+          </ul>
+
+          {/* <Link
             className={`${styles.link} ${
               isLightTheme ? styles.link__light : styles.link__dark
             }`}
             href='/'>
             Home
-          </Link>
+          </Link> */}
 
-          <Link
+          {/* <Link
+            className={`${styles.link} ${
+              isLightTheme ? styles.link__light : styles.link__dark
+            }`}
+            href='#about'>
+            About
+          </Link> */}
+
+          {/* <Link
+            className={`${styles.link} ${
+              isLightTheme ? styles.link__light : styles.link__dark
+            }`}
+            href='#services'>
+            Services
+          </Link> */}
+
+          {/* <Link
             className={`${styles.link} ${
               isLightTheme ? styles.link__light : styles.link__dark
             }`}
             href=''>
             Portfolio
-          </Link>
+          </Link> */}
 
-          <Link
+          {/* <Link
             className={`${styles.link} ${
               isLightTheme ? styles.link__light : styles.link__dark
             }`}
             href='/contact'>
             contact
-          </Link>
+          </Link> */}
 
-          <Link
+          {/* <Link
             className={`${styles.link} ${
               isLightTheme ? styles.link__light : styles.link__dark
             }`}
             href=''>
             Connexion
-          </Link>
+          </Link> */}
         </nav>
       </header>
     </>

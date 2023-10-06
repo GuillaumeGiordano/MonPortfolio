@@ -14,6 +14,9 @@ import BtnNormal from "./components/buttons/normal/page";
 // import Tab from "./components/tab/page";
 import ImageSlider from "./components/imageSlider/page";
 import CardScore from "./components/cards/cardScore/CardScore";
+// FUNCTION
+import scrollToSection from "./util/scrollToSection";
+import CardService from "./components/cards/CardService/page";
 
 export default function Home() {
   const { isLightTheme } = useThemeContext();
@@ -74,6 +77,7 @@ export default function Home() {
     "Texte 7",
     "Texte 8",
   ];
+
   const [randomText, setRandomText] = useState("");
   const handleClick = () => {
     const randomIndex = Math.floor(Math.random() * texts.length);
@@ -83,12 +87,10 @@ export default function Home() {
 
   return (
     <main className={`${styles.main} ${isLightTheme ? "dark" : "light"}`}>
-      <ScrollToDown />
-
       {/* HEAD */}
-      <section className={`${styles.section} ${styles.head}`} id='head'>
+      <section className={`${styles.section} ${styles.head}`} id='head' data-id='head'>
+        <ScrollToDown />
         <Social />
-        {/* Faire un compenent !!! */}
         <div className={styles.head__info}>
           <img src='/profil_002.jpg' alt='' className={styles.head__img}></img>
           <div className={styles.head__details}>
@@ -100,15 +102,17 @@ export default function Home() {
               Je suis développeur web et j'aime ça !
             </p>
             <div className={styles.head__nav}>
-              <BtnNormal libelle={"Mes Services"} onClick={() => {}} />
-              <BtnNormal libelle={"Me Contacter"} onClick={() => {}} />
+              <BtnNormal
+                libelle={"Mes Services"}
+                onClick={() => scrollToSection("services")}
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section className={`${styles.section} ${styles.about}`} id='about'>
+      <section className={`${styles.section} ${styles.about}`} id='about' data-id='about'>
         <h2 className={styles.section__titre}>About Me</h2>
         <div className={styles.about__ctn}>
           <div className={styles.about__body}>
@@ -173,24 +177,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COMPETENCE */}
-      <section className={`${styles.section} ${styles.competence}`} id='competence'>
-        <h2>Competences</h2>
-        <div className={styles.competence__ctn}></div>
+      {/* SERVICES */}
+      <section
+        className={`${styles.section} ${styles.services}`}
+        id='services'
+        data-id='services'>
+        <h2>Ce que je sais faire.</h2>
+        <div className={styles.services__ctn}>
+          <CardService
+            icone={"creation-de-sites-web.svg"}
+            service={"Intégration Web"}
+            slogan={
+              "Transformons votre vision en réalité numérique. Ensemble, créons une expérience en ligne exceptionnelle."
+            }
+          />
+          <CardService
+            icone={"api.svg"}
+            service={"Développeur Web"}
+            slogan={
+              "Transformez vos idées en réalité numérique avec un code de qualité et une expérience utilisateur exceptionnelle"
+            }
+          />
+          <CardService
+            icone={"css.svg"}
+            service={"Optimisation "}
+            slogan={
+              "Transformez vos sites web en performances optimales avec notre expertise en optimisation et débogage. Faites briller votre présence en ligne."
+            }
+          />
+        </div>
       </section>
 
       {/* PORTFOLIO */}
-      <section className={styles.section}>
+      <section
+        className={`${styles.section} ${styles.services}`}
+        id='portfolio'
+        data-id='portfolio'>
         <h2>Portfolio</h2>
+        <p>filtre + cards</p>
       </section>
 
-      {/* SERVICES */}
-      <section className={styles.section}>
-        <h2>Services</h2>
+      {/* AVIS */}
+      <section className={`${styles.section} ${styles.avis}`} id='avis' data-id='avis'>
+        <h2>Avis</h2>
+        <p>mettre un carrouselle</p>
+      </section>
+
+      {/* CONTACT */}
+      <section
+        className={`${styles.section} ${styles.services}`}
+        id='contact'
+        data-id='contact'>
+        <h2>Say hello !</h2>
+        <p>une carte + formulaire de contact</p>
       </section>
 
       {/* Bouton pour remonter en haut */}
-      {/* {showButton && <ScrollUp buttonClicked={buttonClicked} scrollToTop={scrollToTop} />} */}
       {showButton && <ScrollUp />}
     </main>
   );

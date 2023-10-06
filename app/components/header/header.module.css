@@ -16,24 +16,25 @@
   box-shadow: 1px 8px 7px 2px #adffbd98;
 }
 
-.nav {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 10px;
 }
 
 .logo__title {
   margin: 0 10px;
 }
 
-.link {
+.nav__ul {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__li {
   display: block;
   text-decoration: none;
   font-size: 1rem;
@@ -48,7 +49,11 @@
   margin: 0 10px;
 }
 
-.link:focus,
+.link {
+  text-decoration: none;
+  color: var(--couleur-gris);
+}
+
 .link:hover {
   color: var(--couleur-jaune);
 }
@@ -92,4 +97,8 @@
 .logo__title__dark,
 .header__dark {
   color: var(--couleur-noir);
+}
+
+.active {
+  color: var(--couleur-jaune);
 }

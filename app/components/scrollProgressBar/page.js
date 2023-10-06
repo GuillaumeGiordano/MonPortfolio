@@ -3,7 +3,7 @@ import styles from "./scrollProgressBar.module.css";
 
 function ScrollProgressBar() {
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScrollProgressBar = () => {
       const header = document.getElementById("header");
       const footer = document.getElementById("footer");
 
@@ -36,10 +36,10 @@ function ScrollProgressBar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollProgressBar);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollProgressBar);
     };
   }, []);
 

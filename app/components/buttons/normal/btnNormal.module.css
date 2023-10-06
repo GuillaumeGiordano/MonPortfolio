@@ -1,9 +1,10 @@
 .btn {
-  background: var(--couleur-gris);
-  padding: 6px 2rem;
+  padding: 0.5rem 1rem;
+
   outline: 2.5px solid var(--couleur-blanc);
-  outline-offset: 3px;
   border: 0;
+  background: var(--couleur-gris);
+  outline-offset: 3px;
   color: var(--couleur-blanc);
   font-size: 1rem;
   border-radius: 100rem;

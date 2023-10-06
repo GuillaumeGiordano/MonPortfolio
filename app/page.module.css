@@ -1,16 +1,20 @@
 .section {
   padding: 20px 0;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* height: 100vh;
+  max-height: 960px; */
 }
 .section__titre {
   font-size: 1.8rem;
-  margin: 20px 0;
+  margin-top: 20px;
 }
 /* ****************************************************  SECTION ==> HEAD*/
 .head {
+  width: 100%;
+  height: 100vh;
+  max-height: 960px;
   justify-content: center;
   background-image: url("/background002.png");
   background-size: cover; /* Ajuste la taille de l'image pour couvrir la section */
@@ -19,12 +23,11 @@
   background-blend-mode: color-burn;
   position: relative;
   align-items: center;
-  height: 960px;
 }
 
 .head__info {
   /* border: 1px solid red; */
-  width: 80%;
+  width: 70%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -78,21 +81,20 @@
 
 /* ****************************************************  SECTION ==> ABOUT ME */
 .about {
-  border: 1px solid black;
-  height: calc(100vh - 60px);
-  max-height: 900px;
-  width: 90%;
+  /* border: 1px solid black; */
+  /* height: min-content; */
+  width: 70%;
   margin: auto;
 }
 
 .about__ctn {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .about__body {
@@ -101,7 +103,7 @@
 }
 
 .body__elem {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 100%;
   flex-basis: 33%;
   display: flex;
@@ -139,7 +141,7 @@
 }
 
 .about__footer {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 110px;
   display: flex;
   justify-content: space-between;
@@ -147,25 +149,28 @@
 }
 
 .footer__elem {
-  border: 1px solid black;
-  height: 100%;
+  /* border: 1px solid black; */
+  height: 110px;
   flex-basis: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* ****************************************************  SECTION ==> COMPETENCE */
+/* ****************************************************  SECTION ==> SERVISES */
 
-.competence {
+.services {
   border: 1px solid black;
-  /* height: calc(100vh - 60px);
-  max-height: 900px; */
-  width: 90%;
+  /* height: min-content; */
+  width: 70%;
   margin: auto;
 }
 
-.competence__ctn {
+.services__ctn {
   border: 1px solid black;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 60px 0;
 }
