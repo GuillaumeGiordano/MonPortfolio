@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 // STYLE
 import styles from "./TextSlider.module.css";
