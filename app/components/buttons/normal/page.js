@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./BtnNormal.module.css";
+import styles from "./Btnnormal.module.css";
 
 const BtnNormal = ({ libelle, onClick }) => {
   return (
