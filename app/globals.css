@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Satisfy&display=swap");
 
 :root {
   --couleur-gris: rgb(57, 62, 65);
@@ -30,11 +30,25 @@
 }
 
 body {
-  max-width: 100vw;
+  position: relative;
+  /* max-width: 100vw;
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height: 100vh; */
+
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+.body__module {
+  overflow: hidden;
+}
+
+section,
+nav {
+  /* border: 1px solid black; */
+}
+div {
+  /* border: 1px solid red; */
 }
 
 .main {
@@ -42,7 +56,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* position: absolute; */
 }
 
 .light {

@@ -1,7 +1,6 @@
 import "./globals.css";
 import { ThemeContextProvider } from "./context/theme";
-import Footer from "./components/footer/page";
-import Header from "./components/header/page";
+import { LoginModalContextProvider } from "./context/loginForm";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,11 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='fr'>
       <ThemeContextProvider>
-        <body>
-          <Header />
-          {children}
-          <Footer />
-        </body>
+        <LoginModalContextProvider>{children}</LoginModalContextProvider>
       </ThemeContextProvider>
     </html>
   );
