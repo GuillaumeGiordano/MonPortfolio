@@ -43,13 +43,13 @@ body {
   overflow: hidden;
 }
 
-section,
+/* section,
 nav {
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 div {
-  /* border: 1px solid red; */
-}
+  border: 1px solid red;
+} */
 
 .main {
   display: flex;
