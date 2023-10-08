@@ -1,29 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CardService.module.css";
 
-const CardService = ({ icone, service, slogan }) => {
+const CardService = ({ icone, slogan, competences, dataTechnos }) => {
+  const [isDataTechnos, setIsDataTechnos] = useState(true);
+  useEffect(() => {
+    const size = dataTechnos.length;
+
+    if (size === 0) {
+      setIsDataTechnos(false);
+    } else {
+      setIsDataTechnos(true);
+    }
+  }, []);
+
   return (
-    <div className={`${styles.card}`}>
+    <article className={`${styles.card}`}>
       <div className={`${styles.cardDetails}`}>
-        <div className={`${styles.cardImg}`}>
-          <img src={`/icones/${icone}`} alt='icone' className={`${styles.img}`}></img>
+        <div>
+          <div className={`${styles.cardImg}`}>
+            <img src={`/icones/${icone}`} alt='icone' className={`${styles.img}`}></img>
+          </div>
+          <h3 className={`${styles.slogan}`}>{slogan}</h3>
+          <div className={`${styles.competences}`}>{competences}</div>
         </div>
 
-        <h3 className={`${styles.textTitle}`}>{service}</h3>
-        <p className={`${styles.textBody}`}>{slogan}</p>
-        <h3 className={`${styles.textTitle}`}>Langages utilisés</h3>
-        <div className={`${styles.cardFooter}`}>
-          <img src='' alt='Tag' className={`${styles.cardTag}`}></img>
-          <img src='' alt='Tag' className={`${styles.cardTag}`}></img>
-          <img src='' alt='Tag' className={`${styles.cardTag}`}></img>
-          <img src='' alt='Tag' className={`${styles.cardTag}`}></img>
-          <img src='' alt='Tag' className={`${styles.cardTag}`}></img>
-          <img src='' alt='Tag' className={`${styles.cardTag}`}></img>
-          <img src='' alt='Tag' className={`${styles.cardTag}`}></img>
-        </div>
+        {isDataTechnos && (
+          <div className={`${styles.ctn}`}>
+            <h3 className={`${styles.textTitle}`}>Langages utilisés</h3>
+            <div className={`${styles.cardFooter}`}>
+              {dataTechnos.map((article, index) => (
+                <img
+                  key={index}
+                  src={`/icones/techno/${article}`}
+                  alt='Tag'
+                  className={`${styles.cardTag}`}></img>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
+
       <button className={`${styles.cardButton}`}>Ask Me</button>
-    </div>
+    </article>
   );
 };
 

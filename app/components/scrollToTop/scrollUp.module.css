@@ -1,31 +1,59 @@
 .scrollToTopButton {
   position: fixed;
-  z-index: 1000;
+  z-index: 1;
   bottom: 60px;
-  right: 20px;
-  padding: 10px;
-  padding-bottom: 6px;
-  background-color: var(--couleur-bleu);
+  right: 0;
+
+  height: 62px;
+  width: 62px;
+  background-color: var(--couleur-blanc);
   color: var(--couleur-noir);
+  box-shadow: 0 0 50px 20px var(--couleur-shadow);
   border: none;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
+  line-height: 1;
   cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
   transition: background-color 1s ease;
   animation: bounce_513 1s infinite;
 }
 
 .svg {
-  width: 30px;
-  height: 30px;
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  color: var(--couleur-blanc);
+  background-color: var(--couleur-gris);
+  padding: 4px;
+}
+
+.svg path {
   fill: var(--couleur-blanc);
 }
 
 .scrollToTopButton:hover .svg {
-  fill: var(--couleur-jaune);
-  animation: none;
+  background-color: var(--couleur-bleu);
 }
 
-@keyframes bounce_513 {
+.scrollToTopButton:hover .svg path {
+  animation: slide-in-side 0.5s both;
+}
+
+@keyframes slide-in-side {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* @keyframes bounce_513 {
   0%,
   100% {
     transform: translateY(-25%);
@@ -36,4 +64,4 @@
     transform: translateY(0);
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
-}
+} */

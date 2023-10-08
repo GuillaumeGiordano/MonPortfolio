@@ -1,6 +1,7 @@
 .container_mous {
-  position: relative;
-  top: 600px;
+  position: absolute;
+  top: 85%;
+  transform: translateY(50% - 100vh);
   z-index: 999;
   cursor: pointer;
 }

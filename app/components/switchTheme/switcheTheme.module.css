@@ -1,17 +1,20 @@
 .toggle {
+  z-index: 1000;
+
   position: fixed;
   top: 150px;
   right: 0;
+
   background-color: var(--couleur-blanc);
+  box-shadow: 0 0 50px 20px var(--couleur-shadow);
+  line-height: 1;
   width: 62px;
   height: 62px;
   border-radius: 5px 0 0 5px;
+
   display: grid;
   place-items: center;
   cursor: pointer;
-  box-shadow: 0 0 50px 20px var(--couleur-shadow);
-  line-height: 1;
-  z-index: 1;
 }
 
 .input {
@@ -22,7 +25,7 @@
   grid-column: 1 / 1;
   grid-row: 1 / 1;
   color: var(--couleur-blanc);
-  background-color: var(--couleur-noir);
+  background-color: var(--couleur-gris);
   padding: 4px;
 }
 

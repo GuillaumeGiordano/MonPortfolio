@@ -1,4 +1,5 @@
 .ctn {
+  height: 30px;
   padding-left: 10px;
   color: var(--couleur-jaune);
   display: flex;
