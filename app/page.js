@@ -12,7 +12,7 @@ import Social from "./components/social/page";
 import TextSlider from "./components/textSlider/page";
 import ScrollUp from "./components/scrollToTop/page";
 import ScrollToDown from "./components/scrollToDown/page";
-import BtnNormal from "./components/buttons/normal/page";
+import BtnNormal from "./components/buttons/btnNormal/page";
 // import Tab from "./components/tab/page";
 import ImageSlider from "./components/imageSlider/page";
 import CardScore from "./components/cards/cardScore/CardScore";

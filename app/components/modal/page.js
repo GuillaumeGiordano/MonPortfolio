@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import styles from "./LoginForm.module.css";
-import BtnNormal from "../buttons/normal/page";
+import BtnNormal from "../buttons/btnNormal/page";
 
 const LoginForm = ({ isOpen, toggleModal }) => {
   const handleCardClick = (e) => {
