@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 // STYLE
-import styles from "./TextSlider.module.css";
+import styles from "./Text.module.css";
 // FONCTION
 import generateRandomSpeed from "@/app/util/generateRandomSpeed";
 
