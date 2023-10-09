@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 // STYLE
 import styles from "./logo.module.css";

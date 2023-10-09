@@ -1,32 +1,28 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
+
 import React, { useEffect, useState } from "react";
+// STYLE
+import styles from "./page.module.css";
 // CONTEXTE
 import { useThemeContext } from "./context/theme";
 import { useLoginModalContext } from "./context/loginForm";
-
-// STYLE
-import styles from "./page.module.css";
 // COMPONENTS
-import Social from "./components/social/page";
-import TextSlider from "./components/textSlider/page";
-import ScrollUp from "./components/scrollToTop/page";
-import ScrollToDown from "./components/scrollToDown/page";
-import BtnNormal from "./components/buttons/btnNormal/page";
-// import Tab from "./components/tab/page";
-import ImageSlider from "./components/imageSlider/page";
-import CardScore from "./components/cards/cardScore/CardScore";
-import CardService from "./components/cards/CardService/page";
-import CardCoding from "./components/cards/cardCoding/page";
-import LoginForm from "./components/modal/page";
-// FUNCTION
-import scrollToSection from "./util/scrollToSection";
 import Footer from "./components/footer/page";
 import Header from "./components/header/page";
+import ScrollUp from "./components/buttons/scrollToTop/page";
+import LoginForm from "./components/elements/modal/page";
+import SectionRegular from "./components/sections/sectionRegular/page";
+import SectionHead from "./components/sections/sectionHead/page";
+import ImageSlider from "./components/elements/imageSlider/page";
+import CardCoding from "./components/cards/cardCoding/page";
+import CardScore from "./components/cards/cardScore/CardScore";
+import CardService from "./components/cards/CardService/page";
+import SloganText from "./components/elements/sloganText/page";
 
 export default function Home() {
   const { isLightTheme } = useThemeContext();
-  const { isOpen, toggleModal } = useLoginModalContext();
+  const { isOpen } = useLoginModalContext();
 
   // DISPLAY SCROLLBUTTON
   const [showButton, setShowButton] = useState(false);
@@ -54,7 +50,7 @@ export default function Home() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [showButton]);
 
   // const tabs = [
   //   {
@@ -71,10 +67,10 @@ export default function Home() {
   //   },
   // ];
 
-  // TEXTSLIDER
+  // DATA = TEXTSLIDER
   const wordToTypeAndErase = ["Guillaume.", "Développeur.", "Entrepreneur."];
 
-  // SERVICE 1 TECHNO
+  // DATA = SERVICE TECHNOS
   const serviceOne = [
     "html.png",
     "css.png",
@@ -88,8 +84,8 @@ export default function Home() {
   const serviceTwo = [];
   const serviceTree = ["php.png", "node.png", "express.png", "mongoDB.png", "mysql.png"];
 
-  // RANDOM TEXT FACT
-  const texts = [
+  // DATA = RANDOM TEXT FACT
+  const facts = [
     '0 I am jedi, "May the force be with YOU !"',
     '1 Best vilain, "Why are you sOooOOoo serious :)"',
     "2 Texte 3",
@@ -99,144 +95,96 @@ export default function Home() {
     "6 Texte 7",
     "7 Texte 8",
   ];
-  const [randomText, setRandomText] = useState("Click pour en savoir plus");
-  const [randomIndexText, setRandomIndexText] = useState(0);
-  const randomTextClick = () => {
-    const randomIndex = Math.floor(Math.random() * texts.length);
-    if (randomIndexText === randomIndex) {
-      return randomTextClick();
-    }
-    const selectedText = texts[randomIndex];
-    setRandomText(selectedText);
-    setRandomIndexText(randomIndex);
-  };
+  // DATA = RANDOM IMAGES
+  const imageToDisplay = ["/profil_001.jpg", "/profil_002.jpg", "/profil_003.png"];
 
   return (
     <body
       className={`${isLightTheme ? "dark" : "light"} ${isOpen ? "body__module" : ""}`}>
       <Header />
-      <LoginForm
-        isOpen={isOpen}
-        toggleModal={() => {
-          toggleModal();
-        }}
-      />
+      <LoginForm />
       <main className={`${styles.main}`}>
         {/* HEAD */}
-        <section className={`${styles.section} ${styles.head}`} id='head' data-id='head'>
-          <ScrollToDown />
-          <Social />
-          <div className={styles.head__info}>
-            <img src='/profil_002.jpg' alt='' className={styles.head__img}></img>
-
-            <div className={styles.head__details}>
-              <h1 className={styles.head__title}>
-                Salut, je suis
-                <TextSlider wordToTypeAndErase={wordToTypeAndErase} />
-              </h1>
-              <p className={styles.head__presentation}>
-                " J'aime développer, et vous allez adorer le résultat ! "
-              </p>
-              <div className={styles.head__nav}>
-                <BtnNormal
-                  libelle={"Mes Services"}
-                  onClick={() => scrollToSection("services")}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <SectionHead
+          sectionId={"head"}
+          sectionImage={"/profil_003.png"}
+          sectionSlogan={" J'aime développer, et vous allez adorer le résultat ! "}
+          wordToTypeAndErase={wordToTypeAndErase}></SectionHead>
 
         {/* ABOUT */}
-        <section
-          className={`${styles.section} ${styles.about}`}
-          id='about'
-          data-id='about'>
-          <h2 className={styles.section__titre}>About Me</h2>
-          <div className={styles.about__ctn}>
-            <div className={styles.about__body}>
-              {/* ELEM 1 : PRESENTATION*/}
-              <div className={`${styles.body__elem} ${styles.elem1}`}>
-                <h3>Un développeur web passionné !</h3>
-                <p>
-                  Ma passion pour le développement web commence en 2003 et m'a demandé un
-                  changement radical de cursus afin de pouvoir pleinement l'exploiter. Dès
-                  lors, je mis tout en oeuvre pour percer dans cette voie, tout en prenant
-                  du plaisir sur les divers projets développés. En Mai 2009, je décide de
-                  devenir développeur web indépendant après plusieurs postes en tant que
-                  développeur web « full-stack » réussis, qui me conforteront dans cette
-                  idée afin de toucher un plus large panel de domaines d'activités, voir
-                  du pays et conquérir le monde !
-                </p>
-                <p className={`${styles.section__citation} `}>
-                  "Les développeurs ne sont pas des créateurs de bugs, ce sont des
-                  chercheurs de solutions."{" "}
-                </p>
-              </div>
-              {/* ELEM 2 : IMAGE */}
-              <div className={`${styles.body__elem} ${styles.elem2}`}>
-                <ImageSlider wordToTypeAndErase={wordToTypeAndErase} />
-              </div>
-              {/* ELEM 3 : DIVERS */}
-              <div className={`${styles.body__elem} ${styles.elem3}`}>
-                <h3>Expérience en développement</h3>
-                <p>
-                  Mon expérience acquise au fil des projets me permet de mieux comprendre
-                  les attentes d'un client et de répondre précisement au besoin demandé en
-                  fonction du domaine d'activité. Du site vitrine au projet plus complexe,
-                  je vous propose une expertise et un développement web qui correspond à
-                  vos attentes & à vos besoins.
-                </p>
-                <h3>Mieux me connaitre</h3>
-                <CardCoding
-                  onClick={() => {
-                    randomTextClick();
-                  }}
-                  randomText={randomText}
-                />
-              </div>
+        <SectionRegular sectionTitle={"A Propos de moi"} sectionId={"about"}>
+          <div className={styles.about__body}>
+            {/* ELEM 1 : PRESENTATION*/}
+            <div className={`${styles.body__elem} ${styles.elem1}`}>
+              <h3>Un développeur web passionné !</h3>
+              <p>
+                Ma passion pour le développement web commence en 2003 et m'a demandé un
+                changement radical de cursus afin de pouvoir pleinement l'exploiter. Dès
+                lors, je mis tout en oeuvre pour percer dans cette voie, tout en prenant
+                du plaisir sur les divers projets développés. En Mai 2009, je décide de
+                devenir développeur web indépendant après plusieurs postes en tant que
+                développeur web « full-stack » réussis, qui me conforteront dans cette
+                idée afin de toucher un plus large panel de domaines d'activités, voir du
+                pays et conquérir le monde !
+              </p>
+
+              <SloganText
+                slogan={
+                  "Les développeurs ne sont pas des créateurs de bugs, ce sont des chercheurs de solutions."
+                }
+              />
             </div>
-            <div className={styles.about__footer}>
-              <CardScore
-                img={"./icones/code-daffichage.svg"}
-                score={"10"}
-                libelle={"Projects"}
-              />
-
-              <CardScore
-                img={"./icones/code-daffichage.svg"}
-                score={"10"}
-                libelle={"Expériences"}
-              />
-
-              <CardScore
-                img={"./icones/code-daffichage.svg"}
-                score={"10"}
-                libelle={"Diplômes"}
-              />
-
-              <CardScore
-                img={"./icones/code-daffichage.svg"}
-                score={"10"}
-                libelle={"Diplômes"}
-              />
+            {/* ELEM 2 : IMAGE */}
+            <div className={`${styles.body__elem} ${styles.elem2}`}>
+              <ImageSlider imageToDisplay={imageToDisplay} />
+            </div>
+            {/* ELEM 3 : DIVERS */}
+            <div className={`${styles.body__elem} ${styles.elem3}`}>
+              <h3>Expérience en développement</h3>
+              <p>
+                Mon expérience acquise au fil des projets me permet de mieux comprendre
+                les attentes d'un client et de répondre précisement au besoin demandé en
+                fonction du domaine d'activité. Du site vitrine au projet plus complexe,
+                je vous propose une expertise et un développement web qui correspond à vos
+                attentes & à vos besoins.
+              </p>
+              <h3>Mieux me connaitre</h3>
+              <CardCoding facts={facts} />
             </div>
           </div>
-        </section>
+          <div className={styles.about__footer}>
+            <CardScore
+              img={"./icones/code-daffichage.svg"}
+              score={"10"}
+              libelle={"Projects"}
+            />
+
+            <CardScore
+              img={"./icones/code-daffichage.svg"}
+              score={"10"}
+              libelle={"Expériences"}
+            />
+
+            <CardScore
+              img={"./icones/code-daffichage.svg"}
+              score={"10"}
+              libelle={"Diplômes"}
+            />
+
+            <CardScore
+              img={"./icones/code-daffichage.svg"}
+              score={"10"}
+              libelle={"Diplômes"}
+            />
+          </div>
+        </SectionRegular>
 
         {/* SERVICES */}
-        <section
-          className={`${styles.section} ${styles.services}`}
-          id='services'
-          data-id='services'>
-          <h2 className={styles.section__titre}>Mes Compétence</h2>
-          <p className={styles.section__citation}>
-            " Si tu peux le rêver, je peux le coder "
-          </p>
+        <SectionRegular sectionTitle={"Mes Services"} sectionId={"services"}>
+          <SloganText slogan={"Si tu peux le rêver, je peux le coder"} />
           <div className={styles.services__ctn}>
             <CardService
               icone={"css.svg"}
-              // titre={"Création de Sites Web Modernes"}
               slogan={"Transformez vos idées en sites web captivants !"}
               competences={
                 <ul className={`${styles.service__ul}`}>
@@ -265,7 +213,6 @@ export default function Home() {
             />
             <CardService
               icone={"creation-de-sites-web.svg"}
-              // titre={"Développement d'Applications Web Rapides"}
               slogan={"Modernisez vos sites web en toute simplicité !"}
               competences={
                 <ul className={`${styles.service__ul}`}>
@@ -298,7 +245,6 @@ export default function Home() {
             />
             <CardService
               icone={"api.svg"}
-              // titre={"Création d'Applications Web Sécurisées et Robustes"}
               slogan={"Sécurité et robustesse au cœur de chaque application web."}
               competences={
                 <ul className={`${styles.service__ul}`}>
@@ -328,31 +274,22 @@ export default function Home() {
               dataTechnos={serviceTree}
             />
           </div>
-        </section>
+        </SectionRegular>
 
         {/* PORTFOLIO */}
-        <section
-          className={`${styles.section} ${styles.services}`}
-          id='portfolio'
-          data-id='portfolio'>
-          <h2 className={styles.section__titre}>Portfolio</h2>
-          <p>filtre + cards</p>
-        </section>
+        <SectionRegular sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
+          <div>salut je suis un childreen</div>
+        </SectionRegular>
 
         {/* AVIS */}
-        <section className={`${styles.section} ${styles.avis}`} id='avis' data-id='avis'>
-          <h2 className={styles.section__titre}>Avis</h2>
-          <p>mettre un carrouselle</p>
-        </section>
+        <SectionRegular sectionTitle={"Les Avis"} sectionId={"avis"}>
+          <div>salut je suis un childreen</div>
+        </SectionRegular>
 
         {/* CONTACT */}
-        <section
-          className={`${styles.section} ${styles.services}`}
-          id='contact'
-          data-id='contact'>
-          <h2 className={styles.section__titre}>Say hello !</h2>
-          <p>une carte + formulaire de contact</p>
-        </section>
+        <SectionRegular sectionTitle={"Me Contacter"} sectionId={"contact"}>
+          <div>salut je suis un childreen</div>
+        </SectionRegular>
 
         {/* Bouton pour remonter en haut */}
         {showButton && <ScrollUp />}

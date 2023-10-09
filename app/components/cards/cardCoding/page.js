@@ -1,7 +1,24 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import styles from "./CardCoding.module.css";
 
-const CardCoding = ({ onClick, randomText }) => {
+const CardCoding = ({ facts }) => {
+  const [randomText, setRandomText] = useState("Click pour en savoir plus");
+  const [randomIndexText, setRandomIndexText] = useState(0);
+
+  const handleRandomTextClick = () => {
+    const valueMaxArray = facts.length;
+    const randomIndex = Math.floor(Math.random() * valueMaxArray);
+
+    if (randomIndexText === randomIndex) {
+      return handleRandomTextClick();
+    }
+
+    setRandomText(facts[randomIndex]);
+    setRandomIndexText(randomIndex);
+  };
+
   return (
     <div className={`${styles.card}`}>
       <div className={`${styles.header}`}>
@@ -22,7 +39,7 @@ const CardCoding = ({ onClick, randomText }) => {
           className={`${styles.button}`}
           onClick={() => {
             {
-              onClick();
+              handleRandomTextClick();
             }
           }}>
           <img

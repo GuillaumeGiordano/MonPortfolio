@@ -43,19 +43,26 @@ body {
   overflow: hidden;
 }
 
-/* section,
-nav {
-  border: 1px solid black;
-}
-div {
-  border: 1px solid red;
-} */
-
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* .section {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+section,
+nav {
+  border: 1px solid black;
+}
+div {
+  border: 1px solid red;
 }
 
 .light {

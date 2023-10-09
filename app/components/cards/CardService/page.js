@@ -5,6 +5,7 @@ import styles from "./CardService.module.css";
 
 const CardService = ({ icone, slogan, competences, dataTechnos }) => {
   const [isDataTechnos, setIsDataTechnos] = useState(true);
+
   useEffect(() => {
     const size = dataTechnos.length;
 
@@ -13,7 +14,7 @@ const CardService = ({ icone, slogan, competences, dataTechnos }) => {
     } else {
       setIsDataTechnos(true);
     }
-  }, []);
+  }, [dataTechnos]);
 
   return (
     <article className={`${styles.card}`}>

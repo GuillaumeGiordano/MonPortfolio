@@ -1,9 +1,10 @@
 "use client";
+
 import React from "react";
-import styles from "./switcheTheme.module.css";
+import styles from "./ButtonSwitchTheme.module.css";
 import { useThemeContext } from "@/app/context/theme";
 
-const SwitchTheme = () => {
+const ButtonSwitchTheme = () => {
   const { isLightTheme, toggleTheme } = useThemeContext();
 
   return (
@@ -47,4 +48,4 @@ const SwitchTheme = () => {
   );
 };
 
-export default SwitchTheme;
+export default ButtonSwitchTheme;

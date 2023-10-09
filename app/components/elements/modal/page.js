@@ -2,9 +2,12 @@
 
 import React, { useEffect } from "react";
 import styles from "./LoginForm.module.css";
-import BtnNormal from "../buttons/btnNormal/page";
+import BtnNormal from "../../buttons/buttonRegular/page";
+import { useLoginModalContext } from "@/app/context/loginForm";
 
-const LoginForm = ({ isOpen, toggleModal }) => {
+const LoginForm = () => {
+  const { isOpen, toggleModal } = useLoginModalContext();
+
   const handleCardClick = (e) => {
     // Empêcher la propagation de l'événement vers le conteneur parent (la modal)
     e.stopPropagation();

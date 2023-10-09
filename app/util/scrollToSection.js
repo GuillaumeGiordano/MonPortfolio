@@ -11,15 +11,15 @@ const scrollToSection = (sectionId) => {
     });
 
     // Mettez à jour la classe active sur les liens de navigation
-    const navLinks = document.querySelectorAll("nav a");
-    navLinks.forEach((link) => {
-      const linkId = link.getAttribute("href").substring(1); // Supprimez le "#"
-      if (linkId === sectionId) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
-    });
+    // const navLinks = document.querySelectorAll("nav a");
+    // navLinks.forEach((link) => {
+    //   const linkId = link.getAttribute("href").substring(1); // Supprimez le "#"
+    //   if (linkId === sectionId) {
+    //     link.classList.add("active");
+    //   } else {
+    //     link.classList.remove("active");
+    //   }
+    // });
   }
 };
 
