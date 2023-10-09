@@ -1,0 +1,69 @@
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-height: 960px;
+  justify-content: center;
+  background-image: url("/background002.png");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--couleur-bleu);
+  background-blend-mode: color-burn;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionBody {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+}
+
+.SectionImage {
+  width: 40%;
+  min-width: 230px;
+  max-width: 450px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 5px solid var(--couleur-blanc);
+  object-fit: cover;
+}
+
+.presentation {
+  width: 60%;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 50px;
+}
+
+.title {
+  color: var(--couleur-blanc);
+  font-size: 1.9rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.slogan {
+  font-family: "Satisfy", cursive;
+  font-size: 2rem;
+  width: 100%;
+  color: var(--couleur-blanc);
+  margin-left: 30px;
+}
+
+.nav {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}

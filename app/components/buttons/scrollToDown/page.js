@@ -1,3 +1,6 @@
+"use client";
+
+// STYLES
 import styles from "./scrollToDown.module.css";
 // UTIL
 import scrollPosition from "@/app/util/scrollPosition";

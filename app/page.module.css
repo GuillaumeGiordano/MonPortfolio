@@ -3,117 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 }
 
-.section {
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.section__titre {
-  width: 100%;
-  height: 60px;
-  font-size: 1.8rem;
-  text-align: center;
-  border-bottom: 4px solid var(--couleur-blanc);
-}
-
-.section__citation {
-  width: 100%;
-  font-family: "Satisfy", cursive;
-  font-size: 1.6rem;
-  margin-top: 15px;
-  text-align: center;
-}
-
-/* ****************************************************  SECTION ==> HEAD*/
-.head {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  max-height: 960px;
-  justify-content: center;
-  background-image: url("/background002.png");
-  background-size: cover;
-  background-position: center;
-  background-color: var(--couleur-bleu);
-  background-blend-mode: color-burn;
-  align-items: center;
-}
-
-.head__info {
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  gap: 15px;
-}
-
-.head__img {
-  width: 40%;
-  min-width: 230px;
-  max-width: 450px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  border: 5px solid var(--couleur-blanc);
-  object-fit: cover;
-}
-
-.head__details {
-  width: 60%;
-  min-width: 350px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 50px;
-}
-
-.head__title {
-  color: var(--couleur-blanc);
-  font-size: 1.9rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.head__presentation {
-  font-family: "Satisfy", cursive;
-  font-size: 2rem;
-  width: 100%;
-  color: var(--couleur-blanc);
-  margin-left: 30px;
-}
-
-.head__nav {
-  width: 100%;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-}
-
-/* ****************************************************  SECTION ==> ABOUT ME */
-.about {
-  width: 70%;
-  height: fit-content;
-  margin: auto;
-}
-
-.about__ctn {
-  /* width: 100%;
-  height: 100%; */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
+/* ABOUT */
 .about__body {
+  width: 100%;
   height: 100%;
-
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -162,6 +58,7 @@
 }
 
 .about__footer {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -169,13 +66,7 @@
   gap: 15px;
 }
 
-/* ****************************************************  SECTION ==> SERVISES */
-
-.services {
-  width: 70%;
-  margin: auto;
-}
-
+/* SERVICES */
 .services__ctn {
   width: 100%;
   display: flex;
@@ -194,29 +85,12 @@
   padding: 8px 0;
 }
 
-/* Styles pour les ordinateurs de bureau (largeur minimale de 1024 pixels) */
-@media (min-width: 1024px) {
-  /* Ajoutez vos styles CSS pour les ordinateurs de bureau ici */
+/* @media (min-width: 1024px) {
 }
 
-/* Styles pour les tablettes (largeur minimale de 768 pixels et maximale de 1023 pixels) */
 @media (min-width: 768px) and (max-width: 1023px) {
-  /* Ajoutez vos styles CSS pour les tablettes ici */
 }
 
-/* Styles pour les smartphones (largeur maximale de 767 pixels) */
 @media (max-width: 767px) {
-  .section {
-    width: 100%;
-  }
-  .section__citation {
-    font-size: 1.2em;
-  }
-  .head__info {
-    width: 100%;
-  }
-  .head__title {
-    font-size: 1.4rem;
-    flex-direction: column;
-  }
-}
+
+} */

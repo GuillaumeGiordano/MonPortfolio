@@ -3,18 +3,16 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // STYLE
-import styles from "./header.module.css";
-// CONTEXTE
+import styles from "./Header.module.css";
+// CONTEXTES
 import { useThemeContext } from "@/app/context/theme";
 import { useLoginModalContext } from "@/app/context/loginForm";
+// COMPONENTS
+import ScrollProgressBar from "../elements/scrollProgressBar/page";
+import Logo from "../elements/logo/page";
+import SwitchTheme from "../buttons/switchTheme/page";
 
-// COMPONENT
-import ScrollProgressBar from "../scrollProgressBar/page";
-import Logo from "../logo/page";
-import SwitchTheme from "../switchTheme/page";
-
-// FUNCTION
-// import scrollToSection from "@/app/util/scrollToSection";
+import scrollToSection from "@/app/util/scrollToSection";
 
 const Header = () => {
   const { isLightTheme } = useThemeContext();
@@ -37,14 +35,12 @@ const Header = () => {
         setScrolling(false);
       }
     };
-
     window.addEventListener("scroll", handleScrollForScrollUpButton);
-
     // Nettoyez l'écouteur d'événement lorsque le composant est démonté
     return () => {
       window.removeEventListener("scroll", handleScrollForScrollUpButton);
     };
-  }, []);
+  }, [scrolling]);
 
   // LINK ACTIVE SUIVANT SCROLL
   useEffect(() => {
@@ -83,21 +79,11 @@ const Header = () => {
   };
 
   const handleClickToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-
-    if (section) {
-      const offset = 60; // Ajoutez le décalage de 60 pixels
-      const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: sectionPosition - offset,
-        behavior: "smooth",
-      });
-
-      handleClickBurger();
-    }
+    scrollToSection(sectionId);
+    handleClickBurger();
   };
 
-  const essai = () => {
+  const handleClickConnexion = () => {
     handleClickBurger();
     toggleModal();
   };
@@ -191,8 +177,7 @@ const Header = () => {
               } ${activeSection === "connexion" ? styles.active : ""}`}
               href='#'
               onClick={() => {
-                // toggleModal();
-                essai();
+                handleClickConnexion();
               }}>
               Connexion
             </button>
