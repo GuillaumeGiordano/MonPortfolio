@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // STYLE
-import styles from "./Header.module.css";
+import styles from "./Header2.module.css";
 // CONTEXTES
 import { useThemeContext } from "@/app/context/theme";
 import { useLoginModalContext } from "@/app/context/loginForm";
