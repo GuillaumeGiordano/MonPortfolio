@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 // STYLES
 import styles from "./SectionHead.module.css";
 // COMPONENTS
@@ -15,10 +16,13 @@ const SectionHead = ({ sectionId, sectionImage, sectionSlogan, wordToTypeAndEras
       <ScrollToDown />
       <Social />
       <div className={styles.sectionBody}>
-        <img
+        <Image
           src={sectionImage}
           alt='Image de profil'
-          className={styles.SectionImage}></img>
+          className={styles.SectionImage}
+          width={450}
+          height={450}
+        />
 
         <div className={styles.presentation}>
           <h1 className={styles.title}>

@@ -2,17 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./CardService.module.css";
+import Image from "next/image";
 
 const CardService = ({ icone, slogan, competences, dataTechnos }) => {
-  const [isDataTechnos, setIsDataTechnos] = useState(true);
+  const [isDataTechnos, setIsDataTechnos] = useState(false);
 
   useEffect(() => {
     const size = dataTechnos.length;
 
-    if (size === 0) {
-      setIsDataTechnos(false);
-    } else {
+    if (dataTechnos && size > 0) {
       setIsDataTechnos(true);
+    } else {
+      setIsDataTechnos(false);
     }
   }, [dataTechnos]);
 
@@ -21,7 +22,13 @@ const CardService = ({ icone, slogan, competences, dataTechnos }) => {
       <div className={`${styles.cardDetails}`}>
         <div>
           <div className={`${styles.cardImg}`}>
-            <img src={`/icones/${icone}`} alt='icone' className={`${styles.img}`}></img>
+            <Image
+              src={`/icones/${icone}`}
+              alt='icone'
+              className={`${styles.img}`}
+              width={90}
+              height={90}
+            />
           </div>
           <h3 className={`${styles.slogan}`}>{slogan}</h3>
           <div className={`${styles.competences}`}>{competences}</div>
@@ -32,11 +39,11 @@ const CardService = ({ icone, slogan, competences, dataTechnos }) => {
             <h3 className={`${styles.textTitle}`}>Langages utilisés</h3>
             <div className={`${styles.cardFooter}`}>
               {dataTechnos.map((article, index) => (
-                <img
+                <image
                   key={index}
                   src={`/icones/techno/${article}`}
                   alt='Tag'
-                  className={`${styles.cardTag}`}></img>
+                  className={`${styles.cardTag}`}></image>
               ))}
             </div>
           </div>

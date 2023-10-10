@@ -24,7 +24,8 @@
 }
 
 .cardImg {
-  height: 90px;
+  width: 90px;
+  height: auto;
   border: 3px solid var(--couleur-blanc);
   aspect-ratio: 1/1;
   border-radius: 50%;

@@ -26,6 +26,7 @@
 
 .SectionImage {
   width: 40%;
+  height: auto;
   min-width: 230px;
   max-width: 450px;
   aspect-ratio: 1/1;
@@ -58,7 +59,6 @@
   font-size: 2rem;
   width: 100%;
   color: var(--couleur-blanc);
-  margin-left: 30px;
 }
 
 .nav {
