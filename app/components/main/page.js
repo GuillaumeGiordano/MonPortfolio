@@ -12,6 +12,8 @@ import CardCoding from "../cards/cardCoding/page";
 import CardScore from "../cards/cardScore/CardScore";
 import CardService from "../cards/CardService/page";
 import ScrollUp from "../buttons/scrollToTop/page";
+import Collapsible from "../elements/Collapsible/page";
+import { dataService } from "@/app/data/dataServices";
 
 const Main = () => {
   // DISPLAY SCROLLBUTTON
@@ -72,6 +74,8 @@ const Main = () => {
   ];
   // DATA = RANDOM IMAGES
   const imageToDisplay = ["/profil_001.jpg", "/profil_002.jpg", "/profil_003.png"];
+
+  console.log(dataService);
 
   return (
     <main className={`${styles.main}`}>
@@ -153,97 +157,8 @@ const Main = () => {
       {/* SERVICES */}
       <SectionRegular sectionTitle={"Mes Services"} sectionId={"services"}>
         <SloganText slogan={' " Si tu peux le rêver, je peux le coder. " '} />
-        <div className={styles.services__ctn}>
-          <CardService
-            icone={"css.svg"}
-            slogan={"Transformez vos idées en sites web captivants !"}
-            competences={
-              <ul className={`${styles.service__ul}`}>
-                <li className={`${styles.service__li}`}>
-                  Conception Visuelle : Je rend votre site web incroyable et attrayant.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Interactivité : J'ajoute des éléments interactifs pour que les visiteurs
-                  puissent cliquer et interagir avec votre site.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Adaptabilité : Votre site fonctionne bien sur tous les types
-                  d'appareils, ordinateurs, tablettes et téléphones.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Optimisation des Performances : Je veille à ce que votre site se charge
-                  rapidement, sans faire attendre les visiteurs.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Facilité de Navigation : J'organise votre site pour qu'il soit facile à
-                  parcourir et à trouver ce que les utilisateurs recherchent.
-                </li>
-              </ul>
-            }
-            dataTechnos={serviceOne}
-          />
-          <CardService
-            icone={"creation-de-sites-web.svg"}
-            slogan={"Modernisez vos sites web en toute simplicité !"}
-            competences={
-              <ul className={`${styles.service__ul}`}>
-                <li className={`${styles.service__li}`}>
-                  Analyse de Site Web : J'examine votre site web pour identifier les
-                  problèmes et les améliorations possibles.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Migration de Plateformes : Si nécessaire, je déplaçe votre site vers une
-                  nouvelle technologie pour le maintenir à jour.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Mise à Niveau de Versions : Je actualise les logiciels et bibliothèques
-                  de votre site pour qu'il fonctionne avec les dernières versions.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Sauvegarde et Récupération de Données : Je met en place des systèmes de
-                  sauvegarde pour protéger vos données et assurer une récupération rapide
-                  en cas de problème.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Sécurité et Mise à Niveau des Protocoles : Je renforçe la sécurité de
-                  votre site avec des mesures de protection et des protocoles modernes
-                  pour protéger vos données.
-                </li>
-              </ul>
-            }
-            dataTechnos={serviceTwo}
-          />
-          <CardService
-            icone={"api.svg"}
-            slogan={"Sécurité et robustesse au cœur de chaque application web."}
-            competences={
-              <ul className={`${styles.service__ul}`}>
-                <li className={`${styles.service__li}`}>
-                  Serveurs et Bases de Données : Je met en place l'infrastructure
-                  nécessaire pour faire fonctionner votre application et j'assure la
-                  gestion de vos données.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Sécurité : Je protége votre application contre les pirates informatiques
-                  et contrôle qui y a accès.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  API Fiables : je crée des "routes" pour que votre application communique
-                  correctement entre ses différentes parties.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Sauvegarde des Données : Je met en place des systèmes de sauvegarde pour
-                  éviter la perte de données précieuses.
-                </li>
-                <li className={`${styles.service__li}`}>
-                  Maintenance et Support : Je suis là pour résoudre les problèmes et
-                  assurer le bon fonctionnement continu de votre application.
-                </li>
-              </ul>
-            }
-            dataTechnos={serviceTree}
-          />
-        </div>
+        {dataService &&
+          dataService.map((item, index) => <Collapsible key={index} data={item} />)}
       </SectionRegular>
 
       {/* PORTFOLIO */}

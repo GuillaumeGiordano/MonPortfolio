@@ -1,0 +1,64 @@
+.carousel {
+  border: 1px solid black;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slides {
+  border: 1px solid red;
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ca sera ma carte ! */
+.slide {
+  display: none;
+  opacity: 0;
+  flex: 0 0 100%;
+  padding: 20px;
+}
+
+.slide.active {
+  display: block;
+  opacity: 1;
+  animation: myAnimation 1s ease-in-out;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  height: 100%;
+  width: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.prevButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
+}
+
+@keyframes myAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

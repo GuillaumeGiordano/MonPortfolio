@@ -1,0 +1,55 @@
+.collapsible {
+  border: 1px solid #ccc;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--couleur-gris);
+  border-radius: 5px;
+  color: var(--couleur-blanc);
+  padding: 10px;
+}
+
+.iconOpen,
+.iconClosed {
+  font-size: 1.5rem;
+}
+
+.content {
+  display: none;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.collapsible.open .content {
+  display: block;
+}
+
+.img {
+  height: 60px;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  height: 40px;
+  width: 40px;
+}
