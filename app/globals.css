@@ -42,13 +42,6 @@ body {
   overflow: hidden;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 /* section,
 nav {
   border: 1px solid black;
