@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./CardCoding.module.css";
+import Image from "next/image";
 
 const CardCoding = ({ facts }) => {
   const [randomText, setRandomText] = useState("Click pour en savoir plus");
@@ -42,10 +43,13 @@ const CardCoding = ({ facts }) => {
               handleRandomTextClick();
             }
           }}>
-          <image
+          <Image
             src='/icones/rafraichir.svg'
             alt='icone'
-            className={`${styles.img}`}></image>
+            className={`${styles.img}`}
+            width={19}
+            height={19}
+          />
         </button>
       </div>
 

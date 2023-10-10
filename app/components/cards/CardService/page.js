@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./CardService.module.css";
+import Image from "next/image";
 
 const CardService = ({ icone, slogan, competences, dataTechnos }) => {
   const [isDataTechnos, setIsDataTechnos] = useState(false);
@@ -21,10 +22,13 @@ const CardService = ({ icone, slogan, competences, dataTechnos }) => {
       <div className={`${styles.cardDetails}`}>
         <div>
           <div className={`${styles.cardImg}`}>
-            <image
+            <Image
               src={`/icones/${icone}`}
               alt='icone'
-              className={`${styles.img}`}></image>
+              className={`${styles.img}`}
+              width={90}
+              height={90}
+            />
           </div>
           <h3 className={`${styles.slogan}`}>{slogan}</h3>
           <div className={`${styles.competences}`}>{competences}</div>

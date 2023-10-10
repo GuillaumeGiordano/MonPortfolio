@@ -41,9 +41,9 @@
 }
 
 .card__img {
-  height: 52px;
-  aspect-ratio: 1/1;
-  margin-left: 10px;
+  height: 42px;
+  width: 42;
+  margin: 0 10px;
 }
 
 .card__score {
