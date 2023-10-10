@@ -53,7 +53,7 @@ export default function TypingAndErasing({ wordToTypeAndErase }) {
     return () => {
       clearInterval(typingInterval);
     };
-  }, [text, currentIndex, currentTextIndex]);
+  }, [text, currentIndex, currentTextIndex, wordToTypeAndErase, isTyping]);
 
   return (
     <div className={styles.ctn}>

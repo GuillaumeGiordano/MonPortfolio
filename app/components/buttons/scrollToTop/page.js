@@ -1,26 +1,21 @@
 "use client";
 
 // STYLE
-import { useState } from "react";
+// import { useState } from "react";
 import styles from "./scrollUp.module.css";
 // UTIL
-import scrollPosition from "@/app/util/scrollPosition";
+import scrollToSection from "@/app/util/scrollToSection";
 
 const ScrollUp = () => {
-  const [buttonClicked, setButtonClicked] = useState(false);
+  const handleClick = () => {
+    scrollToSection("head");
+  };
 
   return (
     <button
-      className={`${styles.scrollToTopButton} ${
-        buttonClicked ? styles.clickedButton : ""
-      }`}
+      className={`${styles.scrollToTopButton} `}
       onClick={() => {
-        setButtonClicked(true); // Mettre à jour l'état du bouton cliqué
-        scrollPosition(0); // Appel de la fonction scrollPosition pour faire défiler vers le haut (0 pixels)
-        // Réinitialisez le bouton cliqué après un court délai
-        setTimeout(() => {
-          setButtonClicked(false);
-        }, 1000);
+        handleClick();
       }}>
       <svg
         xmlns='http://www.w3.org/2000/svg'

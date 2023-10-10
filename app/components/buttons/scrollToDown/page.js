@@ -1,16 +1,21 @@
 "use client";
 
+import { useEffect } from "react";
 // STYLES
 import styles from "./scrollToDown.module.css";
 // UTIL
-import scrollPosition from "@/app/util/scrollPosition";
+import scrollToSection from "@/app/util/scrollToSection";
 
 const ScrollToDown = () => {
+  const handleClick = () => {
+    scrollToSection("about");
+  };
+
   return (
     <div
       className={styles.container_mous}
       onClick={() => {
-        scrollPosition(900);
+        handleClick();
       }}>
       <span className={styles.mouse_btn}>
         <span className={styles.mouse_scroll}></span>

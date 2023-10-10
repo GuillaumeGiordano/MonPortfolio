@@ -5,7 +5,7 @@ const CardScore = ({ img, score, libelle }) => {
   return (
     <div className={styles.card}>
       <div className={styles.bg}>
-        <img src={img} alt='icone' className={styles.card__img}></img>
+        <image src={img} alt='icone' className={styles.card__img}></image>
         <div className={styles.card__info}>
           <div className={styles.card__score}>{score}</div>
           <div className={styles.card__libelle}>{libelle}</div>

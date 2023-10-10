@@ -6,24 +6,25 @@ import styles from "./ImgSlider.module.css";
 
 export default function ImageSlider({ imageToDisplay }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [imgPath, setImgPath] = useState(imageToDisplay[currentImageIndex]);
+  const [imgPath, setImgPath] = useState("");
 
   useEffect(() => {
     const imgInterval = setInterval(() => {
       const valueMaxArray = imageToDisplay.length;
-
-      setImgPath(imageToDisplay[currentImageIndex]);
-      setCurrentImageIndex((currentImageIndex + 1) % valueMaxArray);
+      if (currentImageIndex && valueMaxArray >= 0) {
+        setImgPath(imageToDisplay[currentImageIndex]);
+        setCurrentImageIndex((currentImageIndex + 1) % valueMaxArray);
+      }
     }, 3000);
 
     return () => {
       clearInterval(imgInterval);
     };
-  }, [currentImageIndex]);
+  }, [currentImageIndex, imageToDisplay]);
 
   return (
     <div className={styles.ctn}>
-      <img src={imgPath} alt='' className={styles.img}></img>
+      <image src={imgPath} alt='' className={styles.img}></image>
     </div>
   );
 }

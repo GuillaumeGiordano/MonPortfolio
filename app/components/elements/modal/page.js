@@ -13,6 +13,7 @@ const LoginForm = () => {
     e.stopPropagation();
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleEscapeKey = (e) => {
     if (e.key === "Escape") {
       toggleModal();
@@ -24,7 +25,7 @@ const LoginForm = () => {
     return () => {
       window.removeEventListener("keydown", handleEscapeKey);
     };
-  }, []);
+  }, [handleEscapeKey]);
 
   return (
     <>

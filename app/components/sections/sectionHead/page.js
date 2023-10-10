@@ -15,10 +15,10 @@ const SectionHead = ({ sectionId, sectionImage, sectionSlogan, wordToTypeAndEras
       <ScrollToDown />
       <Social />
       <div className={styles.sectionBody}>
-        <img
+        <image
           src={sectionImage}
           alt='Image de profil'
-          className={styles.SectionImage}></img>
+          className={styles.SectionImage}></image>
 
         <div className={styles.presentation}>
           <h1 className={styles.title}>

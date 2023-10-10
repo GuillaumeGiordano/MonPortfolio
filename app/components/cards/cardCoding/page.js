@@ -42,10 +42,10 @@ const CardCoding = ({ facts }) => {
               handleRandomTextClick();
             }
           }}>
-          <img
+          <image
             src='/icones/rafraichir.svg'
-            alt='icone rafraichir'
-            className={`${styles.img}`}></img>
+            alt='icone'
+            className={`${styles.img}`}></image>
         </button>
       </div>
 
