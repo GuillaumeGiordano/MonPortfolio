@@ -107,7 +107,7 @@ export default function Home() {
         {/* HEAD */}
         <SectionHead
           sectionId={"head"}
-          sectionImage={"/profil_003.png"}
+          sectionImage={"/profil_002.jpg"}
           sectionSlogan={" J'aime développer, et vous allez adorer le résultat ! "}
           wordToTypeAndErase={wordToTypeAndErase}></SectionHead>
 
@@ -118,14 +118,15 @@ export default function Home() {
             <div className={`${styles.body__elem} ${styles.elem1}`}>
               <h3>Un développeur web passionné !</h3>
               <p>
-                Ma passion pour le développement web commence en 2003 et m'a demandé un
-                changement radical de cursus afin de pouvoir pleinement l'exploiter. Dès
-                lors, je mis tout en oeuvre pour percer dans cette voie, tout en prenant
-                du plaisir sur les divers projets développés. En Mai 2009, je décide de
-                devenir développeur web indépendant après plusieurs postes en tant que
-                développeur web « full-stack » réussis, qui me conforteront dans cette
-                idée afin de toucher un plus large panel de domaines d'activités, voir du
-                pays et conquérir le monde !
+                Ma reconversion professionnelle en tant que Développeur Web découle de ma
+                passion constante pour la technologie et mon désir d'apporter des
+                solutions innovantes. Avec détermination, j'ai débuté mon apprentissage en
+                commencant par les langages de bases tels que l'HTML, CSS, PHP et
+                JavaScript. J'ai également eu l'opportunité, dans ma formation, de me
+                familiariser avec des frameworks tel que React. Mon expérience antérieure
+                m'a doté d'une approche analytique et méticuleuse, des compétences qui
+                s'avèrent précieuses dans la résolution de problèmes techniques et
+                l'optimisation des performances.
               </p>
 
               <SloganText
@@ -142,11 +143,11 @@ export default function Home() {
             <div className={`${styles.body__elem} ${styles.elem3}`}>
               <h3>Expérience en développement</h3>
               <p>
-                Mon expérience acquise au fil des projets me permet de mieux comprendre
-                les attentes d'un client et de répondre précisement au besoin demandé en
-                fonction du domaine d'activité. Du site vitrine au projet plus complexe,
-                je vous propose une expertise et un développement web qui correspond à vos
-                attentes & à vos besoins.
+                Mon expérience acquise, en tant que chef de projet, me permet de mieux
+                comprendre les attentes d'un client et de répondre précisement au besoin
+                demandé en fonction du domaine d'activité. Du site vitrine au projet plus
+                complexe, je vous propose une expertise et un développement web qui
+                correspond à vos attentes et à vos besoins.
               </p>
               <h3>Mieux me connaitre</h3>
               <CardCoding facts={facts} />
@@ -180,7 +181,7 @@ export default function Home() {
         </SectionRegular>
 
         {/* SERVICES */}
-        <SectionRegular sectionTitle={"Mes Services"} sectionId={"services"}>
+        {/* <SectionRegular sectionTitle={"Mes Services"} sectionId={"services"}>
           <SloganText slogan={"Si tu peux le rêver, je peux le coder"} />
           <div className={styles.services__ctn}>
             <CardService
@@ -274,22 +275,22 @@ export default function Home() {
               dataTechnos={serviceTree}
             />
           </div>
-        </SectionRegular>
+        </SectionRegular> */}
 
         {/* PORTFOLIO */}
-        <SectionRegular sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
+        {/* <SectionRegular sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
           <div>salut je suis un childreen</div>
-        </SectionRegular>
+        </SectionRegular> */}
 
         {/* AVIS */}
-        <SectionRegular sectionTitle={"Les Avis"} sectionId={"avis"}>
+        {/* <SectionRegular sectionTitle={"Les Avis"} sectionId={"avis"}>
           <div>salut je suis un childreen</div>
-        </SectionRegular>
+        </SectionRegular> */}
 
         {/* CONTACT */}
-        <SectionRegular sectionTitle={"Me Contacter"} sectionId={"contact"}>
+        {/* <SectionRegular sectionTitle={"Me Contacter"} sectionId={"contact"}>
           <div>salut je suis un childreen</div>
-        </SectionRegular>
+        </SectionRegular> */}
 
         {/* Bouton pour remonter en haut */}
         {showButton && <ScrollUp />}
