@@ -67,7 +67,7 @@ const Main = () => {
 
   // ABOUT
   const aboutItem1 = (
-    <>
+    <div className={`${styles.aboutArticle}`}>
       <h3 className={`${styles.titre}`}>Un développeur web passionné !</h3>
       <p className={`${styles.text}`}>
         Ma reconversion professionnelle en tant que Développeur Web découle de ma passion
@@ -85,7 +85,7 @@ const Main = () => {
           ' " Les développeurs ne sont pas des créateurs de bugs, ce sont des chercheurs de solutions. " '
         }
       />
-    </>
+    </div>
   );
   const aboutItem2 = (
     <>
@@ -93,7 +93,7 @@ const Main = () => {
     </>
   );
   const aboutItem3 = (
-    <>
+    <div className={`${styles.aboutArticle}`}>
       <h3 className={`${styles.titre}`}>Expérience en développement</h3>
       <p className={`${styles.text}`}>
         Mon expérience acquise, en tant que chef de projet, me permet de mieux comprendre
@@ -104,7 +104,7 @@ const Main = () => {
       </p>
       <h3 className={`${styles.titre}`}>Mieux me connaitre</h3>
       <CardCoding facts={dataRandomText} />
-    </>
+    </div>
   );
 
   return (
@@ -134,6 +134,13 @@ const Main = () => {
               />
             ))}
         </ArticleOneColum>
+        <Image
+          className={`${styles.deco} ${styles.aboutDeco}`}
+          src={"/background004.png"}
+          alt='Decoration'
+          width={500}
+          height={500}
+        />
       </SectionRegular>
 
       {/* SERVICES */}
@@ -163,6 +170,14 @@ const Main = () => {
               />
             ))}
         </ArticleOneColum>
+
+        <Image
+          className={`${styles.deco} ${styles.serviceDeco}`}
+          src={"/background003.png"}
+          alt='Decoration'
+          width={500}
+          height={500}
+        />
       </SectionRegular>
 
       {/* PORTFOLIO */}

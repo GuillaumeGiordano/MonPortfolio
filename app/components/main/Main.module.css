@@ -7,15 +7,11 @@
 }
 
 /* ABOUT */
-.teqsdfgdsxt {
-  border: 1px solid var(--couleur-gris);
-  border-radius: 5px;
-  width: 90%;
-  height: 80px;
-  margin: 30px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.aboutArticle {
+  background-color: var(--couleur-bleu);
+  border-radius: 10px;
+  border: 3px solid var(--couleur-blanc);
+  color: var(--couleur-blanc);
 }
 
 .titre {
@@ -46,6 +42,26 @@
 
 .service__li {
   padding: 8px 0;
+}
+
+.deco {
+  z-index: -1;
+  position: absolute;
+}
+
+.aboutDeco {
+  width: auto;
+  height: 600px;
+  transform: rotate(180deg);
+  right: 0;
+  bottom: 0;
+}
+
+.serviceDeco {
+  width: auto;
+  height: 650px;
+  right: 0;
+  bottom: 0;
 }
 
 @media (max-width: 1400px) {

@@ -1,5 +1,6 @@
 .section {
-  gap: 20px;
+  position: relative;
+  gap: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +9,8 @@
 
 .sectionHead {
   width: 100%;
-  height: 100px;
+  height: 120px;
+  border-top: 4px solid var(--couleur-blanc);
   border-bottom: 4px solid var(--couleur-blanc);
   display: flex;
   flex-direction: column;
@@ -28,8 +30,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 20px;
-  margin: 20px 0;
+  gap: 10px;
+  margin: 10px 0;
 }
 
 @media (max-width: 1400px) {
