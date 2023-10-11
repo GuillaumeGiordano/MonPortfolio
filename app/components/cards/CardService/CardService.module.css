@@ -1,8 +1,4 @@
 .card {
-  width: 33%;
-  min-width: 300px;
-  max-width: 350px;
-  height: 1050px;
   border-radius: 20px;
   background: var(--couleur-gris);
   position: relative;

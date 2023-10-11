@@ -46,7 +46,8 @@ body {
 nav {
   border: 1px solid black;
 }
-div {
+div,
+article {
   border: 1px solid red;
 } */
 

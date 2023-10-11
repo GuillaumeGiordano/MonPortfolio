@@ -31,3 +31,17 @@
   gap: 20px;
   margin: 20px 0;
 }
+
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 992px) {
+  .sectionBody {
+    width: 100%;
+    gap: 10px;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 767px) {
+}

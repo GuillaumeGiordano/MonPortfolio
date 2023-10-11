@@ -1,0 +1,30 @@
+.ctn {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.article {
+  height: 100%;
+  flex-basis: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1400px) {
+  .ctn {
+    padding: 5px;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 767px) {
+}

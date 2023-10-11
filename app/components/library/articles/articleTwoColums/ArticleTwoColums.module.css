@@ -1,0 +1,19 @@
+.ctn {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.articleOne {
+  height: 100%;
+  flex-basis: 50%;
+}
+
+.articleTwo {
+  height: 100%;
+  flex-basis: 50%;
+}

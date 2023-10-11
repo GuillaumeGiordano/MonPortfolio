@@ -4,18 +4,25 @@ import React, { useEffect, useState } from "react";
 import styles from "./CardService.module.css";
 import Image from "next/image";
 
-const CardService = ({ icone, slogan, competences, dataTechnos }) => {
-  const [isDataTechnos, setIsDataTechnos] = useState(false);
+const CardService = ({ dataService }) => {
+  const [isData, setIsData] = useState(false);
 
   useEffect(() => {
-    const size = dataTechnos.length;
-
-    if (dataTechnos && size > 0) {
-      setIsDataTechnos(true);
+    if (dataService) {
+      setIsData(true);
     } else {
-      setIsDataTechnos(false);
+      setIsData(false);
     }
-  }, [dataTechnos]);
+  }, [dataService]);
+
+  // console.log(dataService);
+
+  if (!isData) {
+    console.log("ca ne marche pas CarService !");
+    return null;
+  }
+
+  const { imagePath, slogan, content, langages } = dataService;
 
   return (
     <article className={`${styles.card}`}>
@@ -23,7 +30,7 @@ const CardService = ({ icone, slogan, competences, dataTechnos }) => {
         <div>
           <div className={`${styles.cardImg}`}>
             <Image
-              src={`/icones/${icone}`}
+              src={`/icones/${imagePath}`}
               alt='icone'
               className={`${styles.img}`}
               width={90}
@@ -31,26 +38,29 @@ const CardService = ({ icone, slogan, competences, dataTechnos }) => {
             />
           </div>
           <h3 className={`${styles.slogan}`}>{slogan}</h3>
-          <div className={`${styles.competences}`}>{competences}</div>
+          {content.map((list, index) => (
+            <li key={index}>{list}</li>
+          ))}
+          {/* <div className={`${styles.competences}`}>{content}</div> */}
         </div>
 
-        {isDataTechnos && (
-          <div className={`${styles.ctn}`}>
-            <h3 className={`${styles.textTitle}`}>Langages utilisés</h3>
-            <div className={`${styles.cardFooter}`}>
-              {dataTechnos.map((article, index) => (
-                <image
-                  key={index}
-                  src={`/icones/techno/${article}`}
-                  alt='Tag'
-                  className={`${styles.cardTag}`}></image>
-              ))}
-            </div>
+        <div className={`${styles.ctn}`}>
+          <h3 className={`${styles.textTitle}`}>Langages utilisés</h3>
+          <div className={`${styles.cardFooter}`}>
+            {langages.map((article, index) => (
+              <Image
+                key={index}
+                src={`/icones/techno/${article}`}
+                alt='Tag'
+                className={`${styles.cardTag}`}
+                width={20}
+                height={20}
+              />
+            ))}
           </div>
-        )}
+        </div>
       </div>
-
-      <button className={`${styles.cardButton}`}>Ask Me</button>
+      <button className={`${styles.cardButton}`}>Ask Me</button>)
     </article>
   );
 };
