@@ -9,16 +9,6 @@ export const dataService = [
       "Optimisation des Performances : Je veille à ce que votre site se charge rapidement, sans faire attendre les visiteurs.",
       "Facilité de Navigation : J'organise votre site pour qu'il soit facile à parcourir et à trouver ce que les utilisateurs recherchent.",
     ],
-    langages: [
-      "html.png",
-      "css.png",
-      "js.png",
-      "ts.png",
-      "react.png",
-      "responsive.png",
-      "sass.png",
-      "bootstrap.png",
-    ],
   },
   {
     slogan: "Modernisez vos sites web en toute simplicité ! ",
@@ -29,16 +19,6 @@ export const dataService = [
       "Mise à Niveau de Versions : Je actualise les logiciels et bibliothèques de votre site pour qu'il fonctionne avec les dernières versions.",
       "Sauvegarde et Récupération de Données : Je met en place des systèmes de sauvegarde pour protéger vos données et assurer une récupération rapide en cas de problème.",
       "Sécurité et Mise à Niveau des Protocoles : Je renforçe la sécurité de votre site avec des mesures de protection et des protocoles modernes pour protéger vos données.",
-    ],
-    langages: [
-      "html.png",
-      "css.png",
-      "js.png",
-      "ts.png",
-      "react.png",
-      "responsive.png",
-      "sass.png",
-      "bootstrap.png",
     ],
   },
   {
@@ -51,6 +31,5 @@ export const dataService = [
       "Sauvegarde des Données : Je met en place des systèmes de sauvegarde pour éviter la perte de données précieuses.",
       "Maintenance et Support : Je suis là pour résoudre les problèmes et assurer le bon fonctionnement continu de votre application.",
     ],
-    langages: ["php.png", "node.png", "express.png", "mongoDB.png", "mysql.png"],
   },
 ];

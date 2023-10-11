@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import styles from "./Collapsible.module.css";
+import styles from "./ServiceCollapse.module.css";
 import Image from "next/image";
+import Collapse from "../../library/collapse/page";
 
-const Collapsible = ({ key, data }) => {
+const ServiceCollapse = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isData, setIsData] = useState(false);
 
@@ -14,26 +15,17 @@ const Collapsible = ({ key, data }) => {
     }
   }, [data, isData]);
 
-  console.log(data.slogan);
-
   const toggleCollapsible = () => {
     setIsOpen(!isOpen);
   };
 
   if (!isData) {
-    console.log("ca ne marche pas CarService !");
     return null;
   }
-  // return;
-  return (
-    // <>
-    <div key={key} className={`${styles.collapsible} ${isOpen ? styles.open : ""}`}>
-      <div
-        key={key}
-        className={styles.header}
-        onClick={() => {
-          toggleCollapsible();
-        }}>
+
+  const serviceHeader = (
+    <>
+      <div className={`${styles.ctn_img}`}>
         <Image
           src={`/icones/${data.imagePath}`}
           alt='icone'
@@ -41,34 +33,23 @@ const Collapsible = ({ key, data }) => {
           width={90}
           height={90}
         />
-        <div className={`${styles.infos}`}>
-          <h3 key={key}>{data.slogan}</h3>
-          <div className={`${styles.tags}`}>
-            {data.langages.map((path, index) => (
-              <Image
-                key={index}
-                src={`/icones/techno/${path}`}
-                alt='Tag'
-                className={`${styles.tag}`}
-                width={40}
-                height={40}
-              />
-            ))}
-          </div>
-        </div>
-        <span key={key} className={isOpen ? styles.iconOpen : styles.iconClosed}>
-          +
-        </span>
       </div>
 
-      {isOpen && (
-        <div key={key} className={styles.content}>
-          {data.content}
-        </div>
-      )}
-    </div>
-    // </>
+      <div className={`${styles.infos}`}>
+        <h3 className={`${styles.titre}`}>{data.slogan}</h3>
+      </div>
+    </>
   );
+
+  const serviceContent = (
+    <>
+      {data.content.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </>
+  );
+
+  return <Collapse header={serviceHeader} content={serviceContent} />;
 };
 
-export default Collapsible;
+export default ServiceCollapse;

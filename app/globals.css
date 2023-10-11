@@ -42,13 +42,14 @@ body {
   overflow: hidden;
 }
 
-/* section,
+section,
 nav {
   border: 1px solid black;
 }
-div {
+div,
+article {
   border: 1px solid red;
-} */
+}
 
 .light {
   background-color: white;

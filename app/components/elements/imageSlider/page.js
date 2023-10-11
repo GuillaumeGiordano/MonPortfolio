@@ -30,7 +30,7 @@ export default function ImageSlider({ imageToDisplay }) {
   }, [currentImageIndex, imageToDisplay]);
 
   return (
-    <div className={styles.ctn}>
+    <>
       {isImageToDisplay && (
         <Image
           src={imgPath}
@@ -40,6 +40,6 @@ export default function ImageSlider({ imageToDisplay }) {
           height={400}
         />
       )}
-    </div>
+    </>
   );
 }

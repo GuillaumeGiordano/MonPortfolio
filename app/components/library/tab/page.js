@@ -3,6 +3,21 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Tab.module.css";
 
+// const tabs = [
+//   {
+//     label: "Tab 1",
+//     content: <p>Contenu du premier onglet.</p>,
+//   },
+//   {
+//     label: "Tab 2",
+//     content: <p>Contenu du deuxième onglet.</p>,
+//   },
+//   {
+//     label: "Tab 3",
+//     content: <p>Contenu du troisième onglet.</p>,
+//   },
+// ];
+
 const Tab = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [isDataTabs, setIsDataTabs] = useState(false);

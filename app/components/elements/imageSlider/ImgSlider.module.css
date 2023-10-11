@@ -1,16 +1,26 @@
-.ctn {
-  height: fit-content;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 300px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   border: 5px solid var(--couleur-bleu);
   object-fit: cover;
+}
+
+@media (max-width: 1400px) {
+  .img {
+    height: 450px;
+  }
+}
+
+@media (max-width: 992px) {
+  .img {
+    height: 350px;
+  }
+}
+
+@media (max-width: 767px) {
+  .img {
+    height: 250px;
+  }
 }

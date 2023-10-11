@@ -17,21 +17,6 @@ export default function Home() {
   const { isLightTheme } = useThemeContext();
   const { isOpen } = useLoginModalContext();
 
-  // const tabs = [
-  //   {
-  //     label: "Tab 1",
-  //     content: <p>Contenu du premier onglet.</p>,
-  //   },
-  //   {
-  //     label: "Tab 2",
-  //     content: <p>Contenu du deuxième onglet.</p>,
-  //   },
-  //   {
-  //     label: "Tab 3",
-  //     content: <p>Contenu du troisième onglet.</p>,
-  //   },
-  // ];
-
   return (
     <body
       className={`${isLightTheme ? "dark" : "light"} ${isOpen ? "body__module" : ""}`}>
