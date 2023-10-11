@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import styles from "./ServiceCollapse.module.css";
 import Image from "next/image";

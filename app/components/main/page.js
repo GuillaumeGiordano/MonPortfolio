@@ -15,7 +15,7 @@ import CardScore from "../cards/cardScore/CardScore";
 import ScrollUp from "../buttons/scrollToTop/page";
 import ArticleOneColum from "../library/articles/articleOneColum/page";
 import ArticleTreeColums from "../library/articles/articleTreeColums/page";
-import ServiceCollapse from "../elements/Collapsible/page";
+import ServiceCollapse from "../elements/ServiceCollapse/page";
 // DATA
 import { dataService } from "@/app/data/dataServices";
 import { dataScores } from "@/app/data/dataScore";
