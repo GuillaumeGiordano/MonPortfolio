@@ -3,6 +3,8 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import axios from "axios";
+
 // STYLE
 import styles from "./Main.module.css";
 // COMPONENTS
@@ -23,8 +25,9 @@ import { dataCompetences } from "@/app/data/dataCompetences";
 import { dataTextSlider } from "@/app/data/dataTextSlider";
 import { dataRandomText } from "@/app/data/dataRandomText";
 import { dataImageProfil } from "@/app/data/dataImageProfil";
+import Link from "next/link";
 
-const Main = () => {
+const Main = ({ data }) => {
   // DISPLAY SCROLLBUTTON
   const [showButton, setShowButton] = useState(false);
   useEffect(() => {
@@ -52,6 +55,88 @@ const Main = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [showButton]);
+
+  // FETCH
+  const [dataLangage, setDataLangage] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const accessToken = "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";
+
+    const fetchData = async (item) => {
+      try {
+        const response = await axios.get(
+          `https://api.github.com/repos/GuillaumeGiordano/${item.name}/languages`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+
+        const responseCommit = await axios.get(
+          `https://api.github.com/repos/GuillaumeGiordano/${item.name}/commits`,
+          // `https://api.github.com/repos/GuillaumeGiordano/${item.name}/stats/punch_card`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+
+        if (response.status === 200 && responseCommit.status === 200) {
+          // console.log(item);
+          const data = response.data;
+          const dataCommit = responseCommit.data;
+          const myProject = {
+            id: item.id,
+            libelle: item.name,
+            description: item.description,
+            url: item.html_url,
+            languages: data,
+            nbCommit: dataCommit,
+          };
+
+          return myProject;
+        } else {
+          console.log("Erreur lors de la récupération des langages");
+          return [];
+        }
+      } catch (error) {
+        console.log(error);
+        return [];
+      }
+    };
+
+    // Utilisez Promise.all pour attendre que toutes les requêtes se terminent
+    Promise.all(data.map((item) => fetchData(item))).then((results) => {
+      // Filtrer les résultats non nuls (en cas d'erreur)
+      const validResults = results.filter((result) => result !== null);
+
+      // Calculez la somme des valeurs de langages pour chaque projet
+      const sums = validResults.map((result) => {
+        const languages = result.languages;
+        const sum = Object.values(languages).reduce((total, value) => total + value, 0);
+        return {
+          id: result.id,
+          libelle: result.libelle,
+          description: result.description,
+          url: result.url,
+          languages: languages,
+          nbCommit: result.nbCommit.length,
+          totalLigneLanguages: sum,
+        };
+      });
+
+      // Mettez à jour l'état avec les valeurs cumulées
+      // setDataLangage(validResults);
+      setDataLangage(sums);
+
+      setLoading(false);
+    });
+  }, [data]);
+
+  console.log(dataLangage);
+  console.log(dataLangage.length);
 
   // JE VERIFIE INPORT DES DATAS (NORMALEMENT JE DOIS FETCH !!!!!!!)
   if (
@@ -181,9 +266,26 @@ const Main = () => {
       </SectionRegular>
 
       {/* PORTFOLIO */}
-      {/* <SectionRegular sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
-      <div>salut je suis un childreen</div>
-    </SectionRegular> */}
+      <SectionRegular sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
+        <div>
+          <ul>
+            {dataLangage &&
+              dataLangage.map((item) => (
+                <li key={item.libelle}>
+                  <p>ID: {item.libelle}</p>
+                  <p>Description: {item.description}</p>
+                  <p>
+                    <Link href={item.url}>Cliquez ici</Link>
+                  </p>
+                  {Object.keys(item.languages).map((language, index) => (
+                    <p key={index}>{`${language}: ${item.languages[language]}`}</p>
+                  ))}
+                  <p>Nombre de commits: {item.nbCommit}</p>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </SectionRegular>
 
       {/* AVIS */}
       {/* <SectionRegular sectionTitle={"Les Avis"} sectionId={"avis"}>
