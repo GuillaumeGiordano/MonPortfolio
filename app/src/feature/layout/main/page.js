@@ -8,24 +8,25 @@ import axios from "axios";
 // STYLE
 import styles from "./Main.module.css";
 // COMPONENTS
-import SectionHead from "../sections/sectionHead/page";
-import SectionRegular from "../sections/sectionRegular/page";
-import SloganText from "../elements/sloganText/page";
-import ImageSlider from "../elements/imageSlider/page";
-import CardCoding from "../cards/cardCoding/page";
-import CardScore from "../cards/cardScore/CardScore";
-import ScrollUp from "../buttons/scrollToTop/page";
-import ArticleOneColum from "../library/articles/articleOneColum/page";
-import ArticleTreeColums from "../library/articles/articleTreeColums/page";
-import ServiceCollapse from "../elements/ServiceCollapse/page";
+import SectionHead from "../../../../components/sections/sectionHead/page";
+import SectionRegular from "../../../../components/sections/sectionRegular/page";
+import SloganText from "../../../../components/elements/sloganText/page";
+import ImageSlider from "../../../../components/elements/imageSlider/page";
+import CardCoding from "../../../../components/cards/cardCoding/page";
+import CardScore from "../../../../components/cards/cardScore/CardScore";
+import ScrollUp from "../../../../components/buttons/scrollUp/page";
+import ArticleOneColum from "../../../../components/library/articles/articleOneColum/page";
+import ArticleTreeColums from "../../../../components/library/articles/articleTreeColums/page";
+import ServiceCollapse from "../../../../components/elements/ServiceCollapse/page";
 // DATA
-import { dataService } from "@/app/data/dataServices";
-import { dataScores } from "@/app/data/dataScore";
-import { dataCompetences } from "@/app/data/dataCompetences";
-import { dataTextSlider } from "@/app/data/dataTextSlider";
-import { dataRandomText } from "@/app/data/dataRandomText";
-import { dataImageProfil } from "@/app/data/dataImageProfil";
+import { dataService } from "@/app/src/data/dataServices";
+import { dataScores } from "@/app/src/data/dataScore";
+import { dataCompetences } from "@/app/src/data/dataCompetences";
+import { dataTextSlider } from "@/app/src/data/dataTextSlider";
+import { dataRandomText } from "@/app/src/data/dataRandomText";
+import { dataImageProfil } from "@/app/src/data/dataImageProfil";
 import Link from "next/link";
+import CardPortfolio from "@/app/components/cards/cardPortfolio/page";
 
 const Main = ({ data }) => {
   // DISPLAY SCROLLBUTTON
@@ -208,7 +209,7 @@ const Main = ({ data }) => {
           articleTwo={aboutItem2}
           articleTree={aboutItem3}
         />
-        <ArticleOneColum>
+        <ArticleOneColum className={`${styles.score}`}>
           {dataScores &&
             dataScores.map((item, index) => (
               <CardScore
@@ -219,13 +220,13 @@ const Main = ({ data }) => {
               />
             ))}
         </ArticleOneColum>
-        <Image
+        {/* <Image
           className={`${styles.deco} ${styles.aboutDeco}`}
           src={"/background004.png"}
           alt='Decoration'
           width={500}
           height={500}
-        />
+        /> */}
       </SectionRegular>
 
       {/* SERVICES */}
@@ -241,50 +242,38 @@ const Main = ({ data }) => {
             </ArticleOneColum>
           ))}
 
-        <h3 className={`${styles.titre}`}>Mes compétences cumulées</h3>
-        <ArticleOneColum>
+        <h3 className={`${styles.titre}`}>Mes compétences</h3>
+        <ArticleOneColum className={`${styles.tags}`}>
           {dataCompetences &&
             dataCompetences.map((item, index) => (
-              <Image
-                key={index}
-                className={`${styles.tag}`}
-                src={item}
-                alt='tag techno'
-                width={60}
-                height={60}
-              />
+              <div key={index} className={`${styles.card_tag}`}>
+                <Image
+                  key={index}
+                  className={`${styles.tag}`}
+                  src={item}
+                  alt='tag techno'
+                  width={70}
+                  height={70}
+                />
+              </div>
             ))}
         </ArticleOneColum>
 
-        <Image
+        {/* <Image
           className={`${styles.deco} ${styles.serviceDeco}`}
           src={"/background003.png"}
           alt='Decoration'
           width={500}
           height={500}
-        />
+        /> */}
       </SectionRegular>
 
       {/* PORTFOLIO */}
       <SectionRegular sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
-        <div>
-          <ul>
-            {dataLangage &&
-              dataLangage.map((item) => (
-                <li key={item.libelle}>
-                  <p>ID: {item.libelle}</p>
-                  <p>Description: {item.description}</p>
-                  <p>
-                    <Link href={item.url}>Cliquez ici</Link>
-                  </p>
-                  {Object.keys(item.languages).map((language, index) => (
-                    <p key={index}>{`${language}: ${item.languages[language]}`}</p>
-                  ))}
-                  <p>Nombre de commits: {item.nbCommit}</p>
-                </li>
-              ))}
-          </ul>
-        </div>
+        <ArticleOneColum className={`${styles.ctn_portfolio}`}>
+          {dataLangage &&
+            dataLangage.map((item) => <CardPortfolio key={item.id} item={item} />)}
+        </ArticleOneColum>
       </SectionRegular>
 
       {/* AVIS */}

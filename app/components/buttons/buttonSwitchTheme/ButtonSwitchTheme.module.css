@@ -1,0 +1,57 @@
+.toggle {
+  z-index: 990;
+  position: fixed;
+  top: 150px;
+  right: 0;
+
+  background-color: var(--couleur-blanc);
+  box-shadow: 0 0 50px 20px var(--couleur-shadow);
+  line-height: 1;
+  width: 62px;
+  height: 62px;
+  border-radius: 5px 0 0 5px;
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+}
+
+.icon {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  color: var(--couleur-blanc);
+  background-color: var(--couleur-gris);
+  padding: 4px;
+}
+
+.socialSvg path {
+  fill: var(--couleur-blanc);
+}
+
+.toggle:hover .icon {
+  background-color: var(--couleur-bleu);
+}
+
+.toggle:hover .socialSvg {
+  animation: slide-in-side 0.5s both;
+}
+
+.toggle:hover .socialSvg path {
+  color: var(--couleur-noir);
+}
+
+@keyframes slide-in-side {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

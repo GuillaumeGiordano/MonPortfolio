@@ -1,27 +1,27 @@
-.toggle {
-  z-index: 1000;
-
+.scrollToTopButton {
   position: fixed;
-  top: 150px;
+  z-index: 999;
+  bottom: 60px;
   right: 0;
 
-  background-color: var(--couleur-blanc);
-  box-shadow: 0 0 50px 20px var(--couleur-shadow);
-  line-height: 1;
-  width: 62px;
   height: 62px;
+  width: 62px;
+  background-color: var(--couleur-blanc);
+  color: var(--couleur-noir);
+  box-shadow: 0 0 50px 20px var(--couleur-shadow);
+  border: none;
   border-radius: 5px 0 0 5px;
+  line-height: 1;
+  cursor: pointer;
 
   display: grid;
   place-items: center;
-  cursor: pointer;
+
+  transition: background-color 1s ease;
+  animation: bounce_513 1s infinite;
 }
 
-.input {
-  display: none;
-}
-
-.icon {
+.svg {
   grid-column: 1 / 1;
   grid-row: 1 / 1;
   color: var(--couleur-blanc);
@@ -29,20 +29,16 @@
   padding: 4px;
 }
 
-.socialSvg path {
+.svg path {
   fill: var(--couleur-blanc);
 }
 
-.toggle:hover .icon {
+.scrollToTopButton:hover .svg {
   background-color: var(--couleur-bleu);
 }
 
-.toggle:hover .socialSvg {
+.scrollToTopButton:hover .svg path {
   animation: slide-in-side 0.5s both;
-}
-
-.toggle:hover .socialSvg path {
-  color: var(--couleur-noir);
 }
 
 @keyframes slide-in-side {
@@ -56,3 +52,16 @@
     opacity: 1;
   }
 }
+
+/* @keyframes bounce_513 {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+} */

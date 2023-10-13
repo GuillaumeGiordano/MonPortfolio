@@ -7,7 +7,7 @@ import styles from "./SectionHead.module.css";
 // COMPONENTS
 import ScrollToDown from "../../buttons/scrollToDown/page";
 import BtnNormal from "../../buttons/buttonRegular/page";
-import Social from "../../buttons/social/page";
+import Social from "../../buttons/buttonSocial/page";
 import TypingAndErasing from "../../elements/TypingAndErasing/page";
 
 const SectionHead = ({ sectionId, sectionImage, sectionSlogan, wordToTypeAndErase }) => {

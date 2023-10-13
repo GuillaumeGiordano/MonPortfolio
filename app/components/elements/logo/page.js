@@ -4,7 +4,7 @@ import React from "react";
 // STYLE
 import styles from "./logo.module.css";
 // CONTEXTE
-import { useThemeContext } from "@/app/context/theme";
+import { useThemeContext } from "@/app/src/context/theme";
 
 const Logo = () => {
   const { isLightTheme } = useThemeContext();

@@ -6,13 +6,13 @@ import axios from "axios";
 // STYLE
 import styles from "./page.module.css";
 // CONTEXTE
-import { useThemeContext } from "./context/theme";
-import { useLoginModalContext } from "./context/loginForm";
+import { useThemeContext } from "../src/context/theme";
+import { useLoginModalContext } from "../src/context/loginForm";
 // COMPONENTS
-import Footer from "./components/footer/page";
-import Header from "./components/header/page";
-import LoginForm from "./components/elements/modal/page";
-import Main from "./components/main/page";
+import Footer from "../src/feature/layout/footer/page";
+import Header from "../src/feature/layout/header/page";
+import LoginForm from "../components/elements/modal/page";
+import Main from "../src/feature/layout/main/page";
 
 export default function Home() {
   const { isLightTheme } = useThemeContext();

@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  z-index: 999;
+  z-index: 990;
   width: 25%;
   min-width: 200px;
   height: 100px;
