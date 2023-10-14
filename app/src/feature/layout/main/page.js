@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+require("dotenv").config();
 
 // STYLE
 import styles from "./Main.module.css";
@@ -61,7 +62,7 @@ const Main = ({ data }) => {
   const [dataLangage, setDataLangage] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const accessToken = "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";
+    const accessToken = process.env.GITHUB_TOKEN;
 
     const fetchData = async (item) => {
       try {
