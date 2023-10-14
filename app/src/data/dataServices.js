@@ -1,6 +1,6 @@
 export const dataService = [
   {
-    slogan: " Transformez vos idées en sites web captivants ! ",
+    slogan: "Transformez vos idées en sites web captivants !",
     imagePath: "css.svg",
     content: [
       "Conception Visuelle : Je rend votre site web incroyable et attrayant.",
@@ -11,7 +11,7 @@ export const dataService = [
     ],
   },
   {
-    slogan: "Modernisez vos sites web en toute simplicité ! ",
+    slogan: "Modernisez vos sites web en toute simplicité !",
     imagePath: "creation-de-sites-web.svg",
     content: [
       "Analyse de Site Web : J'examine votre site web pour identifier les problèmes et les améliorations possibles.",
@@ -22,7 +22,7 @@ export const dataService = [
     ],
   },
   {
-    slogan: " Sécurité et robustesse au cœur de chaque application web. ",
+    slogan: "Sécurité et robustesse au cœur de chaque application web",
     imagePath: "api.svg",
     content: [
       "Serveurs et Bases de Données : Je met en place l'infrastructure nécessaire pour faire fonctionner votre application et j'assure la gestion de vos données.",

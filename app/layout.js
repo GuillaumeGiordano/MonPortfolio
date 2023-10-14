@@ -1,6 +1,6 @@
 import "./globals.css";
-import { ThemeContextProvider } from "./context/theme";
-import { LoginModalContextProvider } from "./context/loginForm";
+import { ThemeContextProvider } from "./src/context/theme";
+import { LoginModalContextProvider } from "./src/context/loginForm";
 
 export const metadata = {
   title: "Create Next App",

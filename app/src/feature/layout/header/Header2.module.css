@@ -148,11 +148,11 @@
   color: var(--couleur-jaune);
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1400px) {
   /* Ajoutez vos styles CSS pour les ordinateurs de bureau ici */
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 992px) {
   .nav__ul {
     height: 100%;
     display: flex;

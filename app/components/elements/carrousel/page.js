@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Carrousel.module.css";
 import CardService from "../../cards/CardService/page";
 
-import { dataService } from "@/app/data/dataServices";
+import { dataService } from "@/app/src/data/dataServices";
 
 const Carrousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

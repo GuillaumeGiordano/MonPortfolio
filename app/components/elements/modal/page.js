@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import styles from "./LoginForm.module.css";
 import BtnNormal from "../../buttons/buttonRegular/page";
-import { useLoginModalContext } from "@/app/context/loginForm";
+import { useLoginModalContext } from "@/app/src/context/loginForm";
 
 const LoginForm = () => {
   const { isOpen, toggleModal } = useLoginModalContext();

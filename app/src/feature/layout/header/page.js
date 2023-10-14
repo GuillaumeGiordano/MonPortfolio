@@ -5,12 +5,12 @@ import Link from "next/link";
 // STYLE
 import styles from "./Header2.module.css";
 // CONTEXTES
-import { useThemeContext } from "@/app/context/theme";
-import { useLoginModalContext } from "@/app/context/loginForm";
+import { useThemeContext } from "@/app/src/context/theme";
+import { useLoginModalContext } from "@/app/src/context/loginForm";
 // COMPONENTS
-import ScrollProgressBar from "../elements/scrollProgressBar/page";
-import Logo from "../elements/logo/page";
-import SwitchTheme from "../buttons/switchTheme/page";
+import ScrollProgressBar from "../../../../components/elements/scrollProgressBar/page";
+import Logo from "../../../../components/elements/logo/page";
+import SwitchTheme from "../../../../components/buttons/buttonSwitchTheme/page";
 
 import scrollToSection from "@/app/util/scrollToSection";
 
