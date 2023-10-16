@@ -11,11 +11,15 @@
   "dependencies": {
     "axios": "^1.5.1",
     "dotenv": "^16.3.1",
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.6.2",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@types/react": "18.2.28",
     "eslint": "^8.51.0",
     "eslint-config-next": "^13.5.4",
     "eslint-plugin-next": "^0.0.0",
