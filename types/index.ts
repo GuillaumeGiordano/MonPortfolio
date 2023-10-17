@@ -1,6 +1,6 @@
 export interface AddProjectProps {
-    project: string;
-    setProject: (project: string) => void;
+    formData: string[];
+    setFormData: (formData: string[]) => void;
     handleCreateProject: () => void;
 }
 

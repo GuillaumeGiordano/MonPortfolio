@@ -9,17 +9,17 @@ import axios from "axios";
 // STYLE
 import styles from "./Main.module.css";
 // COMPONENTS
-import SectionHead from "../../components/sections/sectionHead/page";
-import SectionRegular from "../../components/sections/sectionRegular/page";
-import SloganText from "../../components/elements/sloganText/page";
-import ImageSlider from "../../components/elements/imageSlider/page";
-import CardCoding from "../../components/cards/cardCoding/page";
-import CardScore from "../../components/cards/cardScore/CardScore";
-import ScrollUp from "../../components/buttons/scrollUp/page";
-import ArticleOneColum from "../../components/articles/articleOneColum/page";
-import ArticleTreeColums from "../../components/articles/articleTreeColums/page";
-import ServiceCollapse from "../../components/elements/ServiceCollapse/page";
-import CardPortfolio from "../../components/cards/cardPortfolio/page";
+import SectionHead from "../sections/sectionHead/page";
+import SectionRegular from "../sections/sectionRegular/page";
+import SloganText from "../elements/sloganText/page";
+import ImageSlider from "../elements/imageSlider/page";
+import CardCoding from "../cards/cardCoding/page";
+import CardScore from "../cards/cardScore/CardScore";
+import ScrollUp from "../buttons/scrollUp/page";
+import ArticleOneColum from "../articles/articleOneColum/page";
+import ArticleTreeColums from "../articles/articleTreeColums/page";
+import ServiceCollapse from "../elements/ServiceCollapse/page";
+import CardPortfolio from "../cards/cardPortfolio/page";
 // DATA
 import { dataServices } from "../../data/dataServices";
 import { dataScores } from "../../data/dataScore";
@@ -30,6 +30,25 @@ import { dataImageProfil } from "../../data/dataImageProfil";
 import { dataProjects } from "../../data/dataProjects";
 
 const Main = () => {
+  const [allProjects, setAllProjects] = useState([]);
+  const [isDataProject, setIsDataProject] = useState(false);
+
+  // FETCH
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch("/api/project/all");
+      const data = await response.json();
+      setAllProjects(data);
+      setIsDataProject(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   // DISPLAY SCROLLBUTTON
   const [showButton, setShowButton] = useState(false);
   useEffect(() => {
@@ -61,13 +80,13 @@ const Main = () => {
   // ABOUT
   const aboutItem1 = (
     <div className={`${styles.aboutArticle}`}>
-      <h3 className={`${styles.titre}`}>Un développeur web passionné !</h3>
+      <h3 className={`${styles.titre}`}> Un développeur web passionné! </h3>
       <p className={`${styles.text}`}>
         Ma reconversion professionnelle en tant que Développeur Web découle de ma passion
         constante pour la technologie et mon désir d'apporter des solutions innovantes.
         Avec détermination, j'ai débuté mon apprentissage en commencant par les langages
         de bases tels que l'HTML, CSS, PHP et JavaScript. J'ai également eu l'opportunité,
-        dans ma formation, de me familiariser avec des frameworks tel que React. Mon
+        dans ma formation, de me familiariser avec des frameworks tel que React.Mon
         expérience antérieure m'a doté d'une approche analytique et méticuleuse, des
         compétences qui s'avèrent précieuses dans la résolution de problèmes techniques et
         l'optimisation des performances.
@@ -87,7 +106,7 @@ const Main = () => {
   );
   const aboutItem3 = (
     <div className={`${styles.aboutArticle}`}>
-      <h3 className={`${styles.titre}`}>Expérience en développement</h3>
+      <h3 className={`${styles.titre}`}> Expérience en développement </h3>
       <p className={`${styles.text}`}>
         Mon expérience acquise, en tant que chef de projet, me permet de mieux comprendre
         les attentes d'un client et de répondre précisement au besoin demandé en fonction
@@ -95,7 +114,7 @@ const Main = () => {
         une expertise et un développement web qui correspond à vos attentes et à vos
         besoins.
       </p>
-      <h3 className={`${styles.titre}`}>Mieux me connaitre</h3>
+      <h3 className={`${styles.titre}`}> Mieux me connaitre </h3>
       <CardCoding facts={dataRandomText} />
     </div>
   );
@@ -107,7 +126,9 @@ const Main = () => {
         sectionId={"head"}
         sectionImage={"/profil_002.jpg"}
         sectionSlogan={' " J\'aime développer, et vous allez adorer le résultat ! " '}
-        wordToTypeAndErase={dataTextSlider}></SectionHead>
+        wordToTypeAndErase={dataTextSlider}>
+        {" "}
+      </SectionHead>
 
       {/* ABOUT */}
       <SectionRegular sectionTitle={"A Propos de moi"} sectionId={"about"}>
@@ -149,7 +170,7 @@ const Main = () => {
             </ArticleOneColum>
           ))}
 
-        <h3 className={`${styles.titre}`}>Mes compétences</h3>
+        <h3 className={`${styles.titre}`}> Mes compétences </h3>
         <ArticleOneColum className={`${styles.tags}`}>
           {dataCompetences &&
             dataCompetences.map((item, index) => (
@@ -178,8 +199,13 @@ const Main = () => {
       {/* PORTFOLIO */}
       <SectionRegular sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
         <ArticleOneColum className={`${styles.ctn_portfolio}`}>
-          {dataProjects &&
-            dataProjects.map((item) => <CardPortfolio key={item.id} item={item} />)}
+          {!isDataProject ? (
+            <p>Chargement </p>
+          ) : allProjects.length > 0 ? (
+            allProjects.map((item) => <CardPortfolio key={item._id} item={item} />)
+          ) : (
+            <p>Il n'y a pas de encore de projet enregistré</p>
+          )}
         </ArticleOneColum>
       </SectionRegular>
 

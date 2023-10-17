@@ -3,16 +3,15 @@
 import React, { useState } from "react";
 import styles from "./AddProject.module.css";
 
-const AddProject = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [formData, setFormData] = useState({
-    image: "",
-    title: "",
-    mission: "",
-    description: "",
-    languages: "",
-    url: "",
-  });
+const AddProject = ({ formData, setFormData, handleCreateProject }) => {
+  // const [formData, setFormData] = useState({
+  //   image: "",
+  //   title: "",
+  //   mission: "",
+  //   description: "",
+  //   languages: "",
+  //   url: "",
+  // });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -22,40 +21,33 @@ const AddProject = () => {
     });
   };
 
-  const handleCreateProject = async () => {
-    console.log(JSON.stringify({ formData }));
-    setIsLoading(true);
-
-    try {
-      const response = await fetch("/api/project/new", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      alert("essai");
-
-      if (response.ok) {
-        setFormData({
-          image: "",
-          title: "",
-          mission: "",
-          description: "",
-          languages: "",
-          url: "",
-        });
-        console.log("Project created successfully");
-      } else {
-        console.error("Failed to create Project");
-      }
-    } catch (error) {
-      console.error("Error: ", error);
-    }
-
-    setIsLoading(false);
-  };
+  // const handleCreateProject = async () => {
+  //   try {
+  //     const response = await fetch("/api/project/new", {
+  //       method: "POST",
+  //       body: JSON.stringify(formData),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     if (response.ok) {
+  //       setFormData({
+  //         image: "",
+  //         title: "",
+  //         mission: "",
+  //         description: "",
+  //         languages: "",
+  //         url: "",
+  //       });
+  //       console.log("Project created successfully");
+  //       alert("Project created successfully");
+  //     } else {
+  //       console.error("Failed to create Project");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error: ", error);
+  //   }
+  // };
 
   return (
     <div className={`${styles.form}`}>
