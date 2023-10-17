@@ -3,6 +3,8 @@
 import "./globals.css";
 import { ThemeContextProvider } from "../context/theme";
 import { LoginModalContextProvider } from "../context/loginForm";
+// import { AuthProvider } from "../context/auth";
+import AuthProvider from "../components/authprovider/Authprovider";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,9 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='fr'>
-      <ThemeContextProvider>
-        <LoginModalContextProvider>{children}</LoginModalContextProvider>
-      </ThemeContextProvider>
+      <AuthProvider>
+        <ThemeContextProvider>
+          <LoginModalContextProvider>{children}</LoginModalContextProvider>
+        </ThemeContextProvider>
+      </AuthProvider>
     </html>
   );
 }
