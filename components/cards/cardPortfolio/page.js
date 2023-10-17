@@ -18,7 +18,7 @@ const CardPortfolio = ({ item }) => {
   }
 
   return (
-    <div className={`${styles.card}`}>
+    <div key={item.id} className={`${styles.card}`}>
       <div className={`${styles.body}`}>
         <div className={`${styles.liens}`}>
           <Link target='_blank' href={item.url} rel='noopener noreferrer'>
@@ -28,19 +28,20 @@ const CardPortfolio = ({ item }) => {
             </svg>{" "}
           </Link>
         </div>
-        <Image
+        {/* <Image
           className={`${styles.image}`}
           src={item.image}
           alt='photo du projet'
           width={300}
           height={300}
-        />
+        /> */}
         <h4 className={`${styles.title}`}>{item.title}</h4>
         <p className={`${styles.description}`}>{item.description}</p>
+        <p className={`${styles.description}`}>ici id = {item._id}</p>
       </div>
 
       <div className={`${styles.tags}`}>
-        {item.languages.map((language, index) => (
+        {/* {item.languages.map((language, index) => (
           <Image
             key={index}
             src={tagsArray[language]}
@@ -48,7 +49,7 @@ const CardPortfolio = ({ item }) => {
             width={30}
             height={30}
           />
-        ))}
+        ))} */}
       </div>
     </div>
   );

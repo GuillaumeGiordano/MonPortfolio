@@ -1,10 +1,9 @@
 // "use client";
 
 import "./globals.css";
+import AuthProvider from "../components/authprovider/Authprovider";
 import { ThemeContextProvider } from "../context/theme";
 import { LoginModalContextProvider } from "../context/loginForm";
-// import { AuthProvider } from "../context/auth";
-import AuthProvider from "../components/authprovider/Authprovider";
 
 export const metadata = {
   title: "Create Next App",

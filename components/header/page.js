@@ -198,7 +198,6 @@ const Header = () => {
                 handleClickConnexion();
               }}>
               {session ? "Signe Out" : "Signe IN"}
-              {/* Connexion */}
             </button>
           </li>
         </ul>
