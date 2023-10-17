@@ -10,8 +10,9 @@ export const POST = async (request: Request) => {
 
     const { title, image, mission, description, languages, url } = await request.json()
 
+
     console.log("FormData")
-    console.log(title)
+    console.log(FormData)
     try {
         await connectToDB()
         const newProject = new Project(

@@ -23,7 +23,7 @@ const AddProject = () => {
   };
 
   const handleCreateProject = async () => {
-    console.log(JSON.stringify(formData));
+    console.log(JSON.stringify({ formData }));
     setIsLoading(true);
 
     try {

@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+
 // STYLE
 import styles from "./Header.module.css";
 // CONTEXTES
@@ -15,6 +17,8 @@ import SwitchTheme from "../../components/buttons/buttonSwitchTheme/page";
 import scrollToSection from "../../util/scrollToSection";
 
 const Header = () => {
+  const { data: session } = useSession();
+
   const { isLightTheme } = useThemeContext();
   const { toggleModal } = useLoginModalContext();
 
@@ -169,6 +173,20 @@ const Header = () => {
               Contact
             </Link>
           </li>
+          {session ? (
+            <li className={`${styles.nav__li}`}>
+              <Link
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                } ${activeSection === "dashboard" ? styles.active : ""}`}
+                href='/dashboard'
+                scroll={false}>
+                Dashboard
+              </Link>
+            </li>
+          ) : (
+            ""
+          )}
 
           <li className={`${styles.nav__li}  `}>
             <button
@@ -179,7 +197,8 @@ const Header = () => {
               onClick={() => {
                 handleClickConnexion();
               }}>
-              Connexion
+              {session ? "Signe Out" : "Signe IN"}
+              {/* Connexion */}
             </button>
           </li>
         </ul>
