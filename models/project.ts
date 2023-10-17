@@ -20,7 +20,7 @@ const projectSchema = new Schema<IProject>({
         required: [true, 'description is required'],
     },
     languages: {
-        type: [String],
+        type: String,
         required: [true, 'languages is required'],
     },
     url: {
@@ -29,6 +29,6 @@ const projectSchema = new Schema<IProject>({
     }
 })
 
-const Projects = models.project || model<IProject>('Projects', projectSchema)
+const Project = models.Project || model<IProject>('Project', projectSchema)
 
-export default Projects;
+export default Project;

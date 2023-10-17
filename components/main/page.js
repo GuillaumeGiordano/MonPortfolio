@@ -9,25 +9,25 @@ import axios from "axios";
 // STYLE
 import styles from "./Main.module.css";
 // COMPONENTS
-import SectionHead from "../../../../components/sections/sectionHead/page";
-import SectionRegular from "../../../../components/sections/sectionRegular/page";
-import SloganText from "../../../../components/elements/sloganText/page";
-import ImageSlider from "../../../../components/elements/imageSlider/page";
-import CardCoding from "../../../../components/cards/cardCoding/page";
-import CardScore from "../../../../components/cards/cardScore/CardScore";
-import ScrollUp from "../../../../components/buttons/scrollUp/page";
-import ArticleOneColum from "../../../../components/library/articles/articleOneColum/page";
-import ArticleTreeColums from "../../../../components/library/articles/articleTreeColums/page";
-import ServiceCollapse from "../../../../components/elements/ServiceCollapse/page";
-import CardPortfolio from "../../../../components/cards/cardPortfolio/page";
+import SectionHead from "../../components/sections/sectionHead/page";
+import SectionRegular from "../../components/sections/sectionRegular/page";
+import SloganText from "../../components/elements/sloganText/page";
+import ImageSlider from "../../components/elements/imageSlider/page";
+import CardCoding from "../../components/cards/cardCoding/page";
+import CardScore from "../../components/cards/cardScore/CardScore";
+import ScrollUp from "../../components/buttons/scrollUp/page";
+import ArticleOneColum from "../../components/articles/articleOneColum/page";
+import ArticleTreeColums from "../../components/articles/articleTreeColums/page";
+import ServiceCollapse from "../../components/elements/ServiceCollapse/page";
+import CardPortfolio from "../../components/cards/cardPortfolio/page";
 // DATA
-import { dataServices } from "../../../data/dataServices";
-import { dataScores } from "../../../data/dataScore";
-import { dataCompetences } from "../../../data/dataCompetences";
-import { dataTextSlider } from "../../../data/dataTextSlider";
-import { dataRandomText } from "../../../data/dataRandomText";
-import { dataImageProfil } from "../../../data/dataImageProfil";
-import { dataProjects } from "../../../data/dataProjects";
+import { dataServices } from "../../data/dataServices";
+import { dataScores } from "../../data/dataScore";
+import { dataCompetences } from "../../data/dataCompetences";
+import { dataTextSlider } from "../../data/dataTextSlider";
+import { dataRandomText } from "../../data/dataRandomText";
+import { dataImageProfil } from "../../data/dataImageProfil";
+import { dataProjects } from "../../data/dataProjects";
 
 const Main = () => {
   // DISPLAY SCROLLBUTTON

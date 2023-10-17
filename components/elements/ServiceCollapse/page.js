@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import styles from "./ServiceCollapse.module.css";
 import Image from "next/image";
-import Collapse from "../../library/collapse/page";
+import Collapse from "../../elements/collapse/page";
 
 const ServiceCollapse = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);

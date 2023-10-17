@@ -3,29 +3,49 @@
 import React, { useState } from "react";
 import styles from "./AddProject.module.css";
 
-// MON TYPE TS
-import { AddProjectProps } from "../../types/index";
-
 const AddProject = () => {
-  const [project, setProject] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [formData, setFormData] = useState({
+    image: "",
+    title: "",
+    mission: "",
+    description: "",
+    languages: "",
+    url: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const handleCreateProject = async () => {
-    alert("ca marche");
+    console.log(JSON.stringify(formData));
     setIsLoading(true);
+
     try {
       const response = await fetch("/api/project/new", {
         method: "POST",
-        body: JSON.stringify({
-          project: project,
-        }),
+        body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/json",
         },
       });
 
+      alert("essai");
+
       if (response.ok) {
-        setProject("");
+        setFormData({
+          image: "",
+          title: "",
+          mission: "",
+          description: "",
+          languages: "",
+          url: "",
+        });
         console.log("Project created successfully");
       } else {
         console.error("Failed to create Project");
@@ -45,8 +65,8 @@ const AddProject = () => {
           type='text'
           id='image'
           name='image'
-          value={project}
-          onChange={(e) => setProject(e.target.value)}
+          value={formData.image}
+          onChange={(e) => handleChange(e)}
         />
       </div>
       <div>
@@ -55,8 +75,8 @@ const AddProject = () => {
           type='text'
           id='title'
           name='title'
-          value={project}
-          onChange={(e) => setProject(e.target.value)}
+          value={formData.title}
+          onChange={(e) => handleChange(e)}
         />
       </div>
       <div>
@@ -65,8 +85,8 @@ const AddProject = () => {
           type='text'
           id='mission'
           name='mission'
-          value={project}
-          onChange={(e) => setProject(e.target.value)}
+          value={formData.mission}
+          onChange={(e) => handleChange(e)}
         />
       </div>
       <div>
@@ -74,8 +94,8 @@ const AddProject = () => {
         <textarea
           id='description'
           name='description'
-          value={project}
-          onChange={(e) => setProject(e.target.value)}
+          value={formData.description}
+          onChange={(e) => handleChange(e)}
         />
       </div>
       <div>
@@ -84,8 +104,8 @@ const AddProject = () => {
           type='text'
           id='languages'
           name='languages'
-          value={project}
-          onChange={(e) => setProject(e.target.value)}
+          value={formData.languages}
+          onChange={(e) => handleChange(e)}
         />
       </div>
       <div>
@@ -94,8 +114,8 @@ const AddProject = () => {
           type='text'
           id='url'
           name='url'
-          value={project}
-          onChange={(e) => setProject(e.target.value)}
+          value={formData.url}
+          onChange={(e) => handleChange(e)}
         />
       </div>
       <button

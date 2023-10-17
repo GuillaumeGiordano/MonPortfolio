@@ -5,14 +5,14 @@ import Link from "next/link";
 // STYLE
 import styles from "./Header.module.css";
 // CONTEXTES
-import { useThemeContext } from "../../../../src/context/theme";
-import { useLoginModalContext } from "../../../../src/context/loginForm";
+import { useThemeContext } from "../../context/theme";
+import { useLoginModalContext } from "../../context/loginForm";
 // COMPONENTS
-import ScrollProgressBar from "../../../../components/elements/scrollProgressBar/page";
-import Logo from "../../../../components/elements/logo/page";
-import SwitchTheme from "../../../../components/buttons/buttonSwitchTheme/page";
+import ScrollProgressBar from "../../components/elements/scrollProgressBar/page";
+import Logo from "../../components/elements/logo/page";
+import SwitchTheme from "../../components/buttons/buttonSwitchTheme/page";
 
-import scrollToSection from "../../../../util/scrollToSection";
+import scrollToSection from "../../util/scrollToSection";
 
 const Header = () => {
   const { isLightTheme } = useThemeContext();

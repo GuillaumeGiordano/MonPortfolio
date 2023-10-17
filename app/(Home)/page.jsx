@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import React, { useState } from "react";
@@ -7,13 +6,13 @@ require("dotenv").config();
 // STYLE
 import styles from "./page.module.css";
 // CONTEXTE
-import { useLoginModalContext } from "../../src/context/loginForm";
-import { useThemeContext } from "../../src/context/theme";
+import { useLoginModalContext } from "../../context/loginForm";
+import { useThemeContext } from "../../context/theme";
 // COMPONENTS
 import LoginForm from "../../components/elements/modal/page";
-import Main from "../../src/feature/layout/main/page";
-import Header from "../../src/feature/layout/header/page";
-import Footer from "../../src/feature/layout/footer/page";
+import Main from "../../components/main/page";
+import Header from "../../components/header/page";
+import Footer from "../../components/footer/page";
 
 export default function Home() {
   const { isLightTheme } = useThemeContext();

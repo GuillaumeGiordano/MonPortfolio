@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./ButtonSwitchTheme.module.css";
-import { useThemeContext } from "../../../src/context/theme";
+import { useThemeContext } from "../../../context/theme";
 
 const ButtonSwitchTheme = () => {
   const { isLightTheme, toggleTheme } = useThemeContext();

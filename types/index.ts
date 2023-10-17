@@ -12,6 +12,6 @@ export interface IProject {
     title: string;
     mission: string;
     description: string;
-    languages: string[];
+    languages: string;
     url: string;
 }
