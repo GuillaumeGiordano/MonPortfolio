@@ -1,5 +1,3 @@
-// "use client";
-
 import "./globals.css";
 import AuthProvider from "../components/authprovider/Authprovider";
 import { ThemeContextProvider } from "../context/theme";

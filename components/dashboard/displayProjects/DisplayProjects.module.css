@@ -1,0 +1,32 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table,
+.th,
+.td {
+  border: 1px solid #ccc;
+}
+
+.th {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+}
+
+.td {
+  padding: 10px;
+  text-align: left;
+}
+
+.image {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.button {
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}

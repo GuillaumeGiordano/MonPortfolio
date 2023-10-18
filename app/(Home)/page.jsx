@@ -1,8 +1,4 @@
 "use client";
-
-import React, { useState } from "react";
-require("dotenv").config();
-
 // STYLE
 import styles from "./page.module.css";
 // CONTEXTE
