@@ -8,7 +8,6 @@ const DisplayProjects = ({ data, onEdit, onDelete }) => {
     <table className={`${styles.table}`}>
       <thead className={`${styles.thead}`}>
         <tr className={`${styles.tr}`}>
-          <th className={`${styles.th}`}>id</th>
           <th className={`${styles.th}`}>Image</th>
           <th className={`${styles.th}`}>Title</th>
           <th className={`${styles.th}`}>Description</th>
@@ -18,7 +17,6 @@ const DisplayProjects = ({ data, onEdit, onDelete }) => {
       <tbody className={`${styles.tbody}`}>
         {data.map((item: IProject) => (
           <tr key={item._id} className={`${styles.tr}`}>
-            <td className={`${styles.td}`}>{item._id}</td>
             <td className={`${styles.td}`}>
               {/* <Image src={item.image} alt={item.title} width='50' height='50' /> */}
             </td>

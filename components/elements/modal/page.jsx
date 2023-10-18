@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import styles from "./LoginForm.module.css";
 import BtnNormal from "../../buttons/buttonRegular/page";
 import { useLoginModalContext } from "../../../context/loginForm";
-import Login from "../../login/page";
+import Login from "./login/page";
 const LoginForm = () => {
   const { isOpen, toggleModal } = useLoginModalContext();
 
@@ -56,7 +56,6 @@ const LoginForm = () => {
             {/* SIGN UP */}
             <div className={styles.modalContent}>
               <h2 className={styles.title}>Connexion</h2>
-
               {/* CNX GITHUB */}
               <Login />
             </div>

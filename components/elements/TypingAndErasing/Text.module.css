@@ -8,8 +8,6 @@
 }
 
 .cursor {
-  background-color: var(--couleur-blanc);
-  width: 5px;
-  height: 100%;
+  color: var(--couleur-blanc);
   margin-left: 5px;
 }

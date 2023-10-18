@@ -1,8 +1,9 @@
 .main {
   padding-top: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: calc(100vh - 120px);
+
   gap: 40px;
 }

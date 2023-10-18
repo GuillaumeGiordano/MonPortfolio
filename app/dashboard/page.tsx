@@ -8,13 +8,14 @@ import styles from "./Dashboard.module.css";
 // COMPONENTS
 import AddProject from "../../components/dashboard/addProject/AddProject";
 import SectionRegular from "../../components/sections/sectionRegular/page";
-import ArticleOneColum from "../../components/articles/articleOneColum/page";
 import DisplayProjects from "../../components/dashboard/displayProjects/page";
 import ArticleTwoColums from "@components/articles/articleTwoColums/page";
+import Main from "@components/main/page";
 
 export default function Dashboard() {
   const router = useRouter();
   const { data: session } = useSession();
+
   // VARIABLES
   const [formData, setFormData] = useState({
     image: "",
@@ -31,8 +32,7 @@ export default function Dashboard() {
   if (!session && session !== undefined) {
     redirect("/");
   }
-
-  // FETCH GET ALL
+  // FETCH PROJECT => GET ALL + POST ONE + DELETE ONE
   const fetchProjects = async () => {
     try {
       const response = await fetch("/api/project/all");
@@ -43,7 +43,6 @@ export default function Dashboard() {
       console.log(error);
     }
   };
-  // FETCH POST ONE PROJECT
   const handleCreateProject = async () => {
     try {
       const response = await fetch("/api/project/new", {
@@ -72,7 +71,6 @@ export default function Dashboard() {
       console.error("Error: ", error);
     }
   };
-  // FETCH DELETE
   const fetchDeleteProjects = async (item) => {
     const projectId = item._id;
     console.log(projectId);
@@ -93,11 +91,10 @@ export default function Dashboard() {
     }
   };
 
-  // HANDLE UPDATE ONE PROJECT
+  // HANDLE PROJECT => UPDATE ONE + GET ONE
   const handleEditProject = async (item) => {
     router.push(`/dashboard/project/${item._id}`);
   };
-  // HANDLE ONE PROJECT
   const handleDeleteProject = async (item) => {
     console.log("Supprimer :", item);
     fetchDeleteProjects(item);
@@ -108,32 +105,35 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <main className={`${styles.main} `}>
-      {/* PORTFOLIO */}
-      <SectionRegular sectionTitle={"Mes Projets"} sectionId={"projects"}>
-        <ArticleTwoColums
-          articleOne={
-            <AddProject
-              formData={formData}
-              setFormData={setFormData}
-              handleCreateProject={handleCreateProject}
-            />
-          }
-          articleTwo={
-            !isDataProject ? (
-              <p>Chargement </p>
-            ) : allProjects.length > 0 ? (
-              <DisplayProjects
-                data={allProjects}
-                onEdit={handleEditProject}
-                onDelete={handleDeleteProject}
+    <>
+      <Main>
+        {/* SETTING PORTFOLIO */}
+        <SectionRegular sectionTitle={"Mes Projets"} sectionId={"projects"}>
+          <ArticleTwoColums
+            className={""}
+            articleOne={
+              <AddProject
+                formData={formData}
+                setFormData={setFormData}
+                handleCreateProject={handleCreateProject}
               />
-            ) : (
-              // eslint-disable-next-line react/no-unescaped-entities
-              <p>Il n'y a pas de encore de projet enregistré</p>
-            )
-          }></ArticleTwoColums>
-      </SectionRegular>
-    </main>
+            }
+            articleTwo={
+              !isDataProject ? (
+                <p>Chargement </p>
+              ) : allProjects.length > 0 ? (
+                <DisplayProjects
+                  data={allProjects}
+                  onEdit={handleEditProject}
+                  onDelete={handleDeleteProject}
+                />
+              ) : (
+                // eslint-disable-next-line react/no-unescaped-entities
+                <p>Il n'y a pas de encore de projet enregistré</p>
+              )
+            }></ArticleTwoColums>
+        </SectionRegular>
+      </Main>
+    </>
   );
 }

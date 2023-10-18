@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 // STYLE
 import styles from "./Text.module.css";
 // FONCTION
-import generateRandomSpeed from "../../../util/generateRandomSpeed";
+import generateRandomSpeed from "@util/generateRandomSpeed";
+// DATA
+import { dataTextSlider } from "@data/dataTextSlider";
 
-export default function TypingAndErasing({ wordToTypeAndErase }) {
+export default function TypingAndErasing() {
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,7 +29,7 @@ export default function TypingAndErasing({ wordToTypeAndErase }) {
   // WRITING
   useEffect(() => {
     const typingInterval = setInterval(() => {
-      const currentText = wordToTypeAndErase[currentTextIndex];
+      const currentText = dataTextSlider[currentTextIndex];
       const maxiLenght = currentText.length;
 
       if (isTyping) {
@@ -43,7 +45,7 @@ export default function TypingAndErasing({ wordToTypeAndErase }) {
         setText((prevText) => prevText.slice(0, -1));
 
         if (text === "") {
-          setCurrentTextIndex((currentTextIndex + 1) % wordToTypeAndErase.length);
+          setCurrentTextIndex((currentTextIndex + 1) % dataTextSlider.length);
           setCurrentIndex(0);
           setIsTyping(true);
         }
@@ -53,11 +55,11 @@ export default function TypingAndErasing({ wordToTypeAndErase }) {
     return () => {
       clearInterval(typingInterval);
     };
-  }, [text, currentIndex, currentTextIndex, wordToTypeAndErase, isTyping]);
+  }, [text, currentIndex, currentTextIndex, isTyping]);
 
   return (
     <div className={styles.ctn}>
-      {text} {cursorVisible && <div className={styles.cursor}></div>}
+      {text} {cursorVisible && <div className={styles.cursor}>|</div>}
     </div>
   );
 }
