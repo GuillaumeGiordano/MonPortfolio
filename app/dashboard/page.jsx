@@ -2,26 +2,20 @@
 
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 // STYLE
 import styles from "./Dashboard.module.css";
-// CONTEXTE
-import { useThemeContext } from "../../context/theme";
-import { useLoginModalContext } from "../../context/loginForm";
 // COMPONENTS
-import AddProject from "../../components/addProject/AddProject";
-import Header from "../../components/header/page";
-import LoginForm from "../../components/elements/modal/page";
-import Footer from "../../components/footer/page";
+import AddProject from "../../components/dashboard/addProject/AddProject";
 import SectionRegular from "../../components/sections/sectionRegular/page";
 import ArticleOneColum from "../../components/articles/articleOneColum/page";
-import CardPortfolio from "../../components/cards/cardPortfolio/page";
+import DisplayProjects from "../../components/dashboard/displayProjects/page";
+import ArticleTwoColums from "@components/articles/articleTwoColums/page";
 
 export default function Dashboard() {
-  // VARIABLES
-  const { isLightTheme } = useThemeContext;
-  const { isOpen } = useLoginModalContext;
+  const router = useRouter();
   const { data: session } = useSession();
+  // VARIABLES
   const [formData, setFormData] = useState({
     image: "",
     title: "",
@@ -37,7 +31,8 @@ export default function Dashboard() {
   if (!session && session !== undefined) {
     redirect("/");
   }
-  // FETCH ALL
+
+  // FETCH GET ALL
   const fetchProjects = async () => {
     try {
       const response = await fetch("/api/project/all");
@@ -48,7 +43,7 @@ export default function Dashboard() {
       console.log(error);
     }
   };
-  // FETCH CREATE ONE PROJECT
+  // FETCH POST ONE PROJECT
   const handleCreateProject = async () => {
     try {
       const response = await fetch("/api/project/new", {
@@ -77,41 +72,68 @@ export default function Dashboard() {
       console.error("Error: ", error);
     }
   };
+  // FETCH DELETE
+  const fetchDeleteProjects = async (item) => {
+    const projectId = item._id;
+    console.log(projectId);
+    try {
+      const response = await fetch(`/api/project/delete/${projectId}`, {
+        method: "DELETE",
+      });
+      // const data = await response.json();
+      if (response.ok) {
+        console.log("Project delete successfully");
+        alert("Project delete successfully");
+        fetchProjects();
+      } else {
+        console.error("Failed to delete Project");
+      }
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+  };
+
+  // HANDLE UPDATE ONE PROJECT
+  const handleEditProject = async (item) => {
+    router.push(`/dashboard/project/${item._id}`);
+  };
+  // HANDLE ONE PROJECT
+  const handleDeleteProject = async (item) => {
+    console.log("Supprimer :", item);
+    fetchDeleteProjects(item);
+  };
 
   useEffect(() => {
     fetchProjects();
   }, []);
 
   return (
-    <body
-      className={`${isLightTheme ? "dark" : "light"} ${isOpen ? "body__module" : ""}`}>
-      <Header />
-      <LoginForm />
-      <main className={`${styles.main}`}>
-        {/* PORTFOLIO */}
-        <SectionRegular sectionTitle={"Mes Projets"} sectionId={"projects"}>
-          <ArticleOneColum>
+    <main className={`${styles.main} `}>
+      {/* PORTFOLIO */}
+      <SectionRegular sectionTitle={"Mes Projets"} sectionId={"projects"}>
+        <ArticleTwoColums
+          articleOne={
             <AddProject
               formData={formData}
               setFormData={setFormData}
               handleCreateProject={handleCreateProject}
             />
-          </ArticleOneColum>
-
-          <ArticleOneColum className={`${styles.ctn_portfolio}`}>
-            {!isDataProject ? (
+          }
+          articleTwo={
+            !isDataProject ? (
               <p>Chargement </p>
             ) : allProjects.length > 0 ? (
-              allProjects.map((item) => <CardPortfolio key={item._id} item={item} />)
+              <DisplayProjects
+                data={allProjects}
+                onEdit={handleEditProject}
+                onDelete={handleDeleteProject}
+              />
             ) : (
               // eslint-disable-next-line react/no-unescaped-entities
               <p>Il n'y a pas de encore de projet enregistré</p>
-            )}
-          </ArticleOneColum>
-        </SectionRegular>
-      </main>
-
-      <Footer />
-    </body>
+            )
+          }></ArticleTwoColums>
+      </SectionRegular>
+    </main>
   );
 }

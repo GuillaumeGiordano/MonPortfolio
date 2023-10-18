@@ -6,13 +6,7 @@ import { NextResponse } from "next/server"
 
 export const POST = async (request: Request) => {
 
-
-
     const { title, image, mission, description, languages, url } = await request.json()
-
-
-    console.log("FormData")
-    console.log(FormData)
     try {
         await connectToDB()
         const newProject = new Project(
@@ -25,9 +19,6 @@ export const POST = async (request: Request) => {
                 url: url,
             }
         )
-        console.log("NewProject")
-
-        console.log(newProject)
 
         // Gérer les erreurs de validation du modèle Mongoose.
         const validationError = newProject.validateSync();
