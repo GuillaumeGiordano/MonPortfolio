@@ -53,15 +53,15 @@ const Header = () => {
 
       sections.forEach((section) => {
         const offset = 65;
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).clientHeight;
         const scrollY = window.scrollY;
 
         if (
           scrollY + offset >= sectionTop &&
           scrollY < sectionTop + sectionHeight + offset
         ) {
-          active = section.getAttribute("data-id");
+          active = (section as HTMLElement).getAttribute("data-id");
         }
       });
 

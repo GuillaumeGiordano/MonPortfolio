@@ -6,7 +6,7 @@ import styles from "./Collapse.module.css";
 
 const Collapse = ({ header, content }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const contentRef = useRef();
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
   const toggleCollapsible = () => {
     setIsOpen(!isOpen);
