@@ -6,11 +6,11 @@ import { redirect, useRouter } from "next/navigation";
 // STYLE
 import styles from "./Dashboard.module.css";
 // COMPONENTS
-import AddProject from "../../components/dashboard/addProject/AddProject";
-import SectionRegular from "../../components/sections/sectionRegular/page";
-import DisplayProjects from "../../components/dashboard/displayProjects/page";
-import ArticleTwoColums from "@components/articles/articleTwoColums/page";
-import Main from "@components/main/page";
+import AddProject from "@components/dashboard/addProject/page";
+import SectionRegular from "@components/lib/sections/sectionRegular/page";
+import DisplayProjects from "@components/dashboard/displayProjects/page";
+import ArticleTwoColums from "@components/lib/articles/articleTwoColums/page";
+import Main from "@components/lib/main/page";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -108,7 +108,10 @@ export default function Dashboard() {
     <>
       <Main>
         {/* SETTING PORTFOLIO */}
-        <SectionRegular sectionTitle={"Mes Projets"} sectionId={"projects"}>
+        <SectionRegular
+          sectionTitle={"Mes Projets"}
+          sectionId={"projects"}
+          className={""}>
           <ArticleTwoColums
             className={""}
             articleOne={

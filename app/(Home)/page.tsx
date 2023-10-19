@@ -4,21 +4,16 @@ import React, { useState, useEffect } from "react";
 // STYLE
 import styles from "./page.module.css";
 // LIB
-import Main from "@components/main/page";
+import Main from "@components/lib/main/page";
 // COMPONENTS
-import LoginForm from "@components/elements/modal/page";
-import Header from "@components/header/page";
-import Footer from "@components/footer/page";
-import SectionAbout from "@components/main/sectionAbout/page";
-import SectionServices from "@components/main/sectionServices/page";
-import SectionPortfolio from "@components/main/sectionPortfolio/page";
-import SectionAvis from "@components/main/sectionAvis/page";
-import SectionContact from "@components/main/sectionContact/page";
-import SectionHead from "@components/main/sectionHead/page";
-import ScrollUp from "@components/main/scrollUp/page";
-
+import SectionAbout from "@components/home/sectionAbout/page";
+import SectionServices from "@components/home/sectionServices/page";
+import SectionPortfolio from "@components/home/sectionPortfolio/page";
+import SectionAvis from "@components/home/sectionAvis/page";
+import SectionContact from "@components/home/sectionContact/page";
+import SectionHead from "@components/home/sectionHead/page";
+import ScrollUp from "@components/home/scrollUp/page";
 // DATA
-import { dataTextSlider } from "@data/dataTextSlider";
 
 export default function Home() {
   // DISPLAY SCROLLBUTTON

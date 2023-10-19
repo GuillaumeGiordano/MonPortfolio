@@ -1,7 +1,8 @@
+"use client";
 import styles from "./DisplayProjects.module.css";
 import Image from "next/image";
 import React from "react";
-import { IProject } from "../../../types";
+import { IProject } from "@types";
 
 const DisplayProjects = ({ data, onEdit, onDelete }) => {
   return (

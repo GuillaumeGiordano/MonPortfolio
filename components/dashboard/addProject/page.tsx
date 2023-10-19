@@ -1,10 +1,9 @@
 "use client";
 
-import styles from "./UpdateProject.module.css";
-
 import React from "react";
+import styles from "./AddProject.module.css";
 
-const UpdateProject = ({ formData, setFormData, handleUpdateProject }) => {
+const AddProject = ({ formData, setFormData, handleCreateProject }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -90,7 +89,7 @@ const UpdateProject = ({ formData, setFormData, handleUpdateProject }) => {
         type='button'
         className={`${styles.button}`}
         onClick={() => {
-          handleUpdateProject();
+          handleCreateProject();
         }}>
         Submit
       </button>
@@ -98,4 +97,4 @@ const UpdateProject = ({ formData, setFormData, handleUpdateProject }) => {
   );
 };
 
-export default UpdateProject;
+export default AddProject;
