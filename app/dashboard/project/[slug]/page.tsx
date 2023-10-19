@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-import UpdateProject from "../../../../components/dashboard/updateProject/page";
-import SectionRegular from "../../../../components/sections/sectionRegular/page";
-import ArticleOneColum from "../../../../components/articles/articleOneColum/page";
+import UpdateProject from "@components/dashboard/updateProject/page";
+import SectionRegular from "@components/lib/sections/sectionRegular/page";
+import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
 
 export default function Project({ params }: { params: { slug: string } }) {
   const router = useRouter();
@@ -75,7 +75,10 @@ export default function Project({ params }: { params: { slug: string } }) {
 
   return (
     <main>
-      <SectionRegular sectionId={"projet"} sectionTitle={`Mon projet ${params.slug}`}>
+      <SectionRegular
+        className={""}
+        sectionId={"projet"}
+        sectionTitle={`Mon projet ${params.slug}`}>
         <ArticleOneColum className={""}>
           {!isDataProject ? (
             <p>Chargement</p>

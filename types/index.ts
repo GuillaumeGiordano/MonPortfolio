@@ -1,3 +1,4 @@
+// PROPS
 export interface AddProjectProps {
     formData: string[];
     setFormData: (formData: string[]) => void;
@@ -5,7 +6,7 @@ export interface AddProjectProps {
 }
 
 
-
+// BDD
 export interface IProject {
     _id: string;
     image: string;
@@ -14,4 +15,9 @@ export interface IProject {
     description: string;
     languages: string;
     url: string;
+}
+export interface IUser {
+    _id: string;
+    mail: string;
+    passworld: string;
 }

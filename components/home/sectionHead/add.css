@@ -1,0 +1,21 @@
+#head {
+  height: calc(100vh - 60px);
+  min-height: 720px;
+  max-height: 1100px;
+
+  background-image: url("/background002.png");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--couleur-bleu);
+  background-blend-mode: color-burn;
+
+  flex-direction: row;
+  justify-content: center;
+}
+
+#head .head {
+  width: 80%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}

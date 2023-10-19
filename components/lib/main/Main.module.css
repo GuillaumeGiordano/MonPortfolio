@@ -1,0 +1,16 @@
+.main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+
+  gap: 40px;
+}
+
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 767px) {
+}
