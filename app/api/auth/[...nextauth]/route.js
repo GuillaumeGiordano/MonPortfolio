@@ -1,10 +1,10 @@
 import { connectToDB } from "@util/database";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import User from "@models/user";
+import User from "@models/User";
 import bcrypt from "bcrypt";
 
-export const authOptions = {
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentieals",
