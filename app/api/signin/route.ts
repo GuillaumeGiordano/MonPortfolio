@@ -13,7 +13,8 @@ export const POST = async (request: Request) => {
         const { email, password } = await request.json()
 
         await connectToDB();
-        // Validate the email and password
+
+        // if email and password
         if (!email || !password) {
             return NextResponse.json(
                 { error: "Email and password are required" },
