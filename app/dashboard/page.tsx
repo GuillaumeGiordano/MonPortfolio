@@ -28,6 +28,7 @@ export default function Dashboard() {
   });
   const [allProjects, setAllProjects] = useState([]);
   const [isDataProject, setIsDataProject] = useState(false);
+  const [err, setErr] = useState("");
 
   // FETCH PROJECT => GET ALL + POST ONE + DELETE ONE
   const fetchProjects = async () => {
