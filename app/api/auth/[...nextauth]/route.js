@@ -1,8 +1,8 @@
 require("dotenv").config();
 
-import { connectToDB } from "@util/database";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { connectToDB } from "@util/database";
 import bcrypt from "bcrypt";
 
 import User from "@models/user";
@@ -12,6 +12,7 @@ const authOptions = {
     CredentialsProvider({
       name: "credentieals",
       credentials: {},
+
       async authorize(credentials) {
         const { email, password } = credentials;
 
