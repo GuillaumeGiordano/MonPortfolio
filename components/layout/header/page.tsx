@@ -27,8 +27,6 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("");
   const [isBurger, setIsBurger] = useState(false);
 
-  console.log(session);
-
   // BUTTON SCROLL UP
   useEffect(() => {
     // Gestionnaire de scroll pour le bouton Scroll Up

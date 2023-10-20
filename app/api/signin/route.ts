@@ -4,8 +4,9 @@ import User from "@models/user";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-require("dotenv").config();
-const JWT_SECRET = process.env.JWT_SECRET;
+
+const config = require("@env");
+const JWT_SECRET = config.JWT_SECRET;
 
 export const POST = async (request: Request) => {
     try {

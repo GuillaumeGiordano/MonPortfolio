@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 // STYLE
 import styles from "./Dashboard.module.css";
 // COMPONENTS
@@ -15,7 +14,6 @@ import { IProject } from "@types";
 
 export default function Dashboard() {
   const router = useRouter();
-  const { data: session } = useSession();
 
   // VARIABLES
   const [formData, setFormData] = useState({

@@ -1,12 +1,8 @@
 
 import { connectToDB } from "@util/database"
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import User from "@models/user";
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-
-require("dotenv").config();
-const JWT_SECRET = process.env.JWT_SECRET;
 
 export const POST = async (request: Request) => {
 
@@ -42,7 +38,6 @@ export const POST = async (request: Request) => {
 
         await newUser.save()
 
-        // const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '6h' });
 
         return NextResponse.json(
             { error: "Sign-up successful" },
