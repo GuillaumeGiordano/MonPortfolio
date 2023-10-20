@@ -10,6 +10,7 @@ export function LoginModalContextProvider({ children }) {
     setIsOpen((value) => !value);
   };
 
+  // BODY NO SCROLL
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add("body__module");
