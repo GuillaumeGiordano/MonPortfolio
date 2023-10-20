@@ -1,12 +1,14 @@
+require("dotenv").config();
+
 import { connectToDB } from "@util/database"
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import User from "@models/user";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 
-const config = require("@env");
-const JWT_SECRET = config.JWT_SECRET;
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export const POST = async (request: Request) => {
     try {
