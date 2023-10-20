@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FormEvent } from "react";
 
-const SignUp = () => {
+const SignUp = ({ setPage }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
@@ -22,6 +22,7 @@ const SignUp = () => {
       if (response.ok) {
         // Sign-up successful
         console.log("Sign-up successful");
+        setPage("signIn");
       } else {
         // Sign-up failed
         console.error("Sign-up failed");

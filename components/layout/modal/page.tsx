@@ -86,7 +86,7 @@ const LoginForm = () => {
               {page === "signUp" ? (
                 <>
                   <h2 className={styles.title}>S'inscrire</h2>
-                  <SignUp />
+                  <SignUp setPage={setPage} />
                 </>
               ) : (
                 ""
