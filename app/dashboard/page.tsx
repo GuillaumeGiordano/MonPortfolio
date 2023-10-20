@@ -11,6 +11,7 @@ import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import DisplayProjects from "@components/dashboard/displayProjects/page";
 import ArticleTwoColums from "@components/lib/articles/articleTwoColums/page";
 import Main from "@components/lib/main/page";
+import { IProject } from "@types";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -28,10 +29,6 @@ export default function Dashboard() {
   const [allProjects, setAllProjects] = useState([]);
   const [isDataProject, setIsDataProject] = useState(false);
 
-  // CONTROL AUTH
-  if (!session && session !== undefined) {
-    redirect("/");
-  }
   // FETCH PROJECT => GET ALL + POST ONE + DELETE ONE
   const fetchProjects = async () => {
     try {
@@ -71,7 +68,7 @@ export default function Dashboard() {
       console.error("Error: ", error);
     }
   };
-  const fetchDeleteProjects = async (item) => {
+  const fetchDeleteProjects = async (item: IProject) => {
     const projectId = item._id;
     console.log(projectId);
     try {
@@ -92,10 +89,10 @@ export default function Dashboard() {
   };
 
   // HANDLE PROJECT => UPDATE ONE + GET ONE
-  const handleEditProject = async (item) => {
+  const handleEditProject = async (item: IProject) => {
     router.push(`/dashboard/project/${item._id}`);
   };
-  const handleDeleteProject = async (item) => {
+  const handleDeleteProject = async (item: IProject) => {
     console.log("Supprimer :", item);
     fetchDeleteProjects(item);
   };

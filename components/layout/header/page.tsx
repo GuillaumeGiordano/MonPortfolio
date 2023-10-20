@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+// AUTH
 import { useSession } from "next-auth/react";
 
 // STYLE
@@ -15,14 +16,18 @@ import Logo from "@components/lib/elements/logo/page";
 import SwitchTheme from "@components/lib/buttons/buttonSwitchTheme/page";
 // UTIL
 import scrollToSection from "@util/scrollToSection";
+import SignOut from "../modal/signOut/page";
 
 const Header = () => {
   const { data: session } = useSession();
+
   const { isLightTheme } = useThemeContext();
   const { toggleModal } = useLoginModalContext();
   const [scrolling, setScrolling] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isBurger, setIsBurger] = useState(false);
+
+  console.log(session);
 
   // BUTTON SCROLL UP
   useEffect(() => {
@@ -185,17 +190,20 @@ const Header = () => {
           ) : (
             ""
           )}
-
           <li className={`${styles.nav__li}  `}>
-            <button
-              className={`${styles.link} ${
-                isLightTheme ? styles.link__light : styles.link__dark
-              } ${activeSection === "connexion" ? styles.active : ""}`}
-              onClick={() => {
-                handleClickConnexion();
-              }}>
-              {session ? "Signe Out" : "Signe IN"}
-            </button>
+            {session ? (
+              <SignOut />
+            ) : (
+              <button
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                } ${activeSection === "connexion" ? styles.active : ""}`}
+                onClick={() => {
+                  handleClickConnexion();
+                }}>
+                Sign
+              </button>
+            )}
           </li>
         </ul>
         <div

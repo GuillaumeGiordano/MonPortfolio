@@ -1,6 +1,6 @@
-import Project from "../../../../models/project"
+import Project from "@models/project"
 
-import { connectToDB } from "../../../../util/database"
+import { connectToDB } from "@util/database"
 
 import { NextResponse } from "next/server"
 

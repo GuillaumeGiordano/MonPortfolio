@@ -18,6 +18,6 @@ export interface IProject {
 }
 export interface IUser {
     _id: string;
-    mail: string;
-    passworld: string;
+    email: string;
+    password: string;
 }

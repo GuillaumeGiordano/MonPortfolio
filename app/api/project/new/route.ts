@@ -7,6 +7,7 @@ import { NextResponse } from "next/server"
 export const POST = async (request: Request) => {
 
     const { title, image, mission, description, languages, url } = await request.json()
+
     try {
         await connectToDB()
         const newProject = new Project(

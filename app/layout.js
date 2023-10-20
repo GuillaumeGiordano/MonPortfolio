@@ -1,11 +1,11 @@
 import "./globals.css";
-import AuthProvider from "@/components/authprovider/Authprovider";
 import { ThemeContextProvider } from "@/context/theme";
 import { LoginModalContextProvider } from "@/context/loginForm";
 
 import LoginForm from "@components/layout/modal/page";
 import Header from "@components/layout/header/page";
 import Footer from "@components/layout/footer/page";
+import { AuthProvider } from "./providers";
 
 export const metadata = {
   title: "Guillaume Giordano Développeur Web",
@@ -15,18 +15,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='fr'>
-      <AuthProvider>
-        <ThemeContextProvider>
-          <LoginModalContextProvider>
+      <ThemeContextProvider>
+        <LoginModalContextProvider>
+          <AuthProvider>
             <body>
               <Header />
               <LoginForm />
               {children}
               <Footer />
             </body>
-          </LoginModalContextProvider>
-        </ThemeContextProvider>
-      </AuthProvider>
+          </AuthProvider>
+        </LoginModalContextProvider>
+      </ThemeContextProvider>
     </html>
   );
 }
