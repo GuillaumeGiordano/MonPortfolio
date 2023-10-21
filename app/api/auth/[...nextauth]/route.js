@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 
 import User from "@models/user";
 
-const authOptions = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentieals",
@@ -15,7 +15,6 @@ const authOptions = {
 
       async authorize(credentials) {
         const { email, password } = credentials;
-
         try {
           await connectToDB();
           const user = await User.findOne({ email });
@@ -25,10 +24,11 @@ const authOptions = {
           }
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
-
           if (!passwordsMatch) {
             return null;
           }
+
+          console.log("User:", user);
 
           return user;
         } catch (error) {
@@ -43,6 +43,32 @@ const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/",
+  },
+  callbacks: {
+    async session({ session, token, user }) {
+      session.user.id = token.id;
+      session.user.role = token.role;
+
+      session.accessToken = token.accessToken;
+      return session;
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      if (user) {
+        token.id = user.id;
+        token.role = user.role;
+      }
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
+    // async jwt(token, user) {
+    //   return { ...token, ...user };
+    // },
+    // async session({ session, token, user }) {
+    //   session.user = token;
+    //   return session;
+    // },
   },
 };
 

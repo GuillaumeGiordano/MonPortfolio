@@ -14,12 +14,19 @@ import { useLoginModalContext } from "@context/loginForm";
 import ScrollProgressBar from "@components/lib/elements/scrollProgressBar/page";
 import Logo from "@components/lib/elements/logo/page";
 import SwitchTheme from "@components/lib/buttons/buttonSwitchTheme/page";
+
 // UTIL
 import scrollToSection from "@util/scrollToSection";
 import SignOut from "../modal/signOut/page";
 
 const Header = () => {
   const { data: session } = useSession();
+
+  if (session) {
+    console.log("session");
+    console.log(session);
+    console.log(session?.user.role);
+  }
 
   const { isLightTheme } = useThemeContext();
   const { toggleModal } = useLoginModalContext();
@@ -174,7 +181,7 @@ const Header = () => {
               Contact
             </Link>
           </li>
-          {session ? (
+          {session?.user.role === "admin" ? (
             <li className={`${styles.nav__li}`}>
               <Link
                 className={`${styles.link} ${
