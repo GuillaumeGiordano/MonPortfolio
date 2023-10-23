@@ -71,7 +71,7 @@ export const POST = async (request: Request) => {
         await newUser.save()
 
         return NextResponse.json(
-            { error: "Sign-up successful" },
+            { message: "Sign-up successful" },
             { status: 200 }
         );
     } catch (error: any) {
