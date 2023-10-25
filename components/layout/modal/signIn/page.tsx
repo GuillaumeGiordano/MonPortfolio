@@ -24,13 +24,14 @@ const SignIn = () => {
         redirect: false,
       });
 
+      console.log(res);
       if (res.error) {
         setError("Invalid e-mail or passeword");
         return;
       }
 
       toggleModal();
-      router.replace("dashboard");
+      // router.replace("dashboard");
     } catch (error) {
       console.log(error);
     }

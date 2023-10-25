@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // AUTH
 import { useSession } from "next-auth/react";
-
 // STYLE
 import styles from "./Header.module.css";
 // CONTEXTES
@@ -14,6 +13,7 @@ import { useLoginModalContext } from "@context/loginForm";
 import ScrollProgressBar from "@components/lib/elements/scrollProgressBar/page";
 import Logo from "@components/lib/elements/logo/page";
 import SwitchTheme from "@components/lib/buttons/buttonSwitchTheme/page";
+
 // UTIL
 import scrollToSection from "@util/scrollToSection";
 import SignOut from "../modal/signOut/page";
@@ -46,7 +46,6 @@ const Header = () => {
       window.removeEventListener("scroll", handleScrollForScrollUpButton);
     };
   }, [scrolling]);
-
   // LINK ACTIVE SUIVANT SCROLL
   useEffect(() => {
     // Gestionnaire de scroll pour activer les liens suivant le scroll
@@ -82,12 +81,10 @@ const Header = () => {
   const handleClickBurger = () => {
     setIsBurger(!isBurger);
   };
-
   const handleClickToSection = (sectionId) => {
     scrollToSection(sectionId);
     handleClickBurger();
   };
-
   const handleClickConnexion = () => {
     handleClickBurger();
     toggleModal();
@@ -163,6 +160,18 @@ const Header = () => {
             </Link>
           </li>
 
+          <li className={`${styles.nav__li}  `}>
+            <Link
+              className={`${styles.link} ${
+                isLightTheme ? styles.link__light : styles.link__dark
+              } ${activeSection === "avis" ? styles.active : ""}`}
+              href='/#avis'
+              scroll={false}
+              onClick={() => handleClickToSection("avis")}>
+              Avis
+            </Link>
+          </li>
+
           <li className={`${styles.nav__li}`}>
             <Link
               className={`${styles.link} ${
@@ -174,7 +183,8 @@ const Header = () => {
               Contact
             </Link>
           </li>
-          {session ? (
+
+          {session?.user.role === "admin" ? (
             <li className={`${styles.nav__li}`}>
               <Link
                 className={`${styles.link} ${
@@ -188,6 +198,7 @@ const Header = () => {
           ) : (
             ""
           )}
+
           <li className={`${styles.nav__li}  `}>
             {session ? (
               <SignOut />

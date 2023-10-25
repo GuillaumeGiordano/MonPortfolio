@@ -1,10 +1,6 @@
-// models/User.ts
 
 import { Schema, model, models } from "mongoose";
-
-import { IUser } from "../types/index"
-
-
+import { IUser } from "@/types/index"
 
 const userSchema = new Schema<IUser>({
     email: {
@@ -17,6 +13,10 @@ const userSchema = new Schema<IUser>({
         },
     },
     password: {
+        type: String,
+        required: true,
+    },
+    role: {
         type: String,
         required: true,
     },

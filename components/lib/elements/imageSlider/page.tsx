@@ -8,7 +8,7 @@ import styles from "./ImgSlider.module.css";
 
 export default function ImageSlider({ imageToDisplay }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [imgPath, setImgPath] = useState("profil_001.jpg");
+  const [imgPath, setImgPath] = useState("/profil_001.png");
   const [isImageToDisplay, setIsImageToDisplay] = useState(false);
 
   useEffect(() => {

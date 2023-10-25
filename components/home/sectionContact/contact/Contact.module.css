@@ -1,0 +1,68 @@
+.contact {
+  border: 3px solid var(--couleur-blanc);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  min-width: 350px;
+  color: var(--couleur-blanc);
+
+  background-image: url("/background002.png");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--couleur-bleu);
+  background-blend-mode: color-burn;
+
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.form {
+  width: 70%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.ctn {
+  width: 100%;
+}
+
+.label,
+.input,
+.textarea {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.input {
+  height: 40px;
+}
+.textarea {
+  height: 300px;
+}
+
+.btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  outline: 2.5px solid var(--couleur-blanc);
+  border: 0;
+  background: var(--couleur-gris);
+  outline-offset: 3px;
+  color: var(--couleur-blanc);
+  font-size: 1rem;
+  border-radius: 100rem;
+  transition: 0.4s;
+  font-weight: 600;
+}
+
+.btn:hover {
+  outline-offset: 4.5px;
+  background: var(--couleur-jaune);
+  color: var(--couleur-gris);
+}

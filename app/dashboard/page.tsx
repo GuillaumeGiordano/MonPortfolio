@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 // STYLE
 import styles from "./Dashboard.module.css";
+// AUTH
+import { useSession } from "next-auth/react";
 // COMPONENTS
 import AddProject from "@components/dashboard/addProject/page";
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
@@ -15,7 +17,17 @@ import { IProject } from "@types";
 export default function Dashboard() {
   const router = useRouter();
 
+  // AUTH
+  const { data: session } = useSession();
+  if (session?.user.role === "user" && session !== undefined) {
+    redirect("/");
+  }
+
   // VARIABLES
+  const [error, setError] = useState("");
+  const [isDataProject, setIsDataProject] = useState(false);
+  const [isloading, setIsLaoding] = useState(false);
+  const [allProjects, setAllProjects] = useState([]);
   const [formData, setFormData] = useState({
     image: "",
     title: "",
@@ -24,9 +36,6 @@ export default function Dashboard() {
     languages: "",
     url: "",
   });
-  const [allProjects, setAllProjects] = useState([]);
-  const [isDataProject, setIsDataProject] = useState(false);
-  const [err, setErr] = useState("");
 
   // FETCH PROJECT => GET ALL + POST ONE + DELETE ONE
   const fetchProjects = async () => {
@@ -39,15 +48,56 @@ export default function Dashboard() {
       console.log(error);
     }
   };
-  const handleCreateProject = async () => {
+  const fetchDeleteProjects = async (item: IProject) => {
+    const projectId = item._id;
     try {
+      const response = await fetch(`/api/project/delete/${projectId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        console.log("Project delete successfully");
+        fetchProjects();
+      } else {
+        setError("Failed to delete Project");
+        console.error("Failed to delete Project");
+      }
+    } catch (error) {
+      setError("Error server");
+      console.error("Error: ", error);
+    }
+  };
+
+  // HANDLES METHODES
+  const handleCreateProject = async () => {
+    if (
+      formData.image === null ||
+      formData.title === "" ||
+      formData.mission === "" ||
+      formData.description === "" ||
+      formData.languages === "" ||
+      formData.url === ""
+    ) {
+      setError("Il est important de remplir entierement le formulaire, merci");
+      console.log(error);
+      return;
+    }
+
+    const data = new FormData();
+    data.append("file", formData.image);
+    data.append("title", formData.title);
+    data.append("mission", formData.mission);
+    data.append("description", formData.description);
+    data.append("languages", formData.languages);
+    data.append("url", formData.url);
+
+    try {
+      setIsLaoding(true);
       const response = await fetch("/api/project/new", {
         method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        body: data,
       });
+
       if (response.ok) {
         setFormData({
           image: "",
@@ -58,81 +108,67 @@ export default function Dashboard() {
           url: "",
         });
         console.log("Project created successfully");
-        alert("Project created successfully");
+        setError("");
         fetchProjects();
+        setIsLaoding(false);
       } else {
+        setError("Failed to create Project");
         console.error("Failed to create Project");
       }
     } catch (error) {
+      setError("Error servver");
       console.error("Error: ", error);
     }
   };
-  const fetchDeleteProjects = async (item: IProject) => {
-    const projectId = item._id;
-    console.log(projectId);
-    try {
-      const response = await fetch(`/api/project/delete/${projectId}`, {
-        method: "DELETE",
-      });
-      // const data = await response.json();
-      if (response.ok) {
-        console.log("Project delete successfully");
-        alert("Project delete successfully");
-        fetchProjects();
-      } else {
-        console.error("Failed to delete Project");
-      }
-    } catch (error) {
-      console.error("Error: ", error);
-    }
-  };
-
-  // HANDLE PROJECT => UPDATE ONE + GET ONE
   const handleEditProject = async (item: IProject) => {
     router.push(`/dashboard/project/${item._id}`);
   };
   const handleDeleteProject = async (item: IProject) => {
-    console.log("Supprimer :", item);
     fetchDeleteProjects(item);
   };
 
   useEffect(() => {
     fetchProjects();
   }, []);
-
   return (
     <>
-      <Main>
-        {/* SETTING PORTFOLIO */}
-        <SectionRegular
-          sectionTitle={"Mes Projets"}
-          sectionId={"projects"}
-          className={""}>
-          <ArticleTwoColums
-            className={""}
-            articleOne={
-              <AddProject
-                formData={formData}
-                setFormData={setFormData}
-                handleCreateProject={handleCreateProject}
-              />
-            }
-            articleTwo={
-              !isDataProject ? (
-                <p>Chargement </p>
-              ) : allProjects.length > 0 ? (
-                <DisplayProjects
-                  data={allProjects}
-                  onEdit={handleEditProject}
-                  onDelete={handleDeleteProject}
+      {session?.user.role === "admin" ? (
+        <Main>
+          {isloading && <p>Is loading</p>}
+          {/* SETTING PORTFOLIO */}
+          <SectionRegular
+            sectionTitle={"Mes Projets"}
+            sectionId={"projects"}
+            className={""}>
+            {error && <div className={""}>{error}</div>}
+            <ArticleTwoColums
+              className={""}
+              articleOne={
+                <AddProject
+                  formData={formData}
+                  setFormData={setFormData}
+                  handleCreateProject={handleCreateProject}
                 />
-              ) : (
-                // eslint-disable-next-line react/no-unescaped-entities
-                <p>Il n'y a pas de encore de projet enregistré</p>
-              )
-            }></ArticleTwoColums>
-        </SectionRegular>
-      </Main>
+              }
+              articleTwo={
+                !isDataProject ? (
+                  <p>Chargement </p>
+                ) : allProjects.length > 0 ? (
+                  <DisplayProjects
+                    allProjects={allProjects}
+                    handleEditProject={handleEditProject}
+                    handleDeleteProject={handleDeleteProject}
+                  />
+                ) : (
+                  // eslint-disable-next-line react/no-unescaped-entities
+                  <p>Il n'y a pas de encore de projet enregistré</p>
+                )
+              }></ArticleTwoColums>
+          </SectionRegular>
+        </Main>
+      ) : (
+        ""
+      )}
     </>
   );
 }

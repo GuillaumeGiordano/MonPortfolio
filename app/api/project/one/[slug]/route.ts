@@ -9,20 +9,23 @@ export const GET = async (
 ) => {
     try {
         await connectToDB();
-        const slug = params.slug
-        const project = await Project.findOne({ _id: slug });
 
-        if (!project) {
+        try {
+            const slug = params.slug
+            const project = await Project.findOne({ _id: slug });
+
+            return NextResponse.json(
+                project,
+                { status: 200 }
+            );
+
+        } catch (error) {
             return NextResponse.json(
                 { message: "Projet non trouvé" },
-                { status: 404 }
+                { status: 400 }
             );
         }
 
-        return NextResponse.json(
-            project,
-            { status: 200 }
-        );
     } catch (error) {
         console.error(error);
         return NextResponse.json(
