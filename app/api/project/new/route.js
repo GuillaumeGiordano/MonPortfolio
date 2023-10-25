@@ -64,15 +64,22 @@ export const POST = async (request) => {
     // Does work in Vercel :)
     const tmpdir = os.tmpdir();
     const uploadDir = path.join(tmpdir, `/${name}.${ext}`);
+    console.log(tmpdir);
+    console.log(uploadDir);
+
     fs.writeFile(uploadDir, buffer);
     const newFile = { filePath: uploadDir, fileName: file.name };
 
     console.log(newFile);
     try {
       // Upload to the cloud after saving the photo file to the temp folder
-
-      const photo = await uploadPhotoToCloudinary(newFile);
-
+      // const photo = await uploadPhotoToCloudinary(newFile);
+      // const photo = await cloudinary.uploader.upload(newFile.filePath, {
+      //   folder: "portfolio",
+      // });
+      const photo = await cloudinary.uploader.upload(uploadDir, {
+        folder: "portfolio",
+      });
       try {
         // Delete photo file in temp folder after seccuful upload
         fs.unlink(newFile.filePath);
