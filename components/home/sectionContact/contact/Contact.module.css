@@ -19,7 +19,7 @@
 
 .form {
   width: 70%;
-  max-width: 500px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,19 +39,30 @@
   font-size: 1.2rem;
 }
 
+.input {
+  height: 40px;
+}
 .textarea {
-  height: 200px;
+  height: 300px;
 }
 
 .btn {
+  margin-top: 20px;
   width: 100%;
-  height: 40px;
-  background-color: var(--couleur-gris);
-  border: 2px solid var(--couleur-blanc);
+  padding: 0.5rem 1rem;
+  outline: 2.5px solid var(--couleur-blanc);
+  border: 0;
+  background: var(--couleur-gris);
+  outline-offset: 3px;
   color: var(--couleur-blanc);
-  border-radius: 20px;
+  font-size: 1rem;
+  border-radius: 100rem;
+  transition: 0.4s;
+  font-weight: 600;
 }
 
 .btn:hover {
-  border: 2px solid var(--couleur-jaune);
+  outline-offset: 4.5px;
+  background: var(--couleur-jaune);
+  color: var(--couleur-gris);
 }

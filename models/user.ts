@@ -1,10 +1,6 @@
-// models/User.ts
 
 import { Schema, model, models } from "mongoose";
-
-import { IUser } from "../types/index"
-
-
+import { IUser } from "@/types/index"
 
 const userSchema = new Schema<IUser>({
     email: {

@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // AUTH
 import { useSession } from "next-auth/react";
-
 // STYLE
 import styles from "./Header.module.css";
 // CONTEXTES
@@ -21,12 +20,6 @@ import SignOut from "../modal/signOut/page";
 
 const Header = () => {
   const { data: session } = useSession();
-
-  if (session) {
-    console.log("session");
-    console.log(session);
-    console.log(session?.user.role);
-  }
 
   const { isLightTheme } = useThemeContext();
   const { toggleModal } = useLoginModalContext();
@@ -53,7 +46,6 @@ const Header = () => {
       window.removeEventListener("scroll", handleScrollForScrollUpButton);
     };
   }, [scrolling]);
-
   // LINK ACTIVE SUIVANT SCROLL
   useEffect(() => {
     // Gestionnaire de scroll pour activer les liens suivant le scroll
@@ -89,12 +81,10 @@ const Header = () => {
   const handleClickBurger = () => {
     setIsBurger(!isBurger);
   };
-
   const handleClickToSection = (sectionId) => {
     scrollToSection(sectionId);
     handleClickBurger();
   };
-
   const handleClickConnexion = () => {
     handleClickBurger();
     toggleModal();
@@ -170,6 +160,18 @@ const Header = () => {
             </Link>
           </li>
 
+          <li className={`${styles.nav__li}  `}>
+            <Link
+              className={`${styles.link} ${
+                isLightTheme ? styles.link__light : styles.link__dark
+              } ${activeSection === "avis" ? styles.active : ""}`}
+              href='/#avis'
+              scroll={false}
+              onClick={() => handleClickToSection("avis")}>
+              Avis
+            </Link>
+          </li>
+
           <li className={`${styles.nav__li}`}>
             <Link
               className={`${styles.link} ${
@@ -181,6 +183,7 @@ const Header = () => {
               Contact
             </Link>
           </li>
+
           {session?.user.role === "admin" ? (
             <li className={`${styles.nav__li}`}>
               <Link
@@ -195,6 +198,7 @@ const Header = () => {
           ) : (
             ""
           )}
+
           <li className={`${styles.nav__li}  `}>
             {session ? (
               <SignOut />

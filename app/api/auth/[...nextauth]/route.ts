@@ -2,18 +2,18 @@ require("dotenv").config();
 
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+
 import { connectToDB } from "@util/database";
 import bcrypt from "bcrypt";
-
 import User from "@models/user";
 
-export const authOptions = {
+export const authOptions: any = {
   providers: [
     CredentialsProvider({
       name: "credentieals",
       credentials: {},
 
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         const { email, password } = credentials;
         try {
           await connectToDB();
@@ -62,13 +62,6 @@ export const authOptions = {
       }
       return token;
     },
-    // async jwt(token, user) {
-    //   return { ...token, ...user };
-    // },
-    // async session({ session, token, user }) {
-    //   session.user = token;
-    //   return session;
-    // },
   },
 };
 
