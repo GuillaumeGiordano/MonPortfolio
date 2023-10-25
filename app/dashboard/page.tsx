@@ -42,6 +42,7 @@ export default function Dashboard() {
     try {
       const response = await fetch("/api/project/all");
       const data = await response.json();
+      console.log(data);
       setAllProjects(data);
       setIsDataProject(true);
     } catch (error) {

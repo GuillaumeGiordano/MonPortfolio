@@ -89,36 +89,4 @@ export const POST = async (request) => {
   } catch (error) {
     return NextResponse.json({ message: "Cloudinary echec" }, { status: 500 });
   }
-
-  //   // Contrôle de l'extension du fichier
-  //   const allowedExtensions = ["jpg", "jpeg", "png"];
-  //   const fileExtension = originalFileName.split(".").pop().toLowerCase();
-  //   const fileContentType = file.type.split("/").pop();
-  //   if (!allowedExtensions.includes(fileExtension)) {
-  //     return NextResponse.json(
-  //       { error: "Invalid file format. Please upload a JPEG, JPG, or PNG file." },
-  //       { status: 401 }
-  //     );
-  //   }
-  //   if (!allowedExtensions.includes(fileContentType)) {
-  //     return NextResponse.json(
-  //       { error: "Invalid file format. Please upload a JPEG, JPG, or PNG file." },
-  //       { status: 402 }
-  //     );
-  //   }
-  // Autre controleur ......
-
-  //   const bytes = await file.arrayBuffer();
-  //   const buffer = Buffer.from(bytes);
-
-  // With the file data in the buffer, you can do whatever you want with it.
-  // For this, we'll just write it to the filesystem in a new location
-  // const now = new Date();
-  // const timestamp = now.toISOString().replace(/[:.Z-]/g, '');
-  // const uniqueFilename = `essai_${timestamp}_${file.name}`;
-  // const path = `./public/projects/${uniqueFilename}`;
-
-  //   const path = `./images/${file.name}`;
-  //   await writeFile(path, buffer);
-  //   console.log(`open ${path} to see the uploaded file`);
 };
