@@ -7,7 +7,7 @@ import { isSafeInput, isMailValid } from "@util/inputValidatorUtil"
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 
-export const POST = async (request: NextResponse) => {
+export const POST = async (request: Request) => {
     const { name, email, message } = await request.json();
 
 
