@@ -85,6 +85,8 @@ export default function Dashboard() {
     }
 
     const data = new FormData();
+    console.log(data);
+
     data.append("file", formData.image);
     data.append("title", formData.title);
     data.append("mission", formData.mission);
