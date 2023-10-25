@@ -48,15 +48,29 @@ export const POST = async (request) => {
   const url = data.get("url");
 
   try {
-    // if (!file && !file instanceof File) {
-    //   return NextResponse.json({ error: "Fichier non trouvé" }, { status: 400 });
-    // }
-
+    if (!file) {
+      return NextResponse.json({ error: "Fichier non trouvé" }, { status: 400 });
+    }
+    console.log(file);
     // Save photo file to temp folder
-    const newFile = await savePhotoToLocal(file);
+    // const newFile = await savePhotoToLocal(file);
 
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+    const name = uuidv4();
+    const ext = file.type.split("/")[1];
+    // Doesn't work in Vercel :(
+    // const uploadDir = path.join(process.cwd(), "public", `/${name}.${ext}`);
+    // Does work in Vercel :)
+    const tmpdir = os.tmpdir();
+    const uploadDir = path.join(tmpdir, `/${name}.${ext}`);
+    fs.writeFile(uploadDir, buffer);
+    const newFile = { filePath: uploadDir, fileName: file.name };
+
+    console.log(newFile);
     try {
       // Upload to the cloud after saving the photo file to the temp folder
+
       const photo = await uploadPhotoToCloudinary(newFile);
 
       try {
