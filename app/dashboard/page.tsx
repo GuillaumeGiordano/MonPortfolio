@@ -130,7 +130,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchProjects();
-  });
+  }, []);
 
   return (
     <>
