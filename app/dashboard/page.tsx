@@ -130,7 +130,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchProjects();
-  }, []);
+  });
+
   return (
     <>
       {session?.user.role === "admin" ? (
