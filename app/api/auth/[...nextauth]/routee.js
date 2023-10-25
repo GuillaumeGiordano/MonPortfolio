@@ -7,13 +7,13 @@ import { connectToDB } from "@util/database";
 import bcrypt from "bcrypt";
 import User from "@models/user";
 
-export const authOptions: any = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentieals",
       credentials: {},
 
-      async authorize(credentials: any) {
+      async authorize(credentials) {
         const { email, password } = credentials;
         try {
           await connectToDB();

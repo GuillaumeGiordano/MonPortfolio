@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/dashboard/page.tsx", "components/main/page.js", "util/auth.js", "components/layout/header/page.tsx", "app/api/auth/[...nextauth]/route.js", "app/api/project/new/route.js", "app/api/project/update/[slug]/route.js"  ],
+, "app/dashboard/page.tsx", "components/main/page.js", "util/auth.js", "components/layout/header/page.tsx", "app/api/auth/[...nextauth]/routee.js", "app/api/project/new/route.js", "app/api/project/update/[slug]/route.js"  ],
   "exclude": [
     "node_modules"
   ]
