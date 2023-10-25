@@ -38,6 +38,7 @@ async function uploadPhotoToCloudinary(newFile) {
 
 export const POST = async (request) => {
   const data = await request.formData();
+  console.log(data);
 
   const file = data.get("file");
   const title = data.get("title");
@@ -47,46 +48,58 @@ export const POST = async (request) => {
   const url = data.get("url");
 
   try {
-    if (!file && !file instanceof File) {
-      return NextResponse.json({ error: "Fichier non trouvé" }, { status: 400 });
-    }
+    // if (!file && !file instanceof File) {
+    //   return NextResponse.json({ error: "Fichier non trouvé" }, { status: 400 });
+    // }
 
     // Save photo file to temp folder
     const newFile = await savePhotoToLocal(file);
-    // Upload to the cloud after saving the photo file to the temp folder
-    const photo = await uploadPhotoToCloudinary(newFile);
-    // Delete photo file in temp folder after seccuful upload
-    fs.unlink(newFile.filePath);
 
     try {
-      await connectToDB();
+      // Upload to the cloud after saving the photo file to the temp folder
+      const photo = await uploadPhotoToCloudinary(newFile);
 
-      const newProject = new Project({
-        title: title,
-        image: photo.secure_url,
-        mission: mission,
-        description: description,
-        languages: languages,
-        url: url,
-      });
+      try {
+        // Delete photo file in temp folder after seccuful upload
+        fs.unlink(newFile.filePath);
 
-      // Gérer les erreurs de validation du modèle Mongoose.
-      const validationError = newProject.validateSync();
-      if (validationError) {
-        return NextResponse.json(
-          { error: "Validation failed", details: validationError.errors },
-          { status: 403 }
-        );
+        try {
+          await connectToDB();
+
+          const newProject = new Project({
+            title: title,
+            image: photo.secure_url,
+            mission: mission,
+            description: description,
+            languages: languages,
+            url: url,
+          });
+
+          // Gérer les erreurs de validation du modèle Mongoose.
+          const validationError = newProject.validateSync();
+          if (validationError) {
+            return NextResponse.json(
+              { error: "Validation failed", details: validationError.errors },
+              { status: 403 }
+            );
+          }
+
+          await newProject.save();
+
+          return NextResponse.json(newProject, { status: 201 });
+        } catch (error) {
+          console.log(error);
+          return NextResponse.json("Failed to connectToDB", { status: 503 });
+        }
+      } catch (error) {
+        console.log(error);
+        return NextResponse.json("Failed to unlink", { status: 502 });
       }
-
-      await newProject.save();
-
-      return NextResponse.json(newProject, { status: 201 });
     } catch (error) {
       console.log(error);
-      return NextResponse.json("Failed to create a new project", { status: 501 });
+      return NextResponse.json("Failed to uploadPhotoToCloudinary", { status: 501 });
     }
   } catch (error) {
-    return NextResponse.json({ message: "Cloudinary echec" }, { status: 500 });
+    return NextResponse.json({ message: "Failed to savePhotoToLocal" }, { status: 500 });
   }
 };
