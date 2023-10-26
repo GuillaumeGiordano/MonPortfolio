@@ -125,9 +125,11 @@ export default function Dashboard() {
   };
   const handleEditProject = async (item: IProject) => {
     router.push(`/dashboard/project/${item._id}`);
+    fetchProjects();
   };
   const handleDeleteProject = async (item: IProject) => {
     fetchDeleteProjects(item);
+    fetchProjects();
   };
 
   useEffect(() => {

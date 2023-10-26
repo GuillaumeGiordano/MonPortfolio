@@ -10,7 +10,7 @@ cloudinary.config({
 });
 
 export const DELETE = async (
-    requete: Request,
+    request: Request,
     { params }: { params: { slug: string } }) => {
 
     try {

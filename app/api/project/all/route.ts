@@ -1,15 +1,15 @@
 import Project from "@models/project"
-
 import { connectToDB } from "@util/database"
 import { NextResponse } from "next/server"
-import { v2 as cloudinary } from "cloudinary";
+// import { v2 as cloudinary } from "cloudinary";
 
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET,
-});
-
+// cloudinary.config({
+//     cloud_name: process.env.CLOUD_NAME,
+//     api_key: process.env.API_KEY,
+//     api_secret: process.env.API_SECRET,
+// });
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export const GET = async (request: Request) => {
     try {
 
