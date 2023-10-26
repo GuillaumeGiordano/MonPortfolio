@@ -7,11 +7,13 @@ import fs from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
 import os from "os";
 import { v2 as cloudinary } from "cloudinary";
-
+import { revalidatePath } from "next/cache";
+require("dotenv").config();
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
+  secure: true,
 });
 
 async function savePhotoToLocal(file) {
@@ -38,7 +40,6 @@ async function uploadPhotoToCloudinary(newFile) {
 
 export const POST = async (request) => {
   const data = await request.formData();
-  console.log(data);
 
   const file = data.get("file");
   const title = data.get("title");
@@ -48,38 +49,33 @@ export const POST = async (request) => {
   const url = data.get("url");
 
   try {
-    if (!file) {
-      return NextResponse.json({ error: "Fichier non trouvé" }, { status: 400 });
-    }
-    console.log(file);
     // Save photo file to temp folder
-    // const newFile = await savePhotoToLocal(file);
-
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const name = uuidv4();
-    const ext = file.type.split("/")[1];
-    // Doesn't work in Vercel :(
-    // const uploadDir = path.join(process.cwd(), "public", `/${name}.${ext}`);
-    // Does work in Vercel :)
-    const tmpdir = os.tmpdir();
-    const uploadDir = path.join(tmpdir, `/${name}.${ext}`);
-    console.log(tmpdir);
-    console.log(uploadDir);
-
-    fs.writeFile(uploadDir, buffer);
-    const newFile = { filePath: uploadDir, fileName: file.name };
-
+    const newFile = await savePhotoToLocal(file);
     console.log(newFile);
+
     try {
       // Upload to the cloud after saving the photo file to the temp folder
       // const photo = await uploadPhotoToCloudinary(newFile);
-      // const photo = await cloudinary.uploader.upload(newFile.filePath, {
-      //   folder: "portfolio",
-      // });
-      const photo = await cloudinary.uploader.upload(uploadDir, {
+      const photo = await cloudinary.uploader.upload(newFile.filePath, {
         folder: "portfolio",
       });
+
+      // const url =
+      //   "https://api.cloudinary.com/v1_1/<CLOUD_NAME>/image/upload -X POST --data 'file=<FILE>&timestamp=<TIMESTAMP>&api_key=<API_KEY>&signature=<SIGNATURE>'";
+
+      // const results = await fetch(
+      //   `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/resources/image`,
+      //   {
+      //     headers: {
+      //       Authorization: `Basic ${Buffer.from(
+      //         process.env.API_KEY + ":" + process.env.API_SECRET
+      //       ).toString("base64")}`,
+      //     },
+      //   }
+      // ).then((res) => res.json());
+
+      console.log(photo);
+
       try {
         // Delete photo file in temp folder after seccuful upload
         fs.unlink(newFile.filePath);
@@ -106,6 +102,17 @@ export const POST = async (request) => {
           }
 
           await newProject.save();
+
+          // const path = request.nextUrl.searchParams.get("path");
+          // if (path) {
+          //   revalidatePath(path);
+          //   return Response.json({ revalidated: true, now: Date.now() });
+          // }
+          // return Response.json({
+          //   revalidated: false,
+          //   now: Date.now(),
+          //   message: "Missing path to revalidate",
+          // });
 
           return NextResponse.json(newProject, { status: 201 });
         } catch (error) {
