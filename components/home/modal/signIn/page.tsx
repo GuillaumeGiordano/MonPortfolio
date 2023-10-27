@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useLoginModalContext } from "@context/loginForm";
 import { FormEvent } from "react";
+import styles from "./SignIn.module.css";
 
 const SignIn = () => {
   const router = useRouter();
@@ -38,20 +39,26 @@ const SignIn = () => {
   };
 
   return (
-    <form onSubmit={handleSignIn}>
-      <div>
-        <label>Email:</label>
-        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <div>
-        <label>Password:</label>
+    <form className={styles.form} onSubmit={handleSignIn}>
+      <div className={styles.ctn}>
+        <label className={styles.label}>Email:</label>
         <input
+          className={styles.input}
+          type='email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div className={styles.ctn}>
+        <label className={styles.label}>Password:</label>
+        <input
+          className={styles.input}
           type='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <button>Sign In</button>
+      <button className={styles.btn}>Sign In</button>
 
       {error && <div>{error}</div>}
     </form>

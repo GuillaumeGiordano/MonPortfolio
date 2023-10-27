@@ -1,13 +1,14 @@
 "use client";
 
-// STYLES
-import styles from "./scrollToDown.module.css";
 // UTIL
 import scrollToSection from "@util/scrollToSection";
+// STYLES
+import styles from "./scrollToDown.module.css";
 
 const ScrollToDown = () => {
   const handleClick = () => {
     scrollToSection("about");
+    console.log("clic");
   };
 
   return (

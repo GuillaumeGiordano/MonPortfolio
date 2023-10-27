@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 // LIB
 import Main from "@components/lib/main/page";
 // COMPONENTS
-import LoginForm from "@components/layout/modal/page";
+import LoginForm from "@components/home/modal/page";
 import ButtonSwitchTheme from "@components/home/buttonSwitchTheme/page";
 import SectionAbout from "@components/home/sectionAbout/page";
 import SectionServices from "@components/home/sectionServices/page";
@@ -48,9 +48,6 @@ export default function Home() {
 
   return (
     <Main>
-      <ButtonSwitchTheme />
-      <LoginForm />
-
       {/* HEAD */}
       <SectionHead
         sectionId={"head"}
@@ -60,19 +57,25 @@ export default function Home() {
         }></SectionHead>
 
       {/* ABOUT */}
-      {/* <SectionAbout /> */}
+      <SectionAbout />
 
       {/* SERVICES */}
-      {/* <SectionServices /> */}
+      <SectionServices />
 
       {/* PORTFOLIO */}
-      {/* <SectionPortfolio /> */}
+      <SectionPortfolio />
 
       {/* AVIS */}
       {/* <SectionAvis /> */}
 
       {/* CONTACT */}
       {/* <SectionContact /> */}
+
+      {/* SWITCH THEME */}
+      <ButtonSwitchTheme />
+
+      {/* MODAL */}
+      <LoginForm />
 
       {/* BUTTON SCROLL TO UP */}
       {showButton && <ScrollUp />}
