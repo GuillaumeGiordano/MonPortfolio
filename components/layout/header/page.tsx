@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 // AUTH
 import { useSession } from "next-auth/react";
 // STYLE
@@ -10,13 +11,10 @@ import styles from "./Header.module.css";
 import { useThemeContext } from "@context/theme";
 import { useLoginModalContext } from "@context/loginForm";
 // COMPONENTS
-import ScrollProgressBar from "@components/lib/elements/scrollProgressBar/page";
-import Logo from "@components/lib/elements/logo/page";
-import SwitchTheme from "@components/lib/buttons/buttonSwitchTheme/page";
-
+import ScrollProgressBar from "@components/layout/header/scrollProgressBar/page";
+import Logo from "@components/layout/header/logo/page";
 // UTIL
 import scrollToSection from "@util/scrollToSection";
-import SignOut from "../modal/signOut/page";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -85,9 +83,13 @@ const Header = () => {
     scrollToSection(sectionId);
     handleClickBurger();
   };
+
   const handleClickConnexion = () => {
     handleClickBurger();
     toggleModal();
+  };
+  const handleSignOut = () => {
+    signOut();
   };
 
   return (
@@ -99,7 +101,6 @@ const Header = () => {
       <ScrollProgressBar />
 
       <div className={styles.logo}>
-        <SwitchTheme />
         <Logo />
         <span
           className={`${styles.logo__title} ${
@@ -201,17 +202,27 @@ const Header = () => {
 
           <li className={`${styles.nav__li}  `}>
             {session ? (
-              <SignOut />
-            ) : (
-              <button
+              <Link
+                href={""}
                 className={`${styles.link} ${
                   isLightTheme ? styles.link__light : styles.link__dark
-                } ${activeSection === "connexion" ? styles.active : ""}`}
+                }`}
+                onClick={() => {
+                  handleSignOut();
+                }}>
+                Sign Out
+              </Link>
+            ) : (
+              <Link
+                href={""}
+                className={`${styles.link} ${
+                  isLightTheme ? styles.link__light : styles.link__dark
+                }`}
                 onClick={() => {
                   handleClickConnexion();
                 }}>
-                Sign
-              </button>
+                Sign In
+              </Link>
             )}
           </li>
         </ul>

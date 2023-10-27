@@ -3,7 +3,6 @@ import { ThemeContextProvider } from "@/context/theme";
 import { LoginModalContextProvider } from "@/context/loginForm";
 import { AuthProvider } from "./providers";
 
-import LoginForm from "@components/layout/modal/page";
 import Header from "@components/layout/header/page";
 import Footer from "@components/layout/footer/page";
 
@@ -23,7 +22,6 @@ export default function RootLayout({ children }) {
           <AuthProvider>
             <body>
               <Header />
-              <LoginForm />
               {children}
               <Footer />
             </body>

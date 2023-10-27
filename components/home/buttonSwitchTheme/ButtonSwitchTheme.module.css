@@ -1,5 +1,5 @@
 .toggle {
-  z-index: 990;
+  z-index: 999;
   position: fixed;
   top: 150px;
   right: 0;
@@ -52,6 +52,23 @@
 
   100% {
     transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1400px) {
+  /* Ajoutez vos styles CSS pour les ordinateurs de bureau ici */
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 767px) {
+  .toggle {
+    top: 170px;
+    opacity: 0.5;
+  }
+  .toggle:hover {
     opacity: 1;
   }
 }

@@ -7,13 +7,12 @@ import fs from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
 import os from "os";
 import { v2 as cloudinary } from "cloudinary";
-import { revalidatePath } from "next/cache";
+
 require("dotenv").config();
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
-  secure: true,
 });
 
 async function savePhotoToLocal(file) {
@@ -33,15 +32,17 @@ async function savePhotoToLocal(file) {
 
   return { filePath: uploadDir, fileName: file.name };
 }
-
 async function uploadPhotoToCloudinary(newFile) {
   return await cloudinary.uploader.upload(newFile.filePath, { folder: "portfolio" });
 }
 
 export const POST = async (request) => {
+  console.log("Start Back POST");
   const data = await request.formData();
+  console.log(data.get("file"));
 
   const file = data.get("file");
+  // const fileURL = data.get("fileURL");
   const title = data.get("title");
   const mission = data.get("mission");
   const description = data.get("description");
@@ -49,43 +50,52 @@ export const POST = async (request) => {
   const url = data.get("url");
 
   try {
+    console.log("savePhotoToLocal");
     // Save photo file to temp folder
     const newFile = await savePhotoToLocal(file);
     console.log(newFile);
 
     try {
+      console.log("uploadPhotoToCloudinary");
       // Upload to the cloud after saving the photo file to the temp folder
       // const photo = await uploadPhotoToCloudinary(newFile);
-      const photo = await cloudinary.uploader.upload(newFile.filePath, {
-        folder: "portfolio",
-      });
-
       // const url =
       //   "https://api.cloudinary.com/v1_1/<CLOUD_NAME>/image/upload -X POST --data 'file=<FILE>&timestamp=<TIMESTAMP>&api_key=<API_KEY>&signature=<SIGNATURE>'";
 
-      // const results = await fetch(
-      //   `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/resources/image`,
-      //   {
-      //     headers: {
-      //       Authorization: `Basic ${Buffer.from(
-      //         process.env.API_KEY + ":" + process.env.API_SECRET
-      //       ).toString("base64")}`,
-      //     },
-      //   }
-      // ).then((res) => res.json());
+      // const formData = new FormData();
+      // formData.append("file", newFile.fileName);
+      // formData.append("upload_preset", "Upload_Portfolio");
+      // formData.append("folder", "portfolio");
 
-      console.log(photo);
+      // const res = await fetch(
+      //   `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
+      //   {
+      //     method: "POST",
+      //     body: formData,
+      //   }
+      // );
+
+      // if (res.ok) {
+      //   const photo = await res.json();
+      //   const photoUrl = photo.secure_url;
+      //   console.log(photoUrl);
+      // } else {
+      //   console.error("Upload failed");
+      // }
 
       try {
+        console.log("unlink");
+
         // Delete photo file in temp folder after seccuful upload
         fs.unlink(newFile.filePath);
 
         try {
           await connectToDB();
+          console.log(fileURL);
 
           const newProject = new Project({
             title: title,
-            image: photo.secure_url,
+            image: fileURL,
             mission: mission,
             description: description,
             languages: languages,

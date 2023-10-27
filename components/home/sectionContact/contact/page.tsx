@@ -3,7 +3,6 @@
 
 import React, { useState } from "react";
 import styles from "./Contact.module.css";
-import Image from "next/image";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +32,7 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        alert("Votre message a été envoyé avec succès !");
+        alert("Votre message a été envoyé avec succès, merci de votre confiance.");
         setFormData({ name: "", email: "", message: "" });
       } else {
         alert("Une erreur s'est produite lors de l'envoi du formulaire.");

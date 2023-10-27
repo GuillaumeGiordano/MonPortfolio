@@ -14,6 +14,8 @@ import ArticleTwoColums from "@components/lib/articles/articleTwoColums/page";
 import Main from "@components/lib/main/page";
 import { IProject } from "@types";
 
+require("dotenv").config();
+
 export default function Dashboard() {
   const router = useRouter();
 
@@ -29,13 +31,14 @@ export default function Dashboard() {
   const [isloading, setIsLaoding] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
   const [formData, setFormData] = useState({
-    image: "",
+    image: null,
     title: "",
     mission: "",
     description: "",
     languages: "",
     url: "",
   });
+  const [fileURL, setFileURL] = useState("");
 
   // FETCH PROJECT => GET ALL + POST ONE + DELETE ONE
   const fetchProjects = async () => {
@@ -68,6 +71,33 @@ export default function Dashboard() {
       console.error("Error: ", error);
     }
   };
+  const fetchCreateCloudinary = async (file: File) => {
+    if (!file) {
+      return console.log("il manque l'image !");
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "Upload_Portfolio");
+    formData.append("public_id", file.name);
+    formData.append("api_key", process.env.API_KEY);
+    formData.append("folder", "portfolio");
+
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    if (res.ok) {
+      const photo = await res.json();
+      setFileURL(photo.secure_url);
+    } else {
+      console.error("Upload failed");
+    }
+  };
 
   // HANDLES METHODES
   const handleCreateProject = async () => {
@@ -83,16 +113,19 @@ export default function Dashboard() {
       console.log(error);
       return;
     }
-
+    // fetchCreateCloudinary(formData.image);
     const data = new FormData();
-    console.log(data);
 
     data.append("file", formData.image);
+    // data.append("fileURL", fileURL);
     data.append("title", formData.title);
     data.append("mission", formData.mission);
     data.append("description", formData.description);
     data.append("languages", formData.languages);
     data.append("url", formData.url);
+
+    console.log("file: front");
+    console.log(formData.image);
 
     try {
       setIsLaoding(true);
@@ -103,13 +136,14 @@ export default function Dashboard() {
 
       if (response.ok) {
         setFormData({
-          image: "",
+          image: null,
           title: "",
           mission: "",
           description: "",
           languages: "",
           url: "",
         });
+        setFileURL("");
         console.log("Project created successfully");
         setError("");
         fetchProjects();
