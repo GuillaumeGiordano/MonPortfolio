@@ -6,6 +6,8 @@ import styles from "./page.module.css";
 // LIB
 import Main from "@components/lib/main/page";
 // COMPONENTS
+import LoginForm from "@components/home/modal/page";
+import ButtonSwitchTheme from "@components/home/buttonSwitchTheme/page";
 import SectionAbout from "@components/home/sectionAbout/page";
 import SectionServices from "@components/home/sectionServices/page";
 import SectionPortfolio from "@components/home/sectionPortfolio/page";
@@ -46,33 +48,37 @@ export default function Home() {
 
   return (
     <Main>
-      <>
-        {/* HEAD */}
-        <SectionHead
-          sectionId={"head"}
-          sectionImage={"/profil_002.png"}
-          sectionSlogan={
-            ' " J\'aime développer, et vous allez adorer le résultat ! " '
-          }></SectionHead>
+      {/* HEAD */}
+      <SectionHead
+        sectionId={"head"}
+        sectionImage={"/profil_002.png"}
+        sectionSlogan={
+          ' " J\'aime développer, et vous allez adorer le résultat ! " '
+        }></SectionHead>
 
-        {/* ABOUT */}
-        <SectionAbout />
+      {/* ABOUT */}
+      <SectionAbout />
 
-        {/* SERVICES */}
-        <SectionServices />
+      {/* SERVICES */}
+      <SectionServices />
 
-        {/* PORTFOLIO */}
-        <SectionPortfolio />
+      {/* PORTFOLIO */}
+      <SectionPortfolio />
 
-        {/* AVIS */}
-        <SectionAvis />
+      {/* AVIS */}
+      <SectionAvis />
 
-        {/* CONTACT */}
-        <SectionContact />
+      {/* CONTACT */}
+      <SectionContact />
 
-        {/* BUTTON SCROLL TO UP */}
-        {showButton && <ScrollUp />}
-      </>
+      {/* SWITCH THEME */}
+      <ButtonSwitchTheme />
+
+      {/* MODAL */}
+      <LoginForm />
+
+      {/* BUTTON SCROLL TO UP */}
+      {showButton && <ScrollUp />}
     </Main>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { FormEvent } from "react";
+import styles from "./Signup.module.css";
 
 const SignUp = ({ setPage }) => {
   const [email, setEmail] = useState("");
@@ -34,24 +35,27 @@ const SignUp = ({ setPage }) => {
   };
 
   return (
-    <form onSubmit={handleSignUp}>
-      <h2>Sign Up</h2>
-      <div>
-        <div>
-          <label>Email:</label>
-          <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button>Sign Up</button>
-        {err && <div>{err}</div>}
+    <form className={styles.form} onSubmit={handleSignUp}>
+      <div className={styles.ctn}>
+        <label className={styles.label}>Email:</label>
+        <input
+          className={styles.input}
+          type='email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
+      <div className={styles.ctn}>
+        <label className={styles.label}>Password:</label>
+        <input
+          className={styles.input}
+          type='password'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <button className={styles.btn}>Sign Up</button>
+      {err && <div>{err}</div>}
     </form>
   );
 };

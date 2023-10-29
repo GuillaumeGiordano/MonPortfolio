@@ -89,4 +89,12 @@
 }
 
 @media (max-width: 767px) {
+  .card {
+    top: 152px;
+    left: 0;
+    opacity: 0.5;
+  }
+  .card:hover {
+    opacity: 1;
+  }
 }

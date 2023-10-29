@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import React, { useEffect, useState } from "react";
-
 // STYLE
 import styles from "./SectionContact.module.css";
 import SectionRegular from "@components/lib/sections/sectionRegular/page";

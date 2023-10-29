@@ -19,7 +19,6 @@ const LoginForm = () => {
     // Empêcher la propagation de l'événement vers le conteneur parent (la modal)
     e.stopPropagation();
   };
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleEscapeKey = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
@@ -27,6 +26,7 @@ const LoginForm = () => {
       toggleModal();
     }
   };
+
   useEffect(() => {
     if (isOpen) {
       window.addEventListener("keydown", handleEscapeKey);
@@ -40,7 +40,6 @@ const LoginForm = () => {
   return (
     <>
       {isOpen && (
-        // MODAL
         <div
           id='id01'
           className={styles.modal}
@@ -52,11 +51,13 @@ const LoginForm = () => {
           <div className={styles.card} onClick={handleCardClick}>
             {/* NAV */}
             <div className={styles.nav}>
-              {page === "signUp" ? (
-                <button onClick={() => setPage("signIn")}>retour</button>
+              {/* {page === "signUp" ? (
+                <button className={styles.btnClose} onClick={() => setPage("signIn")}>
+                  retour
+                </button>
               ) : (
-                ""
-              )}
+                <span></span>
+              )} */}
               <button
                 className={styles.btnClose}
                 onClick={() => {
@@ -73,10 +74,10 @@ const LoginForm = () => {
                 <>
                   <h2 className={styles.title}>Se connecter</h2>
                   <SignIn />
-                  <p>
-                    Je souhaite m'inscrir{" "}
-                    <button onClick={() => setPage("signUp")}>click ici</button>
-                  </p>
+
+                  <button className={styles.btn} onClick={() => setPage("signUp")}>
+                    s'inscrir ?
+                  </button>
                 </>
               ) : (
                 ""
@@ -87,6 +88,13 @@ const LoginForm = () => {
                 <>
                   <h2 className={styles.title}>S'inscrire</h2>
                   <SignUp setPage={setPage} />
+                  {page === "signUp" ? (
+                    <button className={styles.btn} onClick={() => setPage("signIn")}>
+                      retour
+                    </button>
+                  ) : (
+                    <span></span>
+                  )}
                 </>
               ) : (
                 ""

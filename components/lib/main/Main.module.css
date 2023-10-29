@@ -1,9 +1,7 @@
 .main {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-
-  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 @media (max-width: 1400px) {

@@ -1,4 +1,5 @@
 "use client";
+require("dotenv").config();
 
 import React, { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
@@ -29,13 +30,14 @@ export default function Dashboard() {
   const [isloading, setIsLaoding] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
   const [formData, setFormData] = useState({
-    image: "",
+    image: null,
     title: "",
     mission: "",
     description: "",
     languages: "",
     url: "",
   });
+  const [fileURL, setFileURL] = useState("");
 
   // FETCH PROJECT => GET ALL + POST ONE + DELETE ONE
   const fetchProjects = async () => {
@@ -68,6 +70,37 @@ export default function Dashboard() {
       console.error("Error: ", error);
     }
   };
+  const fetchCreateCloudinary = async (file: File) => {
+    if (!file) {
+      return console.log("il manque l'image !");
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "portfolioPreset");
+
+    try {
+      const res = await fetch(`https://api.cloudinary.com/v1_1/dvnqubycm/image/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        console.error("Upload failed");
+        throw new Error("failed upload image !");
+      }
+
+      const imageData = await res.json();
+      const imageUrl = await imageData.secure_url;
+      console.log("fetchCreateCloudinary");
+      console.log(imageData.secure_url);
+      return imageData.secure_url;
+      setFileURL(imageUrl);
+      console.log(fileURL);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // HANDLES METHODES
   const handleCreateProject = async () => {
@@ -84,10 +117,13 @@ export default function Dashboard() {
       return;
     }
 
-    const data = new FormData();
-    console.log(data);
+    const imageUrl = await fetchCreateCloudinary(formData.image);
+    console.log("imageUrl");
+    console.log(imageUrl);
 
+    const data = new FormData();
     data.append("file", formData.image);
+    data.append("fileURL", imageUrl);
     data.append("title", formData.title);
     data.append("mission", formData.mission);
     data.append("description", formData.description);
@@ -101,25 +137,26 @@ export default function Dashboard() {
         body: data,
       });
 
-      if (response.ok) {
-        setFormData({
-          image: "",
-          title: "",
-          mission: "",
-          description: "",
-          languages: "",
-          url: "",
-        });
-        console.log("Project created successfully");
-        setError("");
-        fetchProjects();
-        setIsLaoding(false);
-      } else {
+      if (!response.ok) {
         setError("Failed to create Project");
         console.error("Failed to create Project");
+        return;
       }
+
+      setFormData({
+        image: null,
+        title: "",
+        mission: "",
+        description: "",
+        languages: "",
+        url: "",
+      });
+      setError("");
+      fetchProjects();
+      setIsLaoding(false);
+      console.log("Project created successfully");
     } catch (error) {
-      setError("Error servver");
+      setError("Error server");
       console.error("Error: ", error);
     }
   };

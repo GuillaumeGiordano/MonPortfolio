@@ -1,4 +1,5 @@
 "use client";
+require("dotenv").config();
 
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
@@ -22,7 +23,7 @@ export default function Project({ params }: { params: { slug: string } }) {
   // VARIABLES
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
-    image: "",
+    image: null,
     title: "",
     mission: "",
     description: "",
@@ -54,7 +55,37 @@ export default function Project({ params }: { params: { slug: string } }) {
       console.log(error);
     }
   };
-  const fetchUpdateProject = async (projectId: string) => {
+  const fetchCreateCloudinary = async (file: File) => {
+    if (!file) {
+      return console.log("il manque l'image !");
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "portfolioPreset");
+
+    try {
+      const res = await fetch(`https://api.cloudinary.com/v1_1/dvnqubycm/image/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        console.error("Upload failed");
+        throw new Error("failed upload image !");
+      }
+
+      const imageData = await res.json();
+      console.log("fetchCreateCloudinary");
+      console.log(imageData.secure_url);
+      return imageData.secure_url;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // HANDLES METHODES
+  const handleUpdateProject = async () => {
     if (
       formData.image === null ||
       formData.title === "" ||
@@ -69,6 +100,12 @@ export default function Project({ params }: { params: { slug: string } }) {
     }
 
     const data = new FormData();
+
+    if (formData.image instanceof File) {
+      const imageUrl = await fetchCreateCloudinary(formData.image);
+      data.append("fileURL", imageUrl);
+    }
+
     data.append("file", formData.image);
     data.append("title", formData.title);
     data.append("mission", formData.mission);
@@ -76,35 +113,31 @@ export default function Project({ params }: { params: { slug: string } }) {
     data.append("languages", formData.languages);
     data.append("url", formData.url);
     try {
-      const response = await fetch(`/api/project/update/${projectId}`, {
+      const response = await fetch(`/api/project/update/${params.slug}`, {
         method: "PUT",
         body: data,
       });
 
-      if (response.ok) {
-        setError("");
-        console.log("Project update successfully");
-        router.push(`/dashboard`);
-      } else {
+      if (!response.ok) {
         setError("Error data");
         console.error("Failed to update Project");
+        return;
       }
+
+      setError("");
+      console.log("Project update successfully");
+      router.push(`/dashboard`);
     } catch (error) {
       setError("Error server");
       console.error("Error: ", error);
     }
   };
 
-  // HANDLES METHODES
-  const handleUpdateProject = () => {
-    fetchUpdateProject(params.slug);
-  };
-
   useEffect(() => {
     fetchOneProject(params.slug);
   }, [params.slug]);
 
-  console.log(error);
+  console.log(formData);
   return (
     <>
       {session?.user.role === "admin" ? (
