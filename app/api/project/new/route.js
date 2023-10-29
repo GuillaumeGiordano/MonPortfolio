@@ -13,6 +13,7 @@ cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
+  secure: true,
 });
 
 async function savePhotoToLocal(file) {
@@ -28,21 +29,25 @@ async function savePhotoToLocal(file) {
   const tmpdir = os.tmpdir();
   const uploadDir = path.join(tmpdir, `/${name}.${ext}`);
 
-  fs.writeFile(uploadDir, buffer);
-
+  await fs.writeFile(uploadDir, buffer);
+  console.log(uploadDir);
   return { filePath: uploadDir, fileName: file.name };
 }
 async function uploadPhotoToCloudinary(newFile) {
-  return await cloudinary.uploader.upload(newFile.filePath, { folder: "portfolio" });
+  const photoPromise = cloudinary.uploader.upload(newFile.filePath, {
+    upload_preset: `portfolioPreset`,
+    folder: "portfolio",
+  });
+  return await photoPromise;
 }
 
 export const POST = async (request) => {
   console.log("Start Back POST");
   const data = await request.formData();
-  console.log(data.get("file"));
+  console.log(data.get("fileURL"));
 
   const file = data.get("file");
-  // const fileURL = data.get("fileURL");
+  const fileURL = data.get("fileURL");
   const title = data.get("title");
   const mission = data.get("mission");
   const description = data.get("description");
@@ -59,42 +64,67 @@ export const POST = async (request) => {
       console.log("uploadPhotoToCloudinary");
       // Upload to the cloud after saving the photo file to the temp folder
       // const photo = await uploadPhotoToCloudinary(newFile);
-      // const url =
-      //   "https://api.cloudinary.com/v1_1/<CLOUD_NAME>/image/upload -X POST --data 'file=<FILE>&timestamp=<TIMESTAMP>&api_key=<API_KEY>&signature=<SIGNATURE>'";
 
+      // const photo = await cloudinary.uploader.upload(newFile.filePath, {
+      //   // upload_preset: `Upload_Portfolio`,
+      //   folder: "portfolio",
+      // });
+      // console.log(photo);
       // const formData = new FormData();
       // formData.append("file", newFile.fileName);
       // formData.append("upload_preset", "Upload_Portfolio");
       // formData.append("folder", "portfolio");
+
+      // Remplacez CLOUD_NAME, API_KEY et API_SECRET par vos informations d'authentification Cloudinary
+      // const cloudinaryApiKey = process.env.API_KEY;
+      // const cloudinaryApiSecret = process.env.API_SECRET;
+
+      // const timestamp = Math.round(new Date() / 1000);
+      // const signature = await fetch(
+      //   "https://api.cloudinary.com/v1_1/" +
+      //     process.env.CLOUD_NAME +
+      //     "/image/upload?upload_preset=Upload_Portfolio&folder=portfolio&timestamp=" +
+      //     timestamp,
+      //   {
+      //     method: "GET",
+      //     headers: {
+      //       Authorization: `Bearer ${cloudinaryApiKey}:${signature}`,
+      //     },
+      //   }
+      // ).then((res) => res.json());
 
       // const res = await fetch(
       //   `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
       //   {
       //     method: "POST",
       //     body: formData,
+      //     headers: {
+      //       Authorization: `Basic ${btoa(`${cloudinaryApiKey}:${cloudinaryApiSecret}`)}`,
+      //     },
       //   }
       // );
 
+      // let photoUrl = "";
       // if (res.ok) {
       //   const photo = await res.json();
-      //   const photoUrl = photo.secure_url;
-      //   console.log(photoUrl);
+      //   photoUrl = photo.secure_url;
       // } else {
       //   console.error("Upload failed");
+      //   return NextResponse.json("Failed to connectToDB", { status: 504 });
       // }
 
       try {
-        console.log("unlink");
-
         // Delete photo file in temp folder after seccuful upload
         fs.unlink(newFile.filePath);
 
         try {
           await connectToDB();
+
           console.log(fileURL);
 
           const newProject = new Project({
             title: title,
+            // image: photo.secure_url,
             image: fileURL,
             mission: mission,
             description: description,
@@ -102,27 +132,18 @@ export const POST = async (request) => {
             url: url,
           });
 
+          console.log(newProject);
+
           // Gérer les erreurs de validation du modèle Mongoose.
-          const validationError = newProject.validateSync();
-          if (validationError) {
-            return NextResponse.json(
-              { error: "Validation failed", details: validationError.errors },
-              { status: 403 }
-            );
-          }
+          // const validationError = newProject.validateSync();
+          // if (validationError) {
+          //   return NextResponse.json(
+          //     { error: "Validation failed", details: validationError.errors },
+          //     { status: 403 }
+          //   );
+          // }
 
           await newProject.save();
-
-          // const path = request.nextUrl.searchParams.get("path");
-          // if (path) {
-          //   revalidatePath(path);
-          //   return Response.json({ revalidated: true, now: Date.now() });
-          // }
-          // return Response.json({
-          //   revalidated: false,
-          //   now: Date.now(),
-          //   message: "Missing path to revalidate",
-          // });
 
           return NextResponse.json(newProject, { status: 201 });
         } catch (error) {

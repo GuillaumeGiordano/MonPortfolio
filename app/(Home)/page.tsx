@@ -66,10 +66,10 @@ export default function Home() {
       <SectionPortfolio />
 
       {/* AVIS */}
-      {/* <SectionAvis /> */}
+      <SectionAvis />
 
       {/* CONTACT */}
-      {/* <SectionContact /> */}
+      <SectionContact />
 
       {/* SWITCH THEME */}
       <ButtonSwitchTheme />

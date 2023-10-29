@@ -78,24 +78,28 @@ export default function Dashboard() {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "Upload_Portfolio");
-    formData.append("public_id", file.name);
-    formData.append("api_key", process.env.API_KEY);
-    formData.append("folder", "portfolio");
+    formData.append("upload_preset", "portfolioPreset");
 
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-      {
+    try {
+      const res = await fetch(`https://api.cloudinary.com/v1_1/dvnqubycm/image/upload`, {
         method: "POST",
         body: formData,
-      }
-    );
+      });
 
-    if (res.ok) {
-      const photo = await res.json();
-      setFileURL(photo.secure_url);
-    } else {
-      console.error("Upload failed");
+      if (!res.ok) {
+        console.error("Upload failed");
+        throw new Error("failed upload image !");
+      }
+
+      const imageData = await res.json();
+      const imageUrl = await imageData.secure_url;
+      console.log("fetchCreateCloudinary");
+      console.log(imageData.secure_url);
+      return imageData.secure_url;
+      setFileURL(imageUrl);
+      console.log(fileURL);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -113,11 +117,14 @@ export default function Dashboard() {
       console.log(error);
       return;
     }
-    // fetchCreateCloudinary(formData.image);
-    const data = new FormData();
 
+    const imageUrl = await fetchCreateCloudinary(formData.image);
+    console.log("imageUrl");
+    console.log(imageUrl);
+
+    const data = new FormData();
     data.append("file", formData.image);
-    // data.append("fileURL", fileURL);
+    data.append("fileURL", imageUrl);
     data.append("title", formData.title);
     data.append("mission", formData.mission);
     data.append("description", formData.description);
