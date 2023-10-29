@@ -1,4 +1,5 @@
 "use client";
+require("dotenv").config();
 
 import React, { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
@@ -13,8 +14,6 @@ import DisplayProjects from "@components/dashboard/displayProjects/page";
 import ArticleTwoColums from "@components/lib/articles/articleTwoColums/page";
 import Main from "@components/lib/main/page";
 import { IProject } from "@types";
-
-require("dotenv").config();
 
 export default function Dashboard() {
   const router = useRouter();
@@ -131,9 +130,6 @@ export default function Dashboard() {
     data.append("languages", formData.languages);
     data.append("url", formData.url);
 
-    console.log("file: front");
-    console.log(formData.image);
-
     try {
       setIsLaoding(true);
       const response = await fetch("/api/project/new", {
@@ -141,26 +137,26 @@ export default function Dashboard() {
         body: data,
       });
 
-      if (response.ok) {
-        setFormData({
-          image: null,
-          title: "",
-          mission: "",
-          description: "",
-          languages: "",
-          url: "",
-        });
-        setFileURL("");
-        console.log("Project created successfully");
-        setError("");
-        fetchProjects();
-        setIsLaoding(false);
-      } else {
+      if (!response.ok) {
         setError("Failed to create Project");
         console.error("Failed to create Project");
+        return;
       }
+
+      setFormData({
+        image: null,
+        title: "",
+        mission: "",
+        description: "",
+        languages: "",
+        url: "",
+      });
+      setError("");
+      fetchProjects();
+      setIsLaoding(false);
+      console.log("Project created successfully");
     } catch (error) {
-      setError("Error servver");
+      setError("Error server");
       console.error("Error: ", error);
     }
   };
