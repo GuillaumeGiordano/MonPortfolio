@@ -14,27 +14,6 @@ cloudinary.config({
   secure: true,
 });
 
-async function savePhotoToLocal(file) {
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-  const name = uuidv4();
-  const ext = file.type.split("/")[1];
-
-  // Doesn't work in Vercel :(
-  // const uploadDir = path.join(process.cwd(), "public", `/${name}.${ext}`);
-
-  // Does work in Vercel :)
-  const tmpdir = os.tmpdir();
-  const uploadDir = path.join(tmpdir, `/${name}.${ext}`);
-
-  fs.writeFile(uploadDir, buffer);
-
-  return { filePath: uploadDir, fileName: file.name };
-}
-async function uploadPhotoToCloudinary(newFile) {
-  return await cloudinary.uploader.upload(newFile.filePath, { folder: "portfolio" });
-}
-
 export const PUT = async (request, { params }) => {
   try {
     const data = await request.formData();
@@ -49,17 +28,12 @@ export const PUT = async (request, { params }) => {
     try {
       await connectToDB();
       const slug = params.slug;
-      // let photo = {};
+      let newURL = "";
 
       if (fileURL) {
-        //ADD NEW PICTURE IN CLOUDINARY
-        // const newFile = await savePhotoToLocal(file);
-        // photo = await uploadPhotoToCloudinary(newFile);
-        // fs.unlink(newFile.filePath);
-        // console.log("Image add in cloudinary.");
-
         //IF NEW FILE, WE NEED TO DELETE OLD PICTURE IN CLOUDINARY
         const project = await Project.findOne({ _id: slug });
+        newURL = fileURL;
 
         if (project && project.image) {
           const url = project.image;
@@ -74,6 +48,8 @@ export const PUT = async (request, { params }) => {
             console.log("Il n'y avait pas d'image sur cloudinary !");
           }
         }
+      } else {
+        newURL = file;
       }
 
       try {
@@ -81,7 +57,7 @@ export const PUT = async (request, { params }) => {
           { _id: slug },
           {
             title,
-            image: file instanceof File ? fileURL : file,
+            image: newURL,
             mission,
             description,
             languages,
