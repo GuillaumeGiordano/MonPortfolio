@@ -91,12 +91,7 @@ export default function Dashboard() {
       }
 
       const imageData = await res.json();
-      const imageUrl = await imageData.secure_url;
-      console.log("fetchCreateCloudinary");
-      console.log(imageData.secure_url);
       return imageData.secure_url;
-      setFileURL(imageUrl);
-      console.log(fileURL);
     } catch (error) {
       console.error(error);
     }
