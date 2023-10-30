@@ -1,8 +1,9 @@
 "use client";
 require("dotenv").config();
-
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
+// STYLES
+import styles from "./Projet.module.css";
 // AUTH
 import { useSession } from "next-auth/react";
 // COMPONENTS
