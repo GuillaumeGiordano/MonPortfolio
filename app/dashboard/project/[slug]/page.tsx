@@ -141,10 +141,10 @@ export default function Project({ params }: { params: { slug: string } }) {
   return (
     <>
       {session?.user.role === "admin" ? (
-        <Main>
-          <SectionRegular className={""} sectionId={"projet"} sectionTitle={`Mon projet`}>
+        <Main addClass={""}>
+          <SectionRegular addClass={""} sectionId={"projet"} sectionTitle={`Mon projet`}>
             {error && <div className={""}>{error}</div>}
-            <ArticleOneColum className={""}>
+            <ArticleOneColum addClass={""}>
               {!isDataProject ? (
                 <p>Chargement</p>
               ) : (
