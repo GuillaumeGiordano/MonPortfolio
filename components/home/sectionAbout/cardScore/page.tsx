@@ -14,6 +14,7 @@ const CardScore = ({ img, score, libelle }) => {
           width={42}
           height={42}
         />
+
         <div className={styles.card__info}>
           <div className={styles.card__score}>{score}</div>
           <div className={styles.card__libelle}>{libelle}</div>

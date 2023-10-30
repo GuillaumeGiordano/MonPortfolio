@@ -9,7 +9,7 @@ import SloganText from "@components/lib/elements/sloganText/page";
 
 const SectionContact = () => {
   return (
-    <SectionRegular className={""} sectionTitle={"Me Contacter"} sectionId={"contact"}>
+    <SectionRegular addClass={""} sectionTitle={"Me Contacter"} sectionId={"contact"}>
       <SloganText
         slogan={
           "Prêt à donner vie à vos idées ? Contactez-moi pour transformer votre vision en réalité numérique."

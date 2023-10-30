@@ -4,7 +4,7 @@ require("dotenv").config();
 import React, { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 // STYLE
-// import styles from "./Dashboard.module.css";
+import styles from "./Dashboard.module.css";
 // AUTH
 import { useSession } from "next-auth/react";
 // COMPONENTS
@@ -176,16 +176,16 @@ export default function Dashboard() {
   return (
     <>
       {session?.user.role === "admin" ? (
-        <Main>
+        <Main addClass={styles.main}>
           {isloading && <p>Is loading</p>}
           {/* SETTING PORTFOLIO */}
           <SectionRegular
             sectionTitle={"Mes Projets"}
             sectionId={"projects"}
-            className={""}>
+            addClass={""}>
             {error && <div className={""}>{error}</div>}
             <ArticleTwoColums
-              className={""}
+              addClass={""}
               articleOne={
                 <AddProject
                   formData={formData}

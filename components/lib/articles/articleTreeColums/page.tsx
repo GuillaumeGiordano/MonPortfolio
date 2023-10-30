@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./ArticleTreeColums.module.css";
 
-const ArticleTreeColums = ({ articleOne, articleTwo, articleTree, className }) => {
+const ArticleTreeColums = ({ articleOne, articleTwo, articleTree, addClass }) => {
   return (
-    <div className={`${styles.ctn} ${className}`}>
+    <div className={`${styles.ctn} ${addClass}`}>
       <article className={`${styles.article} ${styles.articleOne}`}>{articleOne}</article>
       <article className={`${styles.article} ${styles.articleTwo}`}>{articleTwo}</article>
       <article className={`${styles.article} ${styles.articleTree}`}>

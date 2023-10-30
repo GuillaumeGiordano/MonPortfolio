@@ -11,13 +11,13 @@
 }
 
 .titre {
-  padding: 20px 10px;
+  padding: 20px;
   text-align: center;
   font-size: 1.3rem;
 }
 
 .text {
-  padding: 0 20px;
+  padding: 20px;
   text-align: justify;
 }
 .score {

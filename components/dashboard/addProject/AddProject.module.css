@@ -1,43 +1,81 @@
 .form {
-  background-color: #f5f5f5;
+  border: 4px solid var(--couleur-blanc);
+  border-radius: 10px;
+  background-image: url("/background002.png");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--couleur-bleu);
+  background-blend-mode: color-burn;
+  color: var(--couleur-blanc);
+
+  width: 100%;
+  max-width: 600px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 300px;
-  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.ctn {
+  width: 100%;
+}
+.ctn__image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.imagePreview {
+  height: 250px;
+  width: auto;
+}
+
+.label,
+.input,
+.textarea {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
 }
 
 .label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  width: 100%;
 }
 
-.input[type="text"],
-.textarea {
+.input {
+  background-color: var(--couleur-blanc);
   width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  height: 40px;
+  border: none;
 }
-
 .textarea {
-  width: 100%;
-  height: 200px; /* Ajustez la hauteur selon vos besoins */
-  resize: none;
-  overflow: auto;
+  background-color: var(--couleur-blanc);
+  height: 300px;
+}
+.input:active {
+  border-color: var(--couleur-jaune);
 }
 
 .button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 3px;
-  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  outline: 2.5px solid var(--couleur-blanc);
+  border: 0;
+  background: var(--couleur-gris);
+  outline-offset: 3px;
+  color: var(--couleur-blanc);
+  font-size: 1rem;
+  border-radius: 100rem;
+  transition: 0.4s;
+  font-weight: 600;
 }
 
-.button:hover {
-  background-color: #0056b3;
+.btn:hover {
+  outline-offset: 4.5px;
+  background: var(--couleur-jaune);
+  color: var(--couleur-gris);
 }

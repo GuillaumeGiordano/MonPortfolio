@@ -14,7 +14,7 @@ import SectionRegular from "@components/lib/sections/sectionRegular/page";
 
 const SectionHead = ({ sectionId, sectionImage, sectionSlogan }) => {
   return (
-    <SectionRegular sectionId={sectionId} sectionTitle={""} className={"head"}>
+    <SectionRegular sectionId={sectionId} sectionTitle={""} addClass={"head"}>
       <Social />
       <div className={styles.content}>
         <Image

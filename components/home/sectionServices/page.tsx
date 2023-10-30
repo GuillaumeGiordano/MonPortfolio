@@ -16,20 +16,24 @@ import { dataServices } from "@data/dataServices";
 
 const SectionServices = () => {
   return (
-    <SectionRegular className={""} sectionTitle={"Mes Services"} sectionId={"services"}>
-      <ArticleOneColum className={""}>
+    <SectionRegular addClass={""} sectionTitle={"Mes Services"} sectionId={"services"}>
+      <ArticleOneColum addClass={""}>
         <SloganText slogan={' " Si tu peux le rêver, je peux le coder. " '} />
       </ArticleOneColum>
 
       {dataServices &&
         dataServices.map((item, index) => (
-          <ArticleOneColum key={index} className={""}>
+          <ArticleOneColum key={index} addClass={""}>
             <ServiceCollapse key={index} data={item} />
           </ArticleOneColum>
         ))}
 
-      <h3 className={`${styles.titre}`}> Mes compétences </h3>
-      <ArticleOneColum className={`${styles.tags}`}>
+      <SloganText
+        slogan={
+          ' " Mes compétences en développement sont à toute épreuve, tout comme ma capacité à trouver le dernier cookie caché dans la cuisine. " '
+        }
+      />
+      <ArticleOneColum addClass={`${styles.tags}`}>
         {dataCompetences &&
           dataCompetences.map((item, index) => (
             <div key={index} className={`${styles.card_tag}`}>
