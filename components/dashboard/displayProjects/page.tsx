@@ -13,7 +13,7 @@ const DisplayProjects = ({ allProjects, handleEditProject, handleDeleteProject }
           <tr className={`${styles.tr}`}>
             <th className={`${styles.th}`}>Image</th>
             <th className={`${styles.th}`}>Title</th>
-            <th className={`${styles.th}`}>Description</th>
+            <th className={`${styles.th} ${styles.th__display}`}>Description</th>
             <th className={`${styles.th}`}>Actions</th>
           </tr>
         </thead>
@@ -24,7 +24,7 @@ const DisplayProjects = ({ allProjects, handleEditProject, handleDeleteProject }
                 <Image src={item.image} alt={item.title} width='50' height='50' />
               </td>
               <td className={`${styles.td}`}>{item.title}</td>
-              <td className={`${styles.td}`}>{item.description}</td>
+              <td className={`${styles.td} ${styles.th__display}`}>{item.description}</td>
               <td className={`${styles.td}`}>
                 <span
                   className={`${styles.button}`}

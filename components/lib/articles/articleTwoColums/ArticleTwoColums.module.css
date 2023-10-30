@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  gap: 20px;
 }
 
 .articleOne {
@@ -16,4 +17,18 @@
 .articleTwo {
   height: 100%;
   flex-basis: 50%;
+}
+
+@media (max-width: 1400px) {
+  .ctn {
+    padding: 5px;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 767px) {
 }

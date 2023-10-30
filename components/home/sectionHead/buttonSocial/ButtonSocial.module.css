@@ -4,7 +4,6 @@
   left: 0;
   transform: translateY(-50%);
   width: 62px;
-  height: 230px;
   background-color: var(--couleur-blanc);
   display: flex;
   flex-direction: column;

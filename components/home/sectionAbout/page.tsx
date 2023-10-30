@@ -2,9 +2,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import axios from "axios";
-
 // STYLE
 import styles from "./SectionAbout.module.css";
 // COMPONENTS
@@ -25,7 +22,7 @@ const SectionAbout = () => {
   // ABOUT
   const aboutItem1 = (
     <div className={`${styles.aboutArticle}`}>
-      <h3 className={`${styles.titre}`}> Un développeur web passionné! </h3>
+      <h3 className={`${styles.titre}`}> Un développeur web passionné ! </h3>
       <p className={`${styles.text}`}>
         Ma reconversion professionnelle en tant que Développeur Web découle de ma passion
         constante pour la technologie et mon désir d'apporter des solutions innovantes.
@@ -36,12 +33,6 @@ const SectionAbout = () => {
         compétences qui s'avèrent précieuses dans la résolution de problèmes techniques et
         l'optimisation des performances.
       </p>
-
-      <SloganText
-        slogan={
-          ' " Les développeurs ne sont pas des créateurs de bugs, ce sont des chercheurs de solutions. " '
-        }
-      />
     </div>
   );
   const aboutItem2 = (
@@ -51,7 +42,7 @@ const SectionAbout = () => {
   );
   const aboutItem3 = (
     <div className={`${styles.aboutArticle}`}>
-      <h3 className={`${styles.titre}`}> Expérience en développement </h3>
+      <h3 className={`${styles.titre}`}> Mon expérience en développement. </h3>
       <p className={`${styles.text}`}>
         Mon expérience acquise, en tant que chef de projet, me permet de mieux comprendre
         les attentes d'un client et de répondre précisement au besoin demandé en fonction
@@ -59,20 +50,25 @@ const SectionAbout = () => {
         une expertise et un développement web qui correspond à vos attentes et à vos
         besoins.
       </p>
-      <h3 className={`${styles.titre}`}> Mieux me connaitre </h3>
+      <h3 className={`${styles.titre}`}>Pour mieux me connaitre.</h3>
       <CardCoding facts={dataRandomText} />
     </div>
   );
 
   return (
-    <SectionRegular className={""} sectionTitle={"A Propos de moi"} sectionId={"about"}>
+    <SectionRegular addClass={""} sectionTitle={"A Propos de moi"} sectionId={"about"}>
+      <SloganText
+        slogan={
+          ' " Les développeurs ne sont pas des créateurs de bugs, ce sont des chercheurs de solutions. " '
+        }
+      />
       <ArticleTreeColums
         articleOne={aboutItem1}
         articleTwo={aboutItem2}
         articleTree={aboutItem3}
-        className={""}
+        addClass={""}
       />
-      <ArticleOneColum className={`${styles.score}`}>
+      <ArticleOneColum addClass={`${styles.score}`}>
         {dataScores &&
           dataScores.map((item, index) => (
             <CardScore
@@ -83,13 +79,6 @@ const SectionAbout = () => {
             />
           ))}
       </ArticleOneColum>
-      {/* <Image
-          className={`${styles.deco} ${styles.aboutDeco}`}
-          src={"/background004.png"}
-          alt='Decoration'
-          width={500}
-          height={500}
-        /> */}
     </SectionRegular>
   );
 };

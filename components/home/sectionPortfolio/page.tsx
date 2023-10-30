@@ -9,6 +9,7 @@ import styles from "./SectionPortfolio.module.css";
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
 import CardPortfolio from "@components/home/sectionPortfolio/cardPortfolio/page";
+import SloganText from "@components/lib/elements/sloganText/page";
 
 const SectionPortfolio = () => {
   const [allProjects, setAllProjects] = useState([]);
@@ -38,8 +39,10 @@ const SectionPortfolio = () => {
   }, []);
 
   return (
-    <SectionRegular className={""} sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
-      <ArticleOneColum className={`${styles.ctn_portfolio}`}>
+    <SectionRegular addClass={""} sectionTitle={"Mon Portfolio"} sectionId={"portfolio"}>
+      <SloganText slogan={' " Du design à la réalité, mes projets prennent vie. " '} />
+
+      <ArticleOneColum addClass={`${styles.ctn_portfolio}`}>
         {!isDataProject ? (
           <p>Chargement </p>
         ) : allProjects.length > 0 ? (

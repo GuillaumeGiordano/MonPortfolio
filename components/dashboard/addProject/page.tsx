@@ -25,7 +25,7 @@ const AddProject = ({ formData, setFormData, handleCreateProject }) => {
 
   return (
     <form className={`${styles.form}`} action=''>
-      <div className={`${styles.ctn}`}>
+      <div className={`${styles.ctn} ${styles.ctn__image}`}>
         <label className={`${styles.label}`} htmlFor='image'>
           Image URL:
         </label>

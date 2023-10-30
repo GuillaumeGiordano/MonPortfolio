@@ -29,7 +29,7 @@ const ServiceCollapse = ({ data }) => {
     <>
       <div className={`${styles.ctn_img}`}>
         <Image
-          src={`/icones/${data.imagePath}`}
+          src={`${data.imagePath}`}
           alt='icone'
           className={`${styles.img}`}
           width={90}

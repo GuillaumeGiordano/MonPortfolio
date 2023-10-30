@@ -47,7 +47,7 @@ export default function Home() {
   }, [showButton]);
 
   return (
-    <Main>
+    <Main addClass={""}>
       {/* HEAD */}
       <SectionHead
         sectionId={"head"}
