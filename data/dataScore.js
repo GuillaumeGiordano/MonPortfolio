@@ -12,7 +12,7 @@ export const dataScores = [
   {
     libelle: "Pays visités",
     imagePath: "./icones/avion.svg",
-    score: "13",
+    score: "15",
   },
   {
     libelle: "Cafés",

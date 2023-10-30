@@ -51,13 +51,6 @@ const LoginForm = () => {
           <div className={styles.card} onClick={handleCardClick}>
             {/* NAV */}
             <div className={styles.nav}>
-              {/* {page === "signUp" ? (
-                <button className={styles.btnClose} onClick={() => setPage("signIn")}>
-                  retour
-                </button>
-              ) : (
-                <span></span>
-              )} */}
               <button
                 className={styles.btnClose}
                 onClick={() => {
@@ -76,7 +69,7 @@ const LoginForm = () => {
                   <SignIn />
 
                   <button className={styles.btn} onClick={() => setPage("signUp")}>
-                    s'inscrir ?
+                    s'inscrire ?
                   </button>
                 </>
               ) : (

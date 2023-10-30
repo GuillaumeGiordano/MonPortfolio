@@ -146,10 +146,6 @@
   color: var(--couleur-jaune);
 }
 
-@media (max-width: 1400px) {
-  /* Ajoutez vos styles CSS pour les ordinateurs de bureau ici */
-}
-
 @media (max-width: 992px) {
   /* NAV */
   .nav__ul {
