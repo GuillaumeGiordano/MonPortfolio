@@ -49,6 +49,7 @@
   border-radius: 5px;
   background-color: var(--couleur-blanc);
   padding: 8px;
+  transition: all 0.5s ease-in-out;
 }
 
 .tag {
@@ -57,13 +58,14 @@
 }
 
 .card_tag:hover {
-  scale: 1.5;
+  scale: 1.3;
 }
 
 .tags:hover > .card_tag:not(:hover) {
   filter: blur(10px);
   transform: scale(0.9);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease-in-out;
 }
 
 @media (max-width: 1400px) {

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./Carrousel.module.css";
-import CardService from "@components/lib/cards/CardService/page";
 
 import { dataServices } from "@data/dataServices";
 
@@ -60,7 +59,6 @@ const Carrousel = () => {
               index === currentIndex ? styles.active : styles.inactive
             }`}>
             {/* Mettre notre component ICI */}
-            <CardService dataService={item} />
           </div>
         ))}
       </div>

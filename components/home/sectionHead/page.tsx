@@ -8,7 +8,7 @@ import "./add.css";
 // COMPONENTS
 import ScrollToDown from "@components/home/sectionHead/scrollToDown/page";
 import Social from "@components/home/sectionHead/buttonSocial/page";
-import TypingAndErasing from "@components/lib/elements/TypingAndErasing/page";
+import TypingAndErasing from "@components/home/sectionHead/TypingAndErasing/page";
 import BtnNormal from "@components/lib/buttons/buttonRegular/page";
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 

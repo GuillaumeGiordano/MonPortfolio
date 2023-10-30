@@ -8,7 +8,7 @@ import styles from "./SectionPortfolio.module.css";
 // COMPONENTS
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
-import CardPortfolio from "@components/lib/cards/cardPortfolio/page";
+import CardPortfolio from "@components/home/sectionPortfolio/cardPortfolio/page";
 
 const SectionPortfolio = () => {
   const [allProjects, setAllProjects] = useState([]);
@@ -19,6 +19,13 @@ const SectionPortfolio = () => {
     try {
       const response = await fetch("/api/project/all");
       const data = await response.json();
+
+      if (!response.ok) {
+        console.log("Il y a un probleme avec API project All");
+        return;
+      }
+      console.log(data);
+
       setAllProjects(data);
       setIsDataProject(true);
     } catch (error) {

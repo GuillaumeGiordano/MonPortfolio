@@ -1,0 +1,122 @@
+.card {
+  position: relative;
+  width: 290px;
+  height: 290px;
+
+  background-color: var(--couleur-bleu);
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 0 0 5px var(--couleur-blanc);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image {
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  /* aspect-ratio: 16/8; */
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.card__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-image: url("/background002.png");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--couleur-bleu);
+  background-blend-mode: color-burn;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.card:hover .card__content {
+  transform: rotateX(0deg);
+}
+
+.card__head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.socialSvg {
+  background-color: var(--couleur-noir);
+  border-radius: 50%;
+  padding: 5px;
+  width: 35px;
+  transition: all 0.5s ease-in-out;
+}
+.socialSvg path {
+  fill: var(--couleur-blanc);
+}
+.socialSvg:hover {
+  border: 2px solid var(--couleur-jaune);
+  background-color: var(--couleur-noir);
+}
+
+.card__title {
+  margin: 0;
+  font-size: 20px;
+  color: var(--couleur-blanc);
+  font-weight: 700;
+}
+
+.card__description {
+  margin: 10px 0 10px;
+  font-size: 12px;
+  color: var(--couleur-blanc);
+  line-height: 1.4;
+}
+
+.tags {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card__button {
+  padding: 15px;
+  border-radius: 8px;
+  background: #777;
+  border: none;
+  color: white;
+}
+
+.secondary {
+  background: transparent;
+  color: #777;
+  border: 1px solid #777;
+}
