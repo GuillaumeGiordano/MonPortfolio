@@ -11,8 +11,8 @@ export const metadata = {
   description: "Je vous présente mon portfolio",
 };
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+// export const dynamic = "force-dynamic";
+// export const revalidate = 0;
 
 export default function RootLayout({ children }) {
   return (
