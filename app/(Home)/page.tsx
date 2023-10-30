@@ -53,7 +53,7 @@ export default function Home() {
         sectionId={"head"}
         sectionImage={"/profil_002.png"}
         sectionSlogan={
-          ' " J\'aime développer, et vous allez adorer le résultat ! " '
+          ' " J\'aime développer et vous allez adorer le résultat ! " '
         }></SectionHead>
 
       {/* ABOUT */}

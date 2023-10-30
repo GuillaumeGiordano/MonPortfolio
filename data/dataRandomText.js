@@ -5,6 +5,4 @@ export const dataRandomText = [
   "Je suis un grand mangeur de pizza",
   "Mes sport favoris sont la boxe, le foot et le VTT",
   "Je fais la collection de casquettes",
-  "6 Texte 7",
-  "7 Texte 8",
 ];

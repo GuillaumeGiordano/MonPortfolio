@@ -9,7 +9,7 @@ import styles from "./SectionServices.module.css";
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
 import SloganText from "@components/lib/elements/sloganText/page";
-import ServiceCollapse from "@components/lib/elements/ServiceCollapse/page";
+import ServiceCollapse from "@components/home/sectionServices/ServiceCollapse/page";
 // DATA
 import { dataCompetences } from "@data/dataCompetences";
 import { dataServices } from "@data/dataServices";
@@ -44,14 +44,6 @@ const SectionServices = () => {
             </div>
           ))}
       </ArticleOneColum>
-
-      {/* <Image
-          className={`${styles.deco} ${styles.serviceDeco}`}
-          src={"/background003.png"}
-          alt='Decoration'
-          width={500}
-          height={500}
-        /> */}
     </SectionRegular>
   );
 };

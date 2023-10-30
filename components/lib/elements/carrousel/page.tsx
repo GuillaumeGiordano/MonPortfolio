@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./Carrousel.module.css";
-import CardService from "@components/lib/cards/CardService/page";
+import CardService from "@components/home/sectionServices/CardService/page";
 
 import { dataServices } from "@data/dataServices";
 

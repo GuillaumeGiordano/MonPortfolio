@@ -1,0 +1,52 @@
+.ctn_img {
+  position: absolute;
+  left: -50px;
+
+  width: 80px;
+  height: auto;
+  border: 3px solid var(--couleur-jaune);
+  background-color: white;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.3s ease-out;
+}
+.img {
+  height: 60px;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px 5px 5px 50px;
+}
+.service {
+  margin: 20px 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  height: 40px;
+  width: 40px;
+}
+
+@keyframes myAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

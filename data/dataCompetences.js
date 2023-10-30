@@ -4,7 +4,6 @@ export const dataCompetences = [
   "/icones/techno/js.png",
   "/icones/techno/ts.png",
   "/icones/techno/react.png",
-  "/icones/techno/responsive.png",
   "/icones/techno/sass.png",
   "/icones/techno/bootstrap.png",
   "/icones/techno/php.png",

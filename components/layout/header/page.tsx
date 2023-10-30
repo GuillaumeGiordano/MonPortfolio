@@ -83,7 +83,9 @@ const Header = () => {
     scrollToSection(sectionId);
     handleClickBurger();
   };
-
+  const handleClickToDashboard = () => {
+    handleClickBurger();
+  };
   const handleClickConnexion = () => {
     handleClickBurger();
     toggleModal();
@@ -191,6 +193,7 @@ const Header = () => {
                 className={`${styles.link} ${
                   isLightTheme ? styles.link__light : styles.link__dark
                 } ${activeSection === "dashboard" ? styles.active : ""}`}
+                onClick={() => handleClickToDashboard()}
                 href='/dashboard'
                 scroll={false}>
                 Dashboard

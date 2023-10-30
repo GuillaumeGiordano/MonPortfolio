@@ -9,12 +9,12 @@ import axios from "axios";
 import styles from "./SectionAbout.module.css";
 // COMPONENTS
 import SloganText from "@components/lib/elements/sloganText/page";
-import ImageSlider from "@components/lib/elements/imageSlider/page";
-import CardCoding from "@components/lib/cards/cardCoding/page";
+import ImageSlider from "@components/home/sectionAbout/imageSlider/page";
+import CardCoding from "@components/home/sectionAbout/cardCoding/page";
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import ArticleTreeColums from "@components/lib/articles/articleTreeColums/page";
 import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
-import CardScore from "@components/lib/cards/cardScore/page";
+import CardScore from "@components/home/sectionAbout/cardScore/page";
 
 // DATA
 import { dataRandomText } from "@data/dataRandomText";
