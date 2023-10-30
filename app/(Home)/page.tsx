@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 // STYLE
-import styles from "./page.module.css";
+// import styles from "./page.module.css";
 // LIB
 import Main from "@components/lib/main/page";
 // COMPONENTS
