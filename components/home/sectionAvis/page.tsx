@@ -1,11 +1,13 @@
 "use client";
 
 import React from "react";
-import { dataAvis } from "@data/dataAvis";
 
 // STYLE
 import styles from "./SectionAvis.module.css";
+// LIB
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
+// DATAS
+import { dataAvis } from "@data/dataAvis";
 
 const SectionAvis = () => {
   return (

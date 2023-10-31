@@ -11,11 +11,10 @@ const SignUp = ({ setPage }) => {
   const [password2, setPassword2] = useState("");
   const [err, setErr] = useState("");
 
-  // HANDLES
+  // HANDLES METHODES
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
 
-    // METTRE DES CONTRÔLES ICI
     if (!email || !password1 || !password2) {
       setErr("il faut remplir le formulaire, s'il vous plait");
       return;
@@ -53,6 +52,7 @@ const SignUp = ({ setPage }) => {
         }
       } else {
         console.log("Sign-up successful");
+        setErr("");
         setPage("signIn");
       }
     } catch (error) {

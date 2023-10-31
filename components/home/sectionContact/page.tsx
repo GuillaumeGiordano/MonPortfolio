@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-// STYLE
-import styles from "./SectionContact.module.css";
+// LIB
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
+// COMPONENTS
 import ContactForm from "./contact/page";
 import SloganText from "@components/lib/elements/sloganText/page";
 

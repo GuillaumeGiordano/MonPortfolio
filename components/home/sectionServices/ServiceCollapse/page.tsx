@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from "./ServiceCollapse.module.css";
 import Image from "next/image";
+// STYLES
+import styles from "./ServiceCollapse.module.css";
+// LIB
 import Collapse from "@components/lib/elements/collapse/page";
 
 const ServiceCollapse = ({ data }) => {
+  // VARIABLES
   const [isOpen, setIsOpen] = useState(false);
   const [isData, setIsData] = useState(false);
 
@@ -32,8 +35,8 @@ const ServiceCollapse = ({ data }) => {
           src={`${data.imagePath}`}
           alt='icone'
           className={`${styles.img}`}
-          width={90}
-          height={90}
+          width={80}
+          height={80}
         />
       </div>
 

@@ -1,14 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-// STYLE
+// STYLES
 import styles from "./Text.module.css";
-// FONCTION
+// UTILS
 import generateRandomSpeed from "@util/generateRandomSpeed";
 // DATA
 import { dataTextSlider } from "@data/dataTextSlider";
 
 export default function TypingAndErasing() {
+  // VARIABLES
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);

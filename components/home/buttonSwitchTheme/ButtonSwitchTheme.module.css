@@ -56,13 +56,6 @@
   }
 }
 
-@media (max-width: 1400px) {
-  /* Ajoutez vos styles CSS pour les ordinateurs de bureau ici */
-}
-
-@media (max-width: 992px) {
-}
-
 @media (max-width: 767px) {
   .toggle {
     top: 170px;

@@ -22,7 +22,6 @@
 
 @media (max-height: 700px) {
   #head {
-    /* position: relative; */
     height: 700px;
   }
 }
@@ -30,7 +29,6 @@
 @media (max-width: 1400px) {
   @media (max-height: 900px) {
     #head {
-      /* position: relative; */
       height: 900px;
     }
   }

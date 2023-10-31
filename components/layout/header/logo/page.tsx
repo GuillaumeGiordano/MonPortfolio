@@ -7,6 +7,7 @@ import styles from "./logo.module.css";
 import { useThemeContext } from "@context/theme";
 
 const Logo = () => {
+  // CONTEXTE
   const { isLightTheme } = useThemeContext();
 
   return (

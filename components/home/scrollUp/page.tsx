@@ -1,7 +1,6 @@
 "use client";
 
 // STYLE
-// import { useState } from "react";
 import styles from "./scrollUp.module.css";
 // UTIL
 import scrollToSection from "@util/scrollToSection";

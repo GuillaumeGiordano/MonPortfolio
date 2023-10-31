@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+// STYLES
 import styles from "./SectionRegular.module.css";
 
 const SectionRegular = ({ sectionId, sectionTitle, children, addClass }) => {

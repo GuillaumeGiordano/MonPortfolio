@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
 import { useLoginModalContext } from "@context/loginForm";
 // STYLE
 import styles from "./LoginForm.module.css";
@@ -11,10 +10,11 @@ import SignIn from "./signIn/page";
 import SignUp from "./signUp/page";
 
 const LoginForm = () => {
-  const { data: session } = useSession();
+  // VARIABLES
   const { isOpen, toggleModal } = useLoginModalContext();
   const [page, setPage] = useState("signIn");
 
+  // HANDLES METHODES
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // Empêcher la propagation de l'événement vers le conteneur parent (la modal)
     e.stopPropagation();

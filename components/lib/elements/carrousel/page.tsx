@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+// STYLES
 import styles from "./Carrousel.module.css";
-
+// DATAS
 import { dataServices } from "@data/dataServices";
 
 const Carrousel = () => {
+  // VARIABLES
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isData, setIsData] = useState(false);
   const [data, setData] = useState([]);

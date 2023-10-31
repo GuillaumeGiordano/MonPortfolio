@@ -5,7 +5,7 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 // AUTH
 import { useSession } from "next-auth/react";
-// STYLE
+// STYLES
 import styles from "./Header.module.css";
 // CONTEXTES
 import { useThemeContext } from "@context/theme";
@@ -13,14 +13,15 @@ import { useLoginModalContext } from "@context/loginForm";
 // COMPONENTS
 import ScrollProgressBar from "@components/layout/header/scrollProgressBar/page";
 import Logo from "@components/layout/header/logo/page";
-// UTIL
+// UTILS
 import scrollToSection from "@util/scrollToSection";
 
 const Header = () => {
   const { data: session } = useSession();
-
+  // CONTEXTES
   const { isLightTheme } = useThemeContext();
   const { toggleModal } = useLoginModalContext();
+  // VARIABLES
   const [scrolling, setScrolling] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isBurger, setIsBurger] = useState(false);
@@ -79,7 +80,7 @@ const Header = () => {
   const handleClickBurger = () => {
     setIsBurger(!isBurger);
   };
-  const handleClickToSection = (sectionId) => {
+  const handleClickToSection = (sectionId: string) => {
     scrollToSection(sectionId);
     handleClickBurger();
   };

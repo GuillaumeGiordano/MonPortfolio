@@ -2,20 +2,20 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
 // STYLE
 import styles from "./SectionPortfolio.module.css";
-// COMPONENTS
+// LIB
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
-import CardPortfolio from "@components/home/sectionPortfolio/cardPortfolio/page";
 import SloganText from "@components/lib/elements/sloganText/page";
+// COMPONENTS
+import CardPortfolio from "@components/home/sectionPortfolio/cardPortfolio/page";
 
 const SectionPortfolio = () => {
+  // VARIABLES
   const [allProjects, setAllProjects] = useState([]);
   const [isDataProject, setIsDataProject] = useState(false);
-
-  // FETCH
+  // FETCH METHODES
   const fetchProjects = async () => {
     try {
       const response = await fetch("/api/project/all");

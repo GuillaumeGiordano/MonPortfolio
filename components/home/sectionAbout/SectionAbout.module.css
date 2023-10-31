@@ -1,4 +1,3 @@
-/* ABOUT */
 .aboutArticle {
   border: 4px solid var(--couleur-blanc);
   border-radius: 10px;
@@ -22,13 +21,4 @@
 }
 .score {
   gap: 20px;
-}
-
-@media (max-width: 1400px) {
-}
-
-@media (max-width: 992px) {
-}
-
-@media (max-width: 767px) {
 }

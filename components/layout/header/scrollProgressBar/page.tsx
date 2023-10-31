@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+// STYLES
 import styles from "./scrollProgressBar.module.css";
 
 function ScrollProgressBar() {

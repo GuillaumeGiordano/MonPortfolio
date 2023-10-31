@@ -10,12 +10,10 @@
 }
 
 .input:active {
-  /* border: 1px solid black; */
   border-color: var(--couleur-jaune);
 }
 
 .footer {
-  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   justify-content: space-between;

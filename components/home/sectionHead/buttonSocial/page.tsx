@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import styles from "./ButtonSocial.module.css";
 import Link from "next/link";
+// STYLES
+import styles from "./ButtonSocial.module.css";
 
 const ButtonSocial = () => {
   return (

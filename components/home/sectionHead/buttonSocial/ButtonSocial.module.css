@@ -16,7 +16,6 @@
   z-index: 999;
 }
 
-/* for all social containers*/
 .socialContainer {
   width: 42px;
   height: 42px;
@@ -27,12 +26,13 @@
   overflow: hidden;
   transition-duration: 0.5s;
 }
+
 /* instagram*/
 .containerOne:hover {
   background-color: #d62976;
   transition-duration: 0.3s;
 }
-/* twitter*/
+/* GitHub*/
 .containerTwo:hover {
   background-color: black;
   transition-duration: 0.3s;
@@ -75,9 +75,6 @@
     transform: translateX(0);
     opacity: 1;
   }
-}
-
-@media (max-width: 1400px) {
 }
 
 @media (max-width: 992px) {

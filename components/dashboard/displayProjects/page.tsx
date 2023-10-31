@@ -21,7 +21,7 @@ const DisplayProjects = ({ allProjects, handleEditProject, handleDeleteProject }
           {allProjects?.map((item: IProject) => (
             <tr key={item._id} className={`${styles.tr}`}>
               <td className={`${styles.td}`}>
-                <Image src={item.image} alt={item.title} width='50' height='50' />
+                <Image src={item.image} alt={item.title} width={80} height={80} />
               </td>
               <td className={`${styles.td}`}>{item.title}</td>
               <td className={`${styles.td} ${styles.th__display}`}>{item.description}</td>
@@ -32,8 +32,8 @@ const DisplayProjects = ({ allProjects, handleEditProject, handleDeleteProject }
                   <Image
                     src={"/icones/icones/editer.svg"}
                     alt='icone modifier'
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                   />
                 </span>
                 <span
@@ -42,8 +42,8 @@ const DisplayProjects = ({ allProjects, handleEditProject, handleDeleteProject }
                   <Image
                     src={"/icones/icones/supprimer-le-document.svg"}
                     alt='icone modifier'
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                   />
                 </span>
               </td>

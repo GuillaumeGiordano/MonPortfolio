@@ -1,4 +1,5 @@
 import React from "react";
+// STYLES
 import styles from "./ArticleTwoColums.module.css";
 
 const ArticleTwoColums = ({ articleOne, articleTwo, addClass }) => {
