@@ -29,7 +29,6 @@ const UpdateProject = ({ handleUpdateProject, formData, setFormData }) => {
   return (
     <div className={`${styles.form}`}>
       <div className={`${styles.ctn}`}>
-        <div className={`${styles.ctn}`}></div>
         <label className={`${styles.label}`} htmlFor='image'>
           Image URL:
         </label>
@@ -73,6 +72,7 @@ const UpdateProject = ({ handleUpdateProject, formData, setFormData }) => {
           onChange={(e) => handleChange(e)}
         />
       </div>
+
       <div className={`${styles.ctn}`}>
         <label className={`${styles.label}`} htmlFor='mission'>
           Mission:
@@ -86,6 +86,7 @@ const UpdateProject = ({ handleUpdateProject, formData, setFormData }) => {
           onChange={(e) => handleChange(e)}
         />
       </div>
+
       <div className={`${styles.ctn}`}>
         <label className={`${styles.label}`} htmlFor='description'>
           Description:
@@ -98,6 +99,7 @@ const UpdateProject = ({ handleUpdateProject, formData, setFormData }) => {
           onChange={(e) => handleChange(e)}
         />
       </div>
+
       <div className={`${styles.ctn}`}>
         <label className={`${styles.label}`} htmlFor='languages'>
           Languages:
@@ -111,6 +113,7 @@ const UpdateProject = ({ handleUpdateProject, formData, setFormData }) => {
           onChange={(e) => handleChange(e)}
         />
       </div>
+
       <div className={`${styles.ctn}`}>
         <label className={`${styles.label}`} htmlFor='url'>
           URL:
@@ -124,6 +127,7 @@ const UpdateProject = ({ handleUpdateProject, formData, setFormData }) => {
           onChange={(e) => handleChange(e)}
         />
       </div>
+
       <button
         type='button'
         className={`${styles.button}`}

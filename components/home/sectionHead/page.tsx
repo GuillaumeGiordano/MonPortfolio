@@ -4,13 +4,13 @@ import Image from "next/image";
 // STYLES
 import styles from "./SectionHead.module.css";
 import "./add.css";
-
+// LIB
+import BtnNormal from "@components/lib/buttons/buttonRegular/page";
+import SectionRegular from "@components/lib/sections/sectionRegular/page";
 // COMPONENTS
 import ScrollToDown from "@components/home/sectionHead/scrollToDown/page";
 import Social from "@components/home/sectionHead/buttonSocial/page";
 import TypingAndErasing from "@components/home/sectionHead/TypingAndErasing/page";
-import BtnNormal from "@components/lib/buttons/buttonRegular/page";
-import SectionRegular from "@components/lib/sections/sectionRegular/page";
 
 const SectionHead = ({ sectionId, sectionImage, sectionSlogan }) => {
   return (

@@ -2,15 +2,12 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useLoginModalContext } from "@context/loginForm";
 import { FormEvent } from "react";
 import styles from "./SignIn.module.css";
 
 const SignIn = () => {
-  const router = useRouter();
   const { toggleModal } = useLoginModalContext();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,21 +22,23 @@ const SignIn = () => {
         redirect: false,
       });
 
-      console.log(res);
       if (res.error) {
         setError("Invalid e-mail or passeword");
         return;
       }
 
+      setError("");
       toggleModal();
-      // router.replace("dashboard");
     } catch (error) {
       console.log(error);
+      setError("Failed to sign In");
     }
   };
 
   return (
     <form className={styles.form} onSubmit={handleSignIn}>
+      {error && <div>{error}</div>}
+
       <div className={styles.ctn}>
         <label className={styles.label}>Email:</label>
         <input
@@ -49,6 +48,7 @@ const SignIn = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
+
       <div className={styles.ctn}>
         <label className={styles.label}>Password:</label>
         <input
@@ -58,9 +58,8 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <button className={styles.btn}>Sign In</button>
 
-      {error && <div>{error}</div>}
+      <button className={styles.btn}>Sign In</button>
     </form>
   );
 };

@@ -4,22 +4,21 @@
 import React from "react";
 // STYLE
 import styles from "./SectionAbout.module.css";
-// COMPONENTS
+// LIB
 import SloganText from "@components/lib/elements/sloganText/page";
-import ImageSlider from "@components/home/sectionAbout/imageSlider/page";
-import CardCoding from "@components/home/sectionAbout/cardCoding/page";
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import ArticleTreeColums from "@components/lib/articles/articleTreeColums/page";
 import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
+// COMPONENTS
+import ImageSlider from "@components/home/sectionAbout/imageSlider/page";
+import CardCoding from "@components/home/sectionAbout/cardCoding/page";
 import CardScore from "@components/home/sectionAbout/cardScore/page";
-
 // DATA
 import { dataRandomText } from "@data/dataRandomText";
 import { dataScores } from "@data/dataScore";
 import { dataImageProfil } from "@data/dataImageProfil";
 
 const SectionAbout = () => {
-  // ABOUT
   const aboutItem1 = (
     <div className={`${styles.aboutArticle}`}>
       <h3 className={`${styles.titre}`}> Un développeur web passionné ! </h3>

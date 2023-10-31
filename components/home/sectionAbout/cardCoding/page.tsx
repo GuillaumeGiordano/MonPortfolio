@@ -5,9 +5,12 @@ import styles from "./CardCoding.module.css";
 import Image from "next/image";
 
 const CardCoding = ({ facts }) => {
-  const [randomText, setRandomText] = useState("Click pour en savoir plus");
+  // VARIAVBLES
+  const [randomText, setRandomText] = useState(
+    "Cliquez sur le bouton pour en savoir plus"
+  );
   const [randomIndexText, setRandomIndexText] = useState(0);
-
+  // HANDLES METHODES
   const handleRandomTextClick = () => {
     const valueMaxArray = facts.length;
     const randomIndex = Math.floor(Math.random() * valueMaxArray);

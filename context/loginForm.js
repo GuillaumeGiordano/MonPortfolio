@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const LoginModalContext = createContext();
 
 export function LoginModalContextProvider({ children }) {
+  // VARIABLES
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => {

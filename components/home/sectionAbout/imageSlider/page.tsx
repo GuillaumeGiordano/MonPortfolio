@@ -36,8 +36,8 @@ export default function ImageSlider({ imageToDisplay }) {
           src={imgPath}
           alt='photos de profil'
           className={styles.img}
-          width={400}
-          height={400}
+          width={290}
+          height={290}
         />
       )}
     </>

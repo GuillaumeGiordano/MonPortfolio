@@ -2,15 +2,17 @@
 "use client";
 
 import React, { useState } from "react";
+// STYLES
 import styles from "./Contact.module.css";
 
 const ContactForm = () => {
+  // VARIABLES
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-
+  // HANDLES METHODES
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({

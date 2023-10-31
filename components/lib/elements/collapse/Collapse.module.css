@@ -81,12 +81,6 @@
   fill: var(--couleur-jaune);
 }
 
-@media (max-width: 1400px) {
-}
-
-@media (max-width: 992px) {
-}
-
 @media (max-width: 767px) {
   .collapse {
     width: 100%;

@@ -1,4 +1,5 @@
 import React from "react";
+// STYLES
 import styles from "./ArticleOneColum.module.css";
 
 const ArticleOneColum = ({ addClass, children }) => {

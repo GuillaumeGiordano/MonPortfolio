@@ -1,4 +1,5 @@
 import React from "react";
+// STYLES
 import styles from "./ArticleTreeColums.module.css";
 
 const ArticleTreeColums = ({ articleOne, articleTwo, articleTree, addClass }) => {

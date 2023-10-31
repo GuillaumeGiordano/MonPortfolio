@@ -90,12 +90,6 @@
   height: 19px;
 }
 
-@media (max-width: 1400px) {
-}
-
-@media (max-width: 992px) {
-}
-
 @media (max-width: 767px) {
   .card {
     height: 230px;

@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-
+// STYLES
 import styles from "./Collapse.module.css";
 
 const Collapse = ({ header, content }) => {
+  // VARIABLES
   const [isOpen, setIsOpen] = useState(false);
+  // REFS
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   const toggleCollapsible = () => {

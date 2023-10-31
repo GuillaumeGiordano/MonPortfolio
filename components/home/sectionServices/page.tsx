@@ -2,13 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-
-// STYLE
+// STYLES
 import styles from "./SectionServices.module.css";
-// COMPONENTS
+// LIB
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
 import SloganText from "@components/lib/elements/sloganText/page";
+// COMPONENTS
 import ServiceCollapse from "@components/home/sectionServices/ServiceCollapse/page";
 // DATA
 import { dataCompetences } from "@data/dataCompetences";

@@ -5,6 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const ThemeContext = createContext();
 
 export function ThemeContextProvider({ children }) {
+  // VARIABLES
   const [isLightTheme, setIsLightTheme] = useState(false);
 
   const toggleTheme = () => {
