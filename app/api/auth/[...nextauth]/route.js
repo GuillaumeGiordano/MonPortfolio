@@ -2,7 +2,6 @@ require("dotenv").config();
 
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-
 import { connectToDB } from "@util/database";
 import bcrypt from "bcrypt";
 import User from "@models/user";
@@ -12,24 +11,19 @@ const authOptions = {
     CredentialsProvider({
       name: "credentieals",
       credentials: {},
-
       async authorize(credentials) {
         const { email, password } = credentials;
         try {
           await connectToDB();
           const user = await User.findOne({ email });
-
           if (!user) {
             return null;
           }
-
           const passwordsMatch = await bcrypt.compare(password, user.password);
           if (!passwordsMatch) {
             return null;
           }
-
-          console.log("User:", user);
-
+          // console.log("User:", user);
           return user;
         } catch (error) {
           console.log("Error: ", error);
@@ -48,7 +42,6 @@ const authOptions = {
     async session({ session, token, user }) {
       session.user.id = token.id;
       session.user.role = token.role;
-
       session.accessToken = token.accessToken;
       return session;
     },

@@ -7,23 +7,23 @@ import { redirect, useRouter } from "next/navigation";
 import styles from "./Dashboard.module.css";
 // AUTH
 import { useSession } from "next-auth/react";
-// COMPONENTS
-import AddProject from "@components/dashboard/addProject/page";
+// LIB
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
-import DisplayProjects from "@components/dashboard/displayProjects/page";
 import ArticleTwoColums from "@components/lib/articles/articleTwoColums/page";
 import Main from "@components/lib/main/page";
+// COMPONENTS
+import AddProject from "@components/dashboard/addProject/page";
+import DisplayProjects from "@components/dashboard/displayProjects/page";
+// TYPES
 import { IProject } from "@types";
 
 export default function Dashboard() {
   const router = useRouter();
-
   // AUTH
   const { data: session } = useSession();
   if (session?.user.role === "user" && session !== undefined) {
     redirect("/");
   }
-
   // VARIABLES
   const [error, setError] = useState("");
   const [isDataProject, setIsDataProject] = useState(false);
@@ -38,7 +38,6 @@ export default function Dashboard() {
     url: "",
   });
   const [fileURL, setFileURL] = useState("");
-
   // FETCH PROJECT => GET ALL + POST ONE + DELETE ONE
   const fetchProjects = async () => {
     try {
@@ -72,13 +71,13 @@ export default function Dashboard() {
   };
   const fetchCreateCloudinary = async (file: File) => {
     if (!file) {
-      return console.log("il manque l'image !");
+      console.log("il manque l'image !");
+      setError("il manque l'image !");
+      return;
     }
-
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "portfolioPreset");
-
     try {
       const res = await fetch(`https://api.cloudinary.com/v1_1/dvnqubycm/image/upload`, {
         method: "POST",
@@ -87,13 +86,16 @@ export default function Dashboard() {
 
       if (!res.ok) {
         console.error("Upload failed");
+        setError("Upload failed");
         throw new Error("failed upload image !");
       }
 
       const imageData = await res.json();
+      setError("");
       return imageData.secure_url;
     } catch (error) {
       console.error(error);
+      setError("Failed to connect to Cloudinary");
     }
   };
 
@@ -107,17 +109,20 @@ export default function Dashboard() {
       formData.languages === "" ||
       formData.url === ""
     ) {
-      setError("Il est important de remplir entierement le formulaire, merci");
+      setError("It is important to complete the form completely, thank you");
       console.log(error);
       return;
     }
 
     const imageUrl = await fetchCreateCloudinary(formData.image);
-    console.log("imageUrl");
-    console.log(imageUrl);
+
+    if (!imageUrl) {
+      setError("Failed to create image in Cloudinary, sorry");
+      console.log("Failed to create image in Cloudinary, sorry");
+      return;
+    }
 
     const data = new FormData();
-    data.append("file", formData.image);
     data.append("fileURL", imageUrl);
     data.append("title", formData.title);
     data.append("mission", formData.mission);

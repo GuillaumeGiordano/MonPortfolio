@@ -47,7 +47,6 @@ const AddProject = ({ formData, setFormData, handleCreateProject }) => {
           onChange={handleImageChange} // Gérez le changement d'image
         />
       </div>
-
       <div className={`${styles.ctn}`}>
         <label className={`${styles.label}`} htmlFor='title'>
           Title:

@@ -2,7 +2,7 @@ require("dotenv").config();
 
 import { NextResponse } from "next/server";
 import nodemailer from 'nodemailer';
-import { isSafeInput, isMailValid } from "@util/inputValidatorUtil"
+import { isMailValid } from "@util/inputValidatorUtil"
 
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
@@ -14,7 +14,7 @@ export const POST = async (request: Request) => {
     if (!name || !email || !message) {
         return NextResponse.json(
             { error: "Le formulaire doit être remplit" },
-            { status: 400 }
+            { status: 401 }
         );
     }
 
@@ -46,8 +46,6 @@ export const POST = async (request: Request) => {
         text: `Nom: ${name}\nE-mail: ${email}\nMessage: ${message}`,
     };
 
-
-
     try {
         // Envoi de l'e-mail
         await transport.sendMail(mailOptions);
@@ -57,7 +55,6 @@ export const POST = async (request: Request) => {
             { message: "Email sent" },
             { status: 200 }
         );
-
 
     } catch (error) {
         console.error(error);

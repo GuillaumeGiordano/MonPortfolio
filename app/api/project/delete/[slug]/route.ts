@@ -14,8 +14,8 @@ export const DELETE = async (
     { params }: { params: { slug: string } }) => {
 
     try {
-
         await connectToDB();
+
         const slug = params.slug
         const project = await Project.findOne(
             { "_id": slug }

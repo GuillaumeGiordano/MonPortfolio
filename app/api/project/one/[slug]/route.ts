@@ -1,5 +1,5 @@
-import Project from "../../../../../models/project"
-import { connectToDB } from "../../../../../util/database"
+import Project from "@/models/project"
+import { connectToDB } from "@/util/database"
 import { NextResponse } from "next/server"
 
 
@@ -18,7 +18,6 @@ export const GET = async (
                 project,
                 { status: 200 }
             );
-
         } catch (error) {
             return NextResponse.json(
                 { message: "Projet non trouvé" },
@@ -29,7 +28,7 @@ export const GET = async (
     } catch (error) {
         console.error(error);
         return NextResponse.json(
-            { message: "Une erreur est survenue lors de la récupération du projet" },
+            { message: "Failed to connect to mongoDB" },
             { status: 500 }
         );
     }
