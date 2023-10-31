@@ -38,6 +38,7 @@ export default function ImageSlider({ imageToDisplay }) {
           className={styles.img}
           width={290}
           height={290}
+          priority={true}
         />
       )}
     </>

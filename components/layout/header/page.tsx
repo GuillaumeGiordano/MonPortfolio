@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+// import { useRouter } from "next/navigation";
 // AUTH
 import { useSession } from "next-auth/react";
 // STYLES
@@ -17,6 +18,7 @@ import Logo from "@components/layout/header/logo/page";
 import scrollToSection from "@util/scrollToSection";
 
 const Header = () => {
+  // const router = useRouter();
   const { data: session } = useSession();
   // CONTEXTES
   const { isLightTheme } = useThemeContext();
@@ -81,6 +83,7 @@ const Header = () => {
     setIsBurger(!isBurger);
   };
   const handleClickToSection = (sectionId: string) => {
+    // router.push(`/#${sectionId}`);
     scrollToSection(sectionId);
     handleClickBurger();
   };

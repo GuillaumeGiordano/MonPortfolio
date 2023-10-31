@@ -10,15 +10,27 @@
 }
 
 .titre {
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   font-size: 1.3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .text {
-  padding: 20px;
+  padding: 10px;
   text-align: justify;
 }
 .score {
   gap: 20px;
+}
+
+.cv {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

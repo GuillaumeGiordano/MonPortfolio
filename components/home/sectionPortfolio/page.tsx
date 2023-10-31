@@ -25,7 +25,6 @@ const SectionPortfolio = () => {
         console.log("Il y a un probleme avec API project All");
         return;
       }
-      console.log(data);
 
       setAllProjects(data);
       setIsDataProject(true);

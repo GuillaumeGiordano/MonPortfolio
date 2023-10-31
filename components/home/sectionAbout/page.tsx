@@ -17,6 +17,8 @@ import CardScore from "@components/home/sectionAbout/cardScore/page";
 import { dataRandomText } from "@data/dataRandomText";
 import { dataScores } from "@data/dataScore";
 import { dataImageProfil } from "@data/dataImageProfil";
+import Image from "next/image";
+import Link from "next/link";
 
 const SectionAbout = () => {
   const aboutItem1 = (
@@ -32,6 +34,40 @@ const SectionAbout = () => {
         compétences qui s'avèrent précieuses dans la résolution de problèmes techniques et
         l'optimisation des performances.
       </p>
+      <h3 className={`${styles.titre}`}>
+        <Image
+          src={"/icones/telecharger-le-pdf.png"}
+          alt='icone pdf'
+          className={`${styles.cv__img}`}
+          width={30}
+          height={30}
+          priority={true}
+        />
+        Mon CV
+      </h3>
+      <div className={`${styles.cv}`}>
+        <p className={`${styles.cv__text}`}>Cliquer sur un drapeau.</p>
+        <Link href={"/CV_GG_2023_Dev_v2.pdf"} target='_blank'>
+          <Image
+            src={"/icones/france.png"}
+            alt='icone pdf'
+            className={`${styles.cv__img}`}
+            width={50}
+            height={50}
+            priority={true}
+          />
+        </Link>
+        <Link href={"/CV_GG_2023_Dev_v2_EN.pdf"} target='_blank'>
+          <Image
+            src={"/icones/royaume-uni.png"}
+            alt='icone pdf'
+            className={`${styles.cv__img}`}
+            width={50}
+            height={50}
+            priority={true}
+          />
+        </Link>
+      </div>
     </div>
   );
   const aboutItem2 = (
