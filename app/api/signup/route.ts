@@ -1,37 +1,42 @@
-
 import { connectToDB } from "@util/database"
 import { NextResponse } from "next/server"
 import User from "@models/user";
 import bcrypt from 'bcrypt';
-import { IUser } from "@types";
 
 export const POST = async (request: Request) => {
 
-    const { email, password } = await request.json()
+    const { email, password1, password2 } = await request.json()
 
     try {
         await connectToDB();
 
-        if (!email || !password) {
+        if (!email || !password1 || !password2) {
             return NextResponse.json(
-                { error: "Email and password are required" },
+                { error: "You must complete the form" },
                 { status: 401 }
             );
         }
 
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
+        if (password1 !== password2) {
             return NextResponse.json(
-                { error: "Email already registered" },
+                { error: "Passwords are not the same !" },
                 { status: 402 }
             );
         }
 
+        const existingUser = await User.findOne({ email });
 
-        if (password.length < 8) {
+        if (existingUser) {
+            return NextResponse.json(
+                { error: "Email already registered" },
+                { status: 403 }
+            );
+        }
+
+        if (password1.length < 8) {
             return NextResponse.json(
                 { error: "The password is not long enough" },
-                { status: 403 }
+                { status: 404 }
             );
         }
 
@@ -41,21 +46,21 @@ export const POST = async (request: Request) => {
         const digitRegex = /[0-9]/;
         const specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
 
-        if (!lowercaseRegex.test(password) ||
-            !uppercaseRegex.test(password) ||
-            !digitRegex.test(password) ||
-            !specialCharRegex.test(password)) {
+        if (!lowercaseRegex.test(password1) ||
+            !uppercaseRegex.test(password1) ||
+            !digitRegex.test(password1) ||
+            !specialCharRegex.test(password1)) {
             return NextResponse.json(
                 { error: "The password is not complicated enough" },
-                { status: 404 }
+                { status: 405 }
             );
         }
 
         const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
-
+        const hashedPassword = await bcrypt.hash(password1, saltRounds);
         const allUser = await User.find();
         let role = "user";
+
         if (allUser.length === 0) {
             role = "admin";
         }

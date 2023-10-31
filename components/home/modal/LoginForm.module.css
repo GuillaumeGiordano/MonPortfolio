@@ -19,7 +19,6 @@
 .card {
   height: fit-content;
   width: 90%;
-  height: 450px;
   max-width: 400px;
 
   background-color: var(--couleur-gris);

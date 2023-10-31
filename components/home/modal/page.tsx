@@ -61,8 +61,8 @@ const LoginForm = () => {
               </button>
             </div>
 
-            {/* SIGN IN */}
             <div className={styles.modalContent}>
+              {/* SIGN IN */}
               {page === "signIn" ? (
                 <>
                   <h2 className={styles.title}>Se connecter</h2>

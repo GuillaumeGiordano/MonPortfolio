@@ -1,26 +1,26 @@
 "use client";
 require("dotenv").config();
+
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 // STYLES
 import styles from "./Projet.module.css";
 // AUTH
 import { useSession } from "next-auth/react";
-// COMPONENTS
-import UpdateProject from "@components/dashboard/updateProject/page";
+// LIB
 import SectionRegular from "@components/lib/sections/sectionRegular/page";
 import ArticleOneColum from "@components/lib/articles/articleOneColum/page";
 import Main from "@components/lib/main/page";
+// COMPONENTS
+import UpdateProject from "@components/dashboard/updateProject/page";
 
 export default function Project({ params }: { params: { slug: string } }) {
   const router = useRouter();
-
   // CONTROL AUTH
   const { data: session } = useSession();
   if (session?.user.role === "user" && session !== undefined) {
     redirect("/");
   }
-
   // VARIABLES
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -32,7 +32,6 @@ export default function Project({ params }: { params: { slug: string } }) {
     url: "",
   });
   const [isDataProject, setIsDataProject] = useState(false);
-
   // FETCH
   const fetchOneProject = async (projectId: string) => {
     try {
@@ -84,7 +83,6 @@ export default function Project({ params }: { params: { slug: string } }) {
       console.error(error);
     }
   };
-
   // HANDLES METHODES
   const handleUpdateProject = async () => {
     if (
@@ -138,11 +136,10 @@ export default function Project({ params }: { params: { slug: string } }) {
     fetchOneProject(params.slug);
   }, [params.slug]);
 
-  console.log(formData);
   return (
     <>
       {session?.user.role === "admin" ? (
-        <Main addClass={""}>
+        <Main addClass={styles.main}>
           <SectionRegular addClass={""} sectionId={"projet"} sectionTitle={`Mon projet`}>
             {error && <div className={""}>{error}</div>}
             <ArticleOneColum addClass={""}>

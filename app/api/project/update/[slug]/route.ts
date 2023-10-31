@@ -1,10 +1,6 @@
 import Project from "@/models/project";
 import { connectToDB } from "@/util/database";
 import { NextResponse } from "next/server";
-import path from "path";
-import fs from "fs/promises";
-import { v4 as uuidv4 } from "uuid";
-import os from "os";
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
@@ -14,27 +10,26 @@ cloudinary.config({
   secure: true,
 });
 
-export const PUT = async (request, { params }) => {
+export const PUT = async (request: Request, { params }: { params: { slug: string } }) => {
   try {
     const data = await request.formData();
-    const file = data.get("file");
-    const fileURL = data.get("fileURL");
-    const title = data.get("title");
-    const mission = data.get("mission");
-    const description = data.get("description");
-    const languages = data.get("languages");
-    const url = data.get("url");
+    const file = data.get("file") as File | null;
+    const fileURL = data.get("fileURL") as string | null;
+    const title = data.get("title") as string | null;
+    const mission = data.get("mission") as string | null;
+    const description = data.get("description") as string | null;
+    const languages = data.get("languages") as string | null;
+    const url = data.get("url") as string | null;
 
     try {
       await connectToDB();
       const slug = params.slug;
-      let newURL = "";
+      let newURL: string | null = null;
 
       if (fileURL) {
-        //IF NEW FILE, WE NEED TO DELETE OLD PICTURE IN CLOUDINARY
+        // SI UN NOUVEAU FICHIER EST ENVOYÉ, NOUS DEVONS SUPPRIMER L'ANCIENNE IMAGE DE CLOUDINARY
         const project = await Project.findOne({ _id: slug });
         newURL = fileURL;
-
         if (project && project.image) {
           const url = project.image;
           if (url !== "undefined") {
@@ -43,13 +38,13 @@ export const PUT = async (request, { params }) => {
             const name = urlSplit[1].split(".")[0];
             const publicId = folder + "/" + name;
             await cloudinary.uploader.destroy(publicId);
-            console.log("Image delete in cloudinary.");
+            console.log("Image supprimée de Cloudinary.");
           } else {
-            console.log("Il n'y avait pas d'image sur cloudinary !");
+            console.log("Il n'y avait pas d'image sur Cloudinary !");
           }
         }
-      } else {
-        newURL = file;
+      } else if (file) {
+        newURL = file.name;
       }
 
       try {
@@ -79,10 +74,10 @@ export const PUT = async (request, { params }) => {
       }
     } catch (error) {
       console.log(error);
-      return NextResponse.json("Échec de la connexion à mongoDB", { status: 400 });
+      return NextResponse.json("Échec de la connexion à MongoDB", { status: 400 });
     }
   } catch (error) {
     console.log(error);
-    return NextResponse.json("Échec server", { status: 500 });
+    return NextResponse.json("Échec du serveur", { status: 500 });
   }
 };
