@@ -27,7 +27,6 @@ const CardPortfolio = ({ item }) => {
 
   useEffect(() => {
     const splitLanguages = item.languages.split(" ");
-    console.log(splitLanguages);
     setTechnos(splitLanguages);
   }, [item]);
 

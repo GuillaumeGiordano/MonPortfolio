@@ -23,6 +23,7 @@ const SectionHead = ({ sectionId, sectionImage, sectionSlogan }) => {
           className={styles.SectionImage}
           width={450}
           height={450}
+          priority={true}
         />
 
         <div className={styles.presentation}>
