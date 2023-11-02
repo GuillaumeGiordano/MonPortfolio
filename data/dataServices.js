@@ -7,7 +7,7 @@ export const dataServices = [
       "Interactivité : J'ajoute des éléments interactifs pour que les visiteurs puissent cliquer et interagir avec votre site.",
       "Adaptabilité : Votre site fonctionne bien sur tous les types d'appareils, ordinateurs, tablettes et téléphones.",
       "Optimisation des Performances : Je veille à ce que votre site se charge rapidement, sans faire attendre les visiteurs.",
-      "Facilité de Navigation : J'organise votre site pour qu'il soit facile à parcourir et à trouver ce que les utilisateurs recherchent.",
+      "Facilité de Navigation : Je structure votre site de manière à ce qu'il soit convivial et que les utilisateurs puissent facilement trouver ce qu'ils cherchent.",
     ],
   },
   {
