@@ -25,14 +25,14 @@ const SectionAbout = () => {
     <div className={`${styles.aboutArticle}`}>
       <h3 className={`${styles.titre}`}> Un développeur web passionné ! </h3>
       <p className={`${styles.text}`}>
-        Ma reconversion professionnelle en tant que Développeur Web découle de ma passion
-        constante pour la technologie et mon désir d'apporter des solutions innovantes.
-        Avec détermination, j'ai débuté mon apprentissage en commencant par les langages
-        de bases tels que l'HTML, CSS, PHP et JavaScript. J'ai également eu l'opportunité,
-        dans ma formation, de me familiariser avec des frameworks tel que React.Mon
-        expérience antérieure m'a doté d'une approche analytique et méticuleuse, des
-        compétences qui s'avèrent précieuses dans la résolution de problèmes techniques et
-        l'optimisation des performances.
+        Ma reconversion professionnelle en tant que développeur web découle de ma passion
+        constante pour la technologie et de mon désir d'apporter des solutions innovantes.
+        Avec détermination, j'ai commencé mon apprentissage en commençant par les langages
+        de base tels que l'HTML, le CSS, le PHP et le JavaScript. J'ai également eu
+        l'opportunité, dans ma formation, de me familiariser avec des frameworks tels que
+        React. Mon expérience antérieure m'a doté d'une approche analytique et
+        méticuleuse, des compétences qui s'avèrent précieuses dans la résolution de
+        problèmes techniques et l'optimisation des performances.
       </p>
       <h3 className={`${styles.titre}`}>
         <Image
@@ -79,10 +79,10 @@ const SectionAbout = () => {
     <div className={`${styles.aboutArticle}`}>
       <h3 className={`${styles.titre}`}> Mon expérience en développement. </h3>
       <p className={`${styles.text}`}>
-        Mon expérience acquise, en tant que chef de projet, me permet de mieux comprendre
-        les attentes d'un client et de répondre précisement au besoin demandé en fonction
-        du domaine d'activité. Du site vitrine au projet plus complexe, je vous propose
-        une expertise et un développement web qui correspond à vos attentes et à vos
+        Mon expérience en tant que chef de projet me permet de mieux comprendre les
+        attentes d'un client et de répondre précisément au besoin demandé en fonction du
+        domaine d'activité. Du site vitrine au projet plus complexe, je vous propose une
+        expertise et un développement web qui correspondent à vos attentes et à vos
         besoins.
       </p>
       <h3 className={`${styles.titre}`}>Pour mieux me connaitre.</h3>
